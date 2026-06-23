@@ -54,12 +54,16 @@ No. There's no networking knowledge required and **no Python** — the family se
 "No data" is the #1 issue with anything OSC. Walk this list in order:
 
 1. **Same network?** Phone and computer must be on the *same* Wi-Fi/LAN.
-2. **Right IP?** The app must target *this computer's* IP. The app shows what it's pointed at.
-3. **Port match?** App OSC port == the operator's **OSC Port** parameter (default 9000).
-4. **Sensor enabled and streaming?** The app must be actively streaming that specific sensor.
-5. **Firewall?** macOS/Windows firewalls can block inbound UDP — allow TouchDesigner.
-6. **String sensor?** Speech, OCR, QR payload, NFC, and Sound ID labels need an **OSC In DAT**, not a CHOP.
-7. **Stale channels?** Body/Hand only update while a subject is in frame.
+2. **Local Network permission?** On iOS the app **cannot reach your computer at all** without it. iOS asks once on first launch; if it was denied (or the prompt was dismissed), OSC, NDI and the point cloud all silently fail. Open **iOS Settings → TDLiDAR** (the app's own settings page) and turn **Local Network** on. If in doubt, toggle it off and back on.
+3. **Right IP?** The app must target *this computer's* IP. The app shows what it's pointed at.
+4. **Port match?** App OSC port == the operator's **OSC Port** parameter (default 9000).
+5. **Sensor enabled and streaming?** The app must be actively streaming that specific sensor.
+6. **Firewall?** macOS/Windows firewalls can block inbound UDP — allow TouchDesigner.
+7. **String sensor?** Speech, OCR, QR payload, NFC, and Sound ID labels need an **OSC In DAT**, not a CHOP.
+8. **Stale channels?** Body/Hand only update while a subject is in frame.
+
+> **iOS Local Network permission is the most common silent failure.** If you tapped "Don't Allow" the first time the app launched, nothing will ever arrive and there is no error — iOS simply blocks the packets. Find it under **Settings → TDLiDAR → Local Network** (it also appears under Settings → Privacy & Security → Local Network).
+{: .warning }
 
 ### My phone and computer are on the same Wi-Fi but still nothing. Why?
 

@@ -28,10 +28,10 @@ flowchart LR
   SN -- "OSC · 9000" --> OPS["tdlidar_* operators"]
 ```
 
-- **LiDAR** — the original depth-streaming mode. Colour-mapped depth, and optionally the RGB camera, sent as an NDI video stream. See [LiDAR Mode]({% link lidar-mode.md %}).
-- **Point Cloud** — a live, lossless 3D point cloud sent over TCP. See [Point Cloud Mode]({% link point-cloud-mode.md %}).
-- **Scene Build** — Apple's RoomPlan room scanner. See [Scene Build Mode]({% link scene-build-mode.md %}).
-- **Sensors** — dozens of individual sensors (motion, body, face, audio, touch and more) streamed as OSC. This is what feeds the operator family. See [Sensors Mode]({% link sensors-mode.md %}).
+- **LiDAR** — the original depth-streaming mode. Colour-mapped depth, and optionally the RGB camera, sent as an NDI video stream. See [LiDAR Mode]({{ '/lidar-mode.html' | relative_url }}).
+- **Point Cloud** — a live, lossless 3D point cloud sent over TCP. See [Point Cloud Mode]({{ '/point-cloud-mode.html' | relative_url }}).
+- **Scene Build** — Apple's RoomPlan room scanner. See [Scene Build Mode]({{ '/scene-build-mode.html' | relative_url }}).
+- **Sensors** — dozens of individual sensors (motion, body, face, audio, touch and more) streamed as OSC. This is what feeds the operator family. See [Sensors Mode]({{ '/sensors-mode.html' | relative_url }}).
 
 ## The shared interface
 
@@ -51,9 +51,9 @@ Connection is the same idea in every mode — same network, point the app at you
 
 ## Where to go next
 
-- [Connecting]({% link connecting.md %}) — network setup, ports, discovery, wired mode, troubleshooting.
-- [LiDAR Mode]({% link lidar-mode.md %}) — every depth, tone, colour and NDI control.
-- [Point Cloud Mode]({% link point-cloud-mode.md %}) — TCP streaming, the viewer, PLY export.
-- [Scene Build Mode]({% link scene-build-mode.md %}) — scanning a room with RoomPlan.
-- [Sensors Mode]({% link sensors-mode.md %}) — enabling sensors and per-sensor tuning.
-- [Performance & Pro]({% link performance-pro.md %}) — Supercharge, background, Pro features, recording.
+- [Connecting]({{ '/connecting.html' | relative_url }}) — network setup, ports, discovery, wired mode, troubleshooting.
+- [LiDAR Mode]({{ '/lidar-mode.html' | relative_url }}) — every depth, tone, colour and NDI control.
+- [Point Cloud Mode]({{ '/point-cloud-mode.html' | relative_url }}) — TCP streaming, the viewer, PLY export.
+- [Scene Build Mode]({{ '/scene-build-mode.html' | relative_url }}) — scanning a room with RoomPlan.
+- [Sensors Mode]({{ '/sensors-mode.html' | relative_url }}) — enabling sensors and per-sensor tuning.
+- [Performance & Pro]({{ '/performance-pro.html' | relative_url }}) — Supercharge, background, Pro features, recording.
