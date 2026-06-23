@@ -15,6 +15,19 @@ If you just want addresses and units, jump to the OSC Reference. If you want to 
 
 The app does four different jobs, and you pick which one with the mode switcher. Each produces a different kind of output and travels over a different transport, so each gets its own page:
 
+```mermaid
+flowchart LR
+  APP(["TDLiDAR app"])
+  APP --> L["LiDAR<br/>colour-mapped depth"]
+  APP --> PC["Point Cloud<br/>lossless 3D points"]
+  APP --> SB["Scene Build<br/>RoomPlan scan"]
+  APP --> SN["Sensors<br/>motion · body · audio · …"]
+  L -- "NDI" --> TOP["NDI In → TOP"]
+  PC -- "TCP" --> POP["Point Cloud → POP"]
+  SB -. "on device" .-> REV["review model"]
+  SN -- "OSC · 9000" --> OPS["tdlidar_* operators"]
+```
+
 - **LiDAR** — the original depth-streaming mode. Colour-mapped depth, and optionally the RGB camera, sent as an NDI video stream. See [LiDAR Mode]({% link lidar-mode.md %}).
 - **Point Cloud** — a live, lossless 3D point cloud sent over TCP. See [Point Cloud Mode]({% link point-cloud-mode.md %}).
 - **Scene Build** — Apple's RoomPlan room scanner. See [Scene Build Mode]({% link scene-build-mode.md %}).
