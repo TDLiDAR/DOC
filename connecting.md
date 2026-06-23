@@ -13,6 +13,17 @@ Every mode sends data to your computer over the local network. The single rule t
 
 The app uses a different transport for each kind of output, and you only deal with the one your mode uses.
 
+```mermaid
+flowchart LR
+  P["📱 iPhone — TDLiDAR app"]
+  P -- "OSC · UDP 9000" --> SENS["Sensors mode<br/>set computer IP"]
+  P -- "NDI · auto-discovered" --> LID["LiDAR mode<br/>no IP / no port"]
+  P -- "TCP · own port" --> PC["Point Cloud mode<br/>set IP + port"]
+  SENS --> TD["🖥️ TouchDesigner"]
+  LID --> TD
+  PC --> TD
+```
+
 OSC carries the individual sensors in Sensors mode. It is a stream of small messages over UDP to port 9000. You tell the app your computer's IP address; the port is fixed at 9000.
 
 NDI carries the depth video and RGB camera in LiDAR mode. NDI announces itself on the network and is discovered automatically, so there is no IP or port to set — your TouchDesigner NDI In operator simply lists the phone as an available source by name.

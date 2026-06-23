@@ -12,6 +12,7 @@ baseurl: "/DOC"
 color_scheme: tdlidar
 logo: "/assets/images/logo.png"
 search_enabled: true
+enable_copy_code_button: true
 
 # Render fenced ```mermaid blocks (theme is set in _includes/mermaid_config.js).
 mermaid:

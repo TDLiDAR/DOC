@@ -289,3 +289,17 @@ blockquote.warning, blockquote.caution { border-radius: 0 8px 8px 0; }
 .external-arrow { color: $td-blue; }
 // Footer
 .site-footer { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.td-footer {
+  text-align: center;
+  font-size: 0.78rem;
+  color: #8b8f98;
+  padding: 0.4rem 0 0.2rem;
+}
+.td-footer a { color: #b9bdc6; }
+.td-footer a:hover { color: $td-blue; }
+.td-footer .td-dot { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.25); }
+.td-footer-fine { margin-top: 0.45rem; color: #6f7178; font-size: 0.72rem; }
+
+// Copy-code button (Apple-blue on hover)
+.btn-copy { border: 1px solid rgba(255, 255, 255, 0.25); }
+.btn-copy:hover { border-color: $td-blue; color: $td-blue; }

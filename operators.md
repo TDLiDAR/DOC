@@ -11,6 +11,19 @@ The TDLiDAR family is thirty-four operators, one per sensor or output. Drop any 
 
 Each operator has its own detailed page under the Operators section with its OSC input, parameters, outputs, a beginner quick-start and advanced patterns. This page is the overview.
 
+```mermaid
+flowchart TB
+  ROOT(["tdlidar_* operators"])
+  ROOT --> M["Motion<br/>accel · gravity · gyro · attitude · mag · baro · activity"]
+  ROOT --> D["Device<br/>battery · thermal · low-power · brightness"]
+  ROOT --> B["Body &amp; Vision<br/>body · hand · pinch · gesture · face · arbody · pose"]
+  ROOT --> S["Scene &amp; Detect<br/>planes · mesh · QR · OCR · saliency · distance · animal"]
+  ROOT --> A["Audio<br/>mic · audio · speech · sound-ID"]
+  ROOT --> T["Touch &amp; Input<br/>touch · pencil · proximity · NFC · remote"]
+  ROOT --> X["External<br/>AirPods · Apple Watch"]
+  ROOT --> O["Output / Utility<br/>NDI · point cloud · scene build · depth"]
+```
+
 ## Motion
 
 Acceleration, Gravity, Gyro, Quaternion / Euler, Magnetometer, Barometer and Motion Activity. These are the phone's inertial and environmental sensors, mostly three-channel CHOP outputs. Acceleration and Gravity are the most useful — tilt + vibration in the smoothest six-channel form.
