@@ -1,0 +1,28 @@
+theme: just-the-docs
+
+# Site settings
+title: TDLiDAR Documentation
+description: Documentation site for TDLiDAR iOS App
+url: https://TDLiDAR.github.io/DOC
+
+# Repository settings (for GitHub Pages)
+remote_theme: just-the-docs/just-the-docs
+
+# Just the Docs configuration
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+
+# Footer content
+footer_content: "Copyright &copy; 2024 TDLiDAR. All rights reserved."
+
+# Aux links
+aux_links:
+  "TDLiDAR on GitHub":
+    - "https://github.com/TDLiDAR"
+
+# Enable callouts
+enable_callouts: true
+
+# Logo
+logo: "/assets/images/logo.png"
