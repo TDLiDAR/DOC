@@ -30,6 +30,7 @@ exclude:
   - Gemfile.lock
   - vendor
   - .gitignore
+  - docs
 
 plugins:
   - jekyll-remote-theme
