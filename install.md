@@ -16,7 +16,7 @@ This package is the **TouchDesigner half**. Get the **TDLiDAR** app on the iOS A
 
 1. **Extract** this zip. Keep `TDLiDAR_family.tox` and the `operators/` folder **together**.
 2. In TouchDesigner, **drag `TDLiDAR_family.tox`** into your project. It self‑installs on load — the **TDLiDAR** tab appears in the OP Create (TAB) menu.
-3. If the operators don't appear: select the dropped **`TDLiDAR_fam`** component, set its **`Opfolder`** parameter to this package's **`operators/`** folder, pulse **`Ensuremanifests`**, then toggle **`Install`** On.
+3. If the operators don't appear: select the dropped **`TDLiDAR_fam`** component, set its **`Opfolder`** parameter to this package's **`operators/`** folder, pulse **`Ensuremanifests`**, then toggle the **`Enable`** switch.
 4. **Save your `.toe` project.**
 
 > Zero‑config tip: if you extract `operators/` **next to your `.toe` file**, the default relative path resolves automatically — nothing to set.
@@ -29,7 +29,7 @@ This package is the **TouchDesigner half**. Get the **TDLiDAR** app on the iOS A
 2. **TAB → TDLiDAR →** drop any operator. Each listens on OSC port 9000 and previews its live output on the node tile.
 3. Each operator only wires to its own type (a CHOP op → CHOPs, a TOP op → TOPs, etc.), like native TD.
 
-Troubleshooting "no data": same Wi‑Fi/LAN, correct IP, port 9000, sensor enabled in the app, firewall allows TouchDesigner. String sensors (Speech, OCR, Sound ID, NFC, QR payload) use an OSC In **DAT**.
+Troubleshooting "no data": same Wi‑Fi/LAN, correct IP, port 9000, sensor enabled in the app, firewall allows TouchDesigner. String sensors (Speech, OCR, Sound ID, NFC, QR payload) use an OSC In DAT.
 
 ---
 
