@@ -9,3 +9,67 @@
 <meta property="og:image" content="{{ '/assets/images/icon-512.png' | absolute_url }}">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="{{ '/assets/images/icon-512.png' | absolute_url }}">
+
+<!--
+  Critical brand CSS, inlined.
+  This <style> is the LAST thing in <head> (after the theme stylesheet link),
+  so it overrides the external CSS even when a browser has the old same-named
+  stylesheet cached. Keeps fonts, true-black, and the header/footer buttons
+  correct without waiting for a CSS cache clear.
+-->
+<style>
+  :root { color-scheme: dark; }
+  html, body { background-color:#000 !important; }
+  body, .main-content, .site-nav, .site-title, .site-button,
+  .search-input, button, input, select, textarea,
+  h1, h2, h3, h4, h5, h6, .nav-list-link, .aux-nav-list-item {
+    font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", menlo, consolas, monospace !important;
+  }
+  code, kbd, pre, samp, tt, .highlight, .highlighter-rouge {
+    font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", menlo, monospace !important;
+  }
+  body { color:#e6e7ea !important; }
+  .side-bar, .site-header, .main-header, .search { background-color:#000 !important; }
+  .main-content h1, .main-content h2, .main-content h3, .main-content h4 { color:#fff; }
+  .main-content table th { background-color:#0c0f14; color:#fff; }
+
+  /* Header action buttons */
+  .td-aux { display:flex; align-items:center; gap:.45rem; margin-left:auto; padding:0 .75rem 0 .5rem; }
+  .td-aux-btn { display:inline-flex; align-items:center; gap:.4rem; height:34px; padding:0 .75rem;
+    border-radius:999px; font-size:.78rem; font-weight:600; white-space:nowrap;
+    color:#fff !important; text-decoration:none !important; background:#000;
+    border:1px solid rgba(255,255,255,.82); transition:all .15s ease; }
+  .td-aux-btn svg { width:16px !important; height:16px !important; fill:currentColor; }
+  .td-aux-btn:hover { color:#0a84ff !important; border-color:#0a84ff; }
+  .td-appstore { background:#0a84ff; border-color:#0a84ff; }
+  .td-appstore:hover { background:#3b9bff; border-color:#3b9bff; color:#fff !important; }
+  .td-patreon { border:none !important; padding:0 .5rem; background:transparent; }
+  .td-github { padding:0 .5rem; }
+  @media (max-width:50rem){ .td-appstore span { display:none; } .td-appstore { padding:0 .55rem; } }
+
+  /* Sidebar footer */
+  .td-sidebar-footer { padding:.75rem .9rem 1rem; display:flex; flex-direction:column; gap:.6rem;
+    border-top:1px solid rgba(255,255,255,.12); }
+  .td-sf-appstore { display:inline-flex; align-items:center; justify-content:center; gap:.45rem;
+    padding:.5rem .7rem; border-radius:999px; font-size:.72rem; font-weight:600;
+    color:#fff !important; text-decoration:none !important; background:#0a84ff; border:1px solid #0a84ff; }
+  .td-sf-appstore svg { width:15px !important; height:15px !important; fill:currentColor; }
+  .td-sf-row { display:flex; gap:.5rem; justify-content:center; }
+  .td-sf-icon { display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center;
+    border-radius:50%; color:#b9bdc6 !important; border:1px solid rgba(255,255,255,.2); }
+  .td-sf-icon svg { width:17px !important; height:17px !important; fill:currentColor; }
+  .td-sf-patreon { border:none !important; }
+
+  /* Home hero + mermaid + footer */
+  .td-hero { text-align:center; padding:1.25rem 0 .5rem; }
+  .td-hero-icon { width:132px !important; height:132px !important; border-radius:30px;
+    box-shadow:0 0 0 1px rgba(255,255,255,.6), 0 22px 70px rgba(10,132,255,.28); }
+  .td-hero-title { border:0 !important; margin:.9rem 0 .15rem; font-size:2.6rem; font-weight:800; }
+  .td-tagline { color:#b9bdc6; }
+  .td-cta { display:flex; flex-wrap:wrap; gap:.65rem; align-items:center; justify-content:center; }
+  .td-appstore-badge img { height:50px !important; width:auto !important; border-radius:9px; }
+  .mermaid { background:#050507; border:1px solid rgba(255,255,255,.4); border-radius:12px;
+    padding:1rem; margin:1.3rem 0; text-align:center; }
+  .td-footer { text-align:center; font-size:.78rem; color:#8b8f98; }
+  .td-footer .td-dot { margin:0 .5rem; color:rgba(255,255,255,.25); }
+</style>
