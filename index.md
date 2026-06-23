@@ -9,7 +9,7 @@ permalink: /
 
 **Turn an iPhone into ~40 live sensors inside TouchDesigner — with one drag‑and‑drop.**
 
-TDLiDAR is an iOS app + a TouchDesigner **operator family**. The app streams everything a modern iPhone can sense — motion, LiDAR depth, body/hand/face tracking, audio, camera vision, touch, and more — over your local network. The operator family turns each of those streams into a native TouchDesigner operator you drop straight into a patch.
+TDLiDAR is an iOS app + a TouchDesigner **operator family**. The app streams everything a modern iPhone can sense — motion, LiDAR depth, body/hand/face tracking, audio, camera vision, touch, and more — over your local network. The operators plug straight into your patch.
 
 No networking knowledge required. No Python. Drop an op, point the phone, make visuals move.
 
@@ -63,7 +63,7 @@ The fastest "wow":
 
 1. TAB → TDLiDAR → **Attitude** (phone tilt as pitch/roll/yaw).
 2. Add a **Geometry COMP** + a **Box SOP**.
-3. On the Geo's **Xform** page, drag the Attitude op's `pitch`/`roll`/`yaw` channels onto **Rotate x/y/z** (right‑click → Export CHOP). Multiply radians→degrees with a **Math CHOP** (×57.296) first.
+3. On the Geo's **Xform** page, drag the Attitude op's `pitch`/`roll`/`yaw` channels onto **Rotate x/y/z** (right‑click → Export CHOP). Multiply radians→degrees with a **Math CHOP** (×57.2957...).
 4. Tilt the phone → the box rotates in real space.
 
 Swap Attitude for **Pinch** (air‑fader), **Audio** (beat‑reactive), or **Body** (a puppet skeleton) and the same five steps drive anything.
@@ -72,30 +72,30 @@ Swap Attitude for **Pinch** (air‑fader), **Audio** (beat‑reactive), or **Bod
 
 ## The operators
 
-Every operator has its own page in [`ops/`](operators.html). They share one rule: drop it, it listens on **OSC Port 9000**, the tile previews its live output.
+Every operator has its own page in the [Operators section]({% link operators.md %}). They share one rule: drop it, it listens on **OSC Port 9000**, the tile previews its live output.
 
-**Motion** — [Acceleration](ops/tdlidar_accel.html) · [Gravity](ops/tdlidar_gravity.html) · [Gyro](ops/tdlidar_gyro.html) · [QuaternionEuler](ops/tdlidar_attitude.html) · [Magnetometer](ops/tdlidar_magnetometer.html) · [Barometer](ops/tdlidar_barometer.html) · [Motion Activity](ops/tdlidar_activity.html)
+**Motion** — [Acceleration](/DOC/operators/tdlidar_accel/) · [Gravity](/DOC/operators/tdlidar_gravity/) · [Gyro](/DOC/operators/tdlidar_gyro/) · [QuaternionEuler](/DOC/operators/tdlidar_attitude/) · [Magnetometer](/DOC/operators/tdlidar_magnetometer/) · [Barometer](/DOC/operators/tdlidar_barometer/) · [Activity](/DOC/operators/tdlidar_activity/)
 
-**Device** — [Battery](ops/tdlidar_battery.html) · [Thermal State](ops/tdlidar_thermal.html) · [Low Power](ops/tdlidar_lowpower.html) · [Screen Brightness](ops/tdlidar_brightness.html)
+**Device** — [Battery](/DOC/operators/tdlidar_battery/) · [Thermal State](/DOC/operators/tdlidar_thermal/) · [Low Power](/DOC/operators/tdlidar_lowpower/) · [Screen Brightness](/DOC/operators/tdlidar_brightness/)
 
-**Body & Vision** — [Body](ops/tdlidar_body.html) · [Hand](ops/tdlidar_hand.html) · [Pinch](ops/tdlidar_pinch.html) · [Gesture](ops/tdlidar_gesture.html) · [Face](ops/tdlidar_face.html) · [AR Body](ops/tdlidar_arbody.html) · [6DoF Device Pose](ops/tdlidar_devicepose.html) · [Animal](ops/tdlidar_animal.html)
+**Body & Vision** — [Body](/DOC/operators/tdlidar_body/) · [Hand](/DOC/operators/tdlidar_hand/) · [Pinch](/DOC/operators/tdlidar_pinch/) · [Gesture](/DOC/operators/tdlidar_gesture/) · [Face](/DOC/operators/tdlidar_face/) · [ARBody](/DOC/operators/tdlidar_arbody/) · [DevicePose](/DOC/operators/tdlidar_devicepose/)
 
-**Scene & Detect** — [Camera Exposure](ops/tdlidar_cam_exposure.html) · [Ambient Light](ops/tdlidar_ambient.html) · [AR Planes](ops/tdlidar_planes.html) · [AR Mesh](ops/tdlidar_armesh.html) · [QR / Barcode](ops/tdlidar_qr.html) · [Rectangle Detect](ops/tdlidar_rect_detect.html) · [OCR](ops/tdlidar_ocr.html) · [Saliency](ops/tdlidar_saliency.html) · [Front Distance](ops/tdlidar_frontdist.html) · [Back Distance](ops/tdlidar_backdist.html)
+**Scene & Detect** — [Camera Exposure](/DOC/operators/tdlidar_cam_exposure/) · [Ambient Light](/DOC/operators/tdlidar_ambient/) · [AR Planes](/DOC/operators/tdlidar_planes/) · [AR Mesh](/DOC/operators/tdlidar_armesh/) · [QR/Barcode](/DOC/operators/tdlidar_qr/) · [Rectangle Detect](/DOC/operators/tdlidar_rect_detect/) · [Text (OCR)](/DOC/operators/tdlidar_ocr/) · [Saliency](/DOC/operators/tdlidar_saliency/) · [Front Distance](/DOC/operators/tdlidar_frontdist/) · [Back Distance](/DOC/operators/tdlidar_backdist/) · [Animal](/DOC/operators/tdlidar_animal/) · [Scene Room](/DOC/operators/tdlidar_scene_room/)
 
-**Audio** — [Mic Level](ops/tdlidar_mic_level.html) · [Audio](ops/tdlidar_audio.html) · [Speech](ops/tdlidar_speech.html) · [Sound ID](ops/tdlidar_sound.html)
+**Audio** — [Mic Level](/DOC/operators/tdlidar_mic_level/) · [Audio](/DOC/operators/tdlidar_audio/) · [Speech](/DOC/operators/tdlidar_speech/) · [Sound ID](/DOC/operators/tdlidar_sound/)
 
-**Touch & Input** — [Touch](ops/tdlidar_touch.html) · [Apple Pencil](ops/tdlidar_pencil.html) · [Proximity](ops/tdlidar_proximity.html) · [NFC](ops/tdlidar_nfc.html) · [Volume / Remote](ops/tdlidar_remote.html)
+**Touch & Input** — [Touch](/DOC/operators/tdlidar_touch/) · [Apple Pencil](/DOC/operators/tdlidar_pencil/) · [Proximity](/DOC/operators/tdlidar_proximity/) · [NFC](/DOC/operators/tdlidar_nfc/) · [Volume / Remote](/DOC/operators/tdlidar_remote/)
 
-**External** — [AirPods](ops/tdlidar_airpods.html) · [Apple Watch](ops/tdlidar_watch.html)
+**External** — [AirPods](/DOC/operators/tdlidar_airpods/) · [Apple Watch](/DOC/operators/tdlidar_watch/)
 
-**Output / Utility** — [NDI](ops/tdlidar_ndi_in.html) · [Point Cloud](ops/tdlidar_pointcloud_tcp.html) · [Scene Build](ops/tdlidar_scene_room.html) · [Depth](ops/tdlidar_depth.html) · [Rectangle (meter)](ops/tdlidar_rectangle.html)
+**Output / Utility** — [NDI](/DOC/operators/tdlidar_ndi_in/) · [Point Cloud](/DOC/operators/tdlidar_pointcloud_tcp/) · [Scene Build](/DOC/operators/tdlidar_scene_room/) · [Depth](/DOC/operators/tdlidar_depth/) · [Rectangle](/DOC/operators/tdlidar_rectangle/)
 
 ---
 
 ## App‑side setup
 
 - **Port:** the app sends OSC to UDP **9000** by default. If you change it on the phone, change **OSC Port** on each op to match.
-- **One sensor or many:** enable as many sensors as you want; they all multiplex onto the same port. Some camera sensors are mutually exclusive (you can't run two different camera engines at once) — the app greys out conflicts.
+- **One sensor or many:** enable as many sensors as you want; they all multiplex onto the same port. Some camera sensors are mutually exclusive (you can't run two different camera engines at once).
 - **Device support:** depth/scan/LiDAR ops need a Pro iPhone; Face needs TrueDepth; Apple Pencil needs an iPad; Apple Watch needs the companion Watch app. Each op page lists what it needs.
 
 ---
@@ -116,15 +116,15 @@ The #1 issue with anything OSC. Walk this list:
 
 ## For advanced users
 
-- **Wire format is open** — see [`OSC-REFERENCE.md`](osc-reference.html). Every op is just an OSC In CHOP/DAT + a Select; nothing is locked. Build your own ops against the same addresses.
+- **Wire format is open** — see [OSC-REFERENCE](/DOC/osc-reference/). Every op is just an OSC In CHOP/DAT + a Select; nothing is locked. Build your own ops against the same addresses.
 - **Smoothing:** Lag/Filter CHOP on noisy motion; the 1€ filter pattern for pose.
 - **Triggers:** Trigger/Logic CHOP on momentary channels (Remote, NFC, Gesture, beat/onset).
 - **Geometry:** Body/Hand/Animal output POPs you can instance geometry onto; 6DoF Pose drives a Camera COMP for projection mapping.
-- **Coexistence:** consult the app's conflict rules — AR‑world sensors (Pose/Planes/Mesh/Ambient/Back Distance) share one session; Body pairs only with Hands; ARKit Body and the depth session are mutually exclusive.
+- **Coexistence:** consult the app's conflict rules — AR‑world sensors (Pose/Planes/Mesh/Ambient/Back Distance) share one session; Body pairs only with Hands; ARKit Body and the depth session don't mix.
 
 ---
 
 ## Reference docs
 
-- [`OSC-REFERENCE.md`](osc-reference.html) — the complete OSC wire spec (every address, type, range, rate).
-- [`ops/`](operators.html) — one page per operator.
+- [OSC-REFERENCE](/DOC/osc-reference/) — the complete OSC wire spec (every address, type, range, rate).
+- [Operators]({% link operators.md %}) — one page per operator.
