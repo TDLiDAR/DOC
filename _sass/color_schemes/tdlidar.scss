@@ -1,0 +1,32 @@
+// =====================================================================
+//  TDLiDAR colour scheme — Apple true-black + system blue + white borders
+//  Based on the theme's `dark` scheme; overrides surfaces, text, accents
+//  and the global font to JetBrains Mono.
+// =====================================================================
+@import "./color_schemes/dark";
+
+// --- Fonts: JetBrains Mono everywhere (body + code) ---
+$body-font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", menlo, consolas, monospace;
+$mono-font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", menlo, consolas, monospace;
+
+// --- Surfaces: Apple true black ---
+$body-background-color:   #000000;
+$sidebar-color:           #000000;
+$search-background-color: #0a0a0b;
+$table-background-color:  #0b0b0d;
+$feedback-color:          #0a0a0b;
+$code-background-color:   #0c0f14;
+
+// --- Text ---
+$body-heading-color:   #ffffff;
+$body-text-color:      #e6e7ea;
+$nav-child-link-color: #b9bdc6;
+$search-result-preview-color: #9a9ea7;
+
+// --- Accent: Apple highlight blue (system blue, dark appearance) ---
+$link-color:        #0a84ff;
+$btn-primary-color: #0a84ff;
+$base-button-color: #15151a;
+
+// --- Borders: white (softened per-element in custom/custom.scss) ---
+$border-color: rgba(255, 255, 255, 0.62);

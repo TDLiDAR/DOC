@@ -8,8 +8,34 @@ remote_theme: just-the-docs/just-the-docs
 url: https://tdlidar.github.io
 baseurl: "/DOC"
 
-color_scheme: dark
+# Custom TDLiDAR scheme: Apple true-black, system-blue accents, white borders, JetBrains Mono.
+color_scheme: tdlidar
+logo: "/assets/images/logo.png"
 search_enabled: true
+
+# Render fenced ```mermaid blocks (theme is set in _includes/mermaid_config.js).
+mermaid:
+  version: "11.4.1"
+
+# Coloured callout blocks: end a blockquote with {: .note } / {: .tip } / etc.
+callouts:
+  note:
+    color: blue
+    title: Note
+  tip:
+    color: green
+    title: Tip
+  important:
+    color: purple
+    title: Important
+  warning:
+    color: yellow
+    title: Warning
+  caution:
+    color: red
+    title: Heads up
+
+# Header buttons (App Store / Patreon / GitHub) are injected via _includes/header_custom.html.
 
 # Give every page the theme's default layout so source pages only need title/nav_order.
 defaults:
@@ -18,11 +44,6 @@ defaults:
     values:
       layout: default
 
-aux_links:
-  "TDLiDAR on GitHub":
-    - "https://github.com/TDLiDAR/DOC"
-aux_links_new_tab: true
-
 # Repo files that are not site pages.
 exclude:
   - README.md
@@ -30,7 +51,6 @@ exclude:
   - Gemfile.lock
   - vendor
   - .gitignore
-  - docs
 
 plugins:
   - jekyll-remote-theme

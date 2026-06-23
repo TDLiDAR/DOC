@@ -1,0 +1,291 @@
+// =====================================================================
+//  TDLiDAR — custom polish on top of the `tdlidar` colour scheme.
+//  Apple true-black, system-blue (#0a84ff) accents, crisp white frames.
+// =====================================================================
+
+$td-blue: #0a84ff;
+$td-blue-hi: #3b9bff;
+$td-white-line: rgba(255, 255, 255, 0.82);
+
+// ---- Global feel ----------------------------------------------------
+::selection { background: rgba(10, 132, 255, 0.35); color: #fff; }
+
+html { scrollbar-width: thin; scrollbar-color: #26262c #000; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb {
+  background: #26262c; border-radius: 6px; border: 2px solid #000;
+}
+::-webkit-scrollbar-thumb:hover { background: $td-blue; }
+
+body { letter-spacing: 0.01em; }
+
+// Keep the big structural rules from screaming pure-white.
+.side-bar { border-right: 1px solid rgba(255, 255, 255, 0.12); }
+.main-header { border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+.search { border-bottom: 1px solid rgba(255, 255, 255, 0.10); }
+
+// Sidebar brand
+.site-logo { background-size: contain; background-repeat: no-repeat; }
+.site-title:hover { background-image: none; }
+
+// Nav links: subtle, blue on hover/active
+.nav-list .nav-list-item .nav-list-link:hover { color: $td-blue; }
+.nav-list .nav-list-item .nav-list-link.active {
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 0 $td-blue;
+}
+
+// ---- Links & headings ----------------------------------------------
+a { text-underline-offset: 2px; }
+.main-content h1, .main-content h2 { letter-spacing: 0.01em; }
+.main-content h2 {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+// ---- Code: dark with a clean white frame ----------------------------
+div.highlighter-rouge, figure.highlight, pre.highlight {
+  border: 1px solid $td-white-line;
+  border-radius: 10px;
+}
+:not(pre) > code.highlighter-rouge,
+:not(pre) > code {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
+  background-color: #0c0f14;
+  color: #e6e7ea;
+}
+
+// ---- Tables: framed, blue-tinted header -----------------------------
+.main-content table {
+  border: 1px solid $td-white-line;
+  border-radius: 8px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+.main-content table th {
+  background-color: #0c0f14;
+  color: #fff;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+}
+.main-content table td { border-color: rgba(255, 255, 255, 0.16); }
+.main-content tbody tr:hover { background-color: rgba(10, 132, 255, 0.08); }
+
+// ---- Buttons: Apple pills ------------------------------------------
+.btn {
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: none;
+  transition: all 0.15s ease;
+}
+.btn:hover { box-shadow: 0 4px 18px rgba(10, 132, 255, 0.28); }
+.btn-primary, .btn-blue {
+  background-color: $td-blue;
+  background-image: none;
+  border: 1px solid $td-blue;
+  color: #fff;
+}
+.btn-primary:hover, .btn-blue:hover { background-color: $td-blue-hi; border-color: $td-blue-hi; }
+.btn-outline {
+  border: 1px solid #fff;
+  color: #fff;
+  background: transparent;
+}
+.btn-outline:hover { border-color: $td-blue; color: $td-blue; }
+
+// ---- Images & callouts ---------------------------------------------
+.main-content img { border-radius: 12px; }
+.main-content .site-logo, .main-content img.td-no-frame { border-radius: 0; }
+blockquote.note, blockquote.tip, blockquote.important,
+blockquote.warning, blockquote.caution { border-radius: 0 8px 8px 0; }
+
+// ---- Search box -----------------------------------------------------
+.search-input {
+  background-color: #0a0a0b;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  color: #fff;
+}
+.search-input:focus {
+  border-color: $td-blue;
+  box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.4);
+}
+.search-result-highlight { color: $td-blue; }
+
+// =====================================================================
+//  Header action buttons  (App Store · Patreon · GitHub)
+// =====================================================================
+.td-aux {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: auto;
+  padding: 0 0.75rem 0 0.5rem;
+}
+.td-aux-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 34px;
+  padding: 0 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #fff !important;
+  text-decoration: none !important;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  transition: all 0.15s ease;
+}
+.td-aux-btn svg { width: 16px; height: 16px; fill: currentColor; }
+.td-aux-btn:hover {
+  color: $td-blue !important;
+  border-color: $td-blue;
+  box-shadow: 0 0 0 1px $td-blue;
+}
+// App Store: solid Apple-blue, primary CTA
+.td-appstore { background: $td-blue; border-color: $td-blue; }
+.td-appstore:hover {
+  background: $td-blue-hi;
+  border-color: $td-blue-hi;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(10, 132, 255, 0.4);
+}
+// Patreon: icon only, NO border (per request)
+.td-patreon { border: none !important; padding: 0 0.5rem; background: transparent; }
+.td-patreon:hover { color: $td-blue !important; box-shadow: none; background: transparent; }
+// GitHub: icon only
+.td-github { padding: 0 0.5rem; }
+
+// Collapse App Store label on narrow headers
+@media (max-width: 50rem) {
+  .td-appstore span { display: none; }
+  .td-appstore { padding: 0 0.55rem; }
+  .td-aux { padding-right: 0.4rem; }
+}
+
+// =====================================================================
+//  Home hero
+// =====================================================================
+.td-hero {
+  text-align: center;
+  padding: 1.25rem 0 0.5rem;
+}
+.td-hero-icon {
+  width: 132px;
+  height: 132px;
+  border-radius: 30px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6),
+              0 22px 70px rgba(10, 132, 255, 0.28);
+}
+.td-hero h1.td-hero-title {
+  border: 0;
+  margin: 0.9rem 0 0.15rem;
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.td-hero .td-tagline {
+  color: #b9bdc6;
+  font-size: 1.08rem;
+  margin: 0 auto 1.2rem;
+  max-width: 40rem;
+}
+.td-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.td-cta .btn { margin: 0; }
+.td-appstore-badge { display: inline-flex; }
+.td-appstore-badge img {
+  height: 50px;
+  width: auto;
+  border-radius: 9px;
+  box-shadow: none;
+}
+.td-appstore-badge:hover img { filter: brightness(1.12); }
+.td-hero-rule {
+  margin: 1.6rem auto 0;
+  max-width: 6rem;
+  border: 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+// =====================================================================
+//  Mermaid diagrams — framed on near-black
+// =====================================================================
+.mermaid {
+  background: #050507;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  padding: 1.1rem;
+  margin: 1.4rem 0;
+  text-align: center;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+// =====================================================================
+//  Sidebar footer (App Store + Patreon + GitHub)
+// =====================================================================
+.td-sidebar-footer {
+  padding: 0.75rem 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.td-sf-appstore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #fff !important;
+  text-decoration: none !important;
+  background: $td-blue;
+  border: 1px solid $td-blue;
+  transition: all 0.15s ease;
+}
+.td-sf-appstore svg { width: 15px; height: 15px; fill: currentColor; }
+.td-sf-appstore:hover { background: $td-blue-hi; border-color: $td-blue-hi; }
+.td-sf-row { display: flex; gap: 0.5rem; justify-content: center; }
+.td-sf-icon {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #b9bdc6 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.15s ease;
+}
+.td-sf-icon svg { width: 17px; height: 17px; fill: currentColor; }
+.td-sf-icon:hover { color: $td-blue !important; border-color: $td-blue; }
+// Patreon icon: no border (per request)
+.td-sf-patreon { border: none !important; }
+.td-sf-patreon:hover { border: none !important; }
+
+// =====================================================================
+//  Misc niceties
+// =====================================================================
+// Apple-blue labels/badges
+.label, .label-blue { background-color: $td-blue; }
+// External-link arrows in nav, blue
+.external-arrow { color: $td-blue; }
+// Footer
+.site-footer { border-top: 1px solid rgba(255, 255, 255, 0.12); }
