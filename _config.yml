@@ -1,28 +1,35 @@
-theme: just-the-docs
+title: TDLiDAR
+description: Turn an iPhone into ~40 live sensors inside TouchDesigner — one drag-and-drop.
 
-# Site settings
-title: TDLiDAR Documentation
-description: Documentation site for TDLiDAR iOS App
-url: https://TDLiDAR.github.io/DOC
-
-# Repository settings (for GitHub Pages)
+# Built as a GitHub Pages remote theme (no local build / CI needed).
 remote_theme: just-the-docs/just-the-docs
 
-# Just the Docs configuration
-color_scheme: light
+# Project site lives at https://tdlidar.github.io/DOC/
+url: https://tdlidar.github.io
+baseurl: "/DOC"
+
+color_scheme: dark
 search_enabled: true
-heading_anchors: true
 
-# Footer content
-footer_content: "Copyright &copy; 2024 TDLiDAR. All rights reserved."
+# Give every page the theme's default layout so source pages only need title/nav_order.
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
 
-# Aux links
 aux_links:
   "TDLiDAR on GitHub":
-    - "https://github.com/TDLiDAR"
+    - "https://github.com/TDLiDAR/DOC"
+aux_links_new_tab: true
 
-# Enable callouts
-enable_callouts: true
+# Repo files that are not site pages.
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .gitignore
 
-# Logo
-logo: "/assets/images/logo.png"
+plugins:
+  - jekyll-remote-theme
