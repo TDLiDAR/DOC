@@ -1,17 +1,17 @@
 ---
 title: OSC Reference
 layout: default
-nav_order: 5
+nav_order: 4
 ---
 
 # TDLiDAR — OSC Wire Reference
 
-The canonical list of every OSC address the **TDLiDAR** iOS app emits, grouped by sensor. This is the source of truth the operator family is built against. All messages are sent over **UDP**, default port **9000** (Speech transcript text can ride a second port; see Speech).
+The canonical list of every OSC address the **TDLiDAR** iOS app emits, grouped by sensor. This is the source of truth the operator family is built against. All messages are sent over **UDP**, default **port 9000**.
 
 ## How the wire works
 
 - Every address is prefixed `/tdlidar/…`.
-- In TouchDesigner an **OSC In CHOP** turns each numeric address into a channel named by the address **without the leading slash** (`/tdlidar/motion/accel/x` → channel `tdlidar/motion/accel/x`). A multi-value message (e.g. a quaternion) becomes indexed channels (`…/quat1 … /quat4`).
+- In TouchDesigner an **OSC In CHOP** turns each numeric address into a channel named by the address **without the leading slash** (`/tdlidar/motion/accel/x` → channel `tdlidar/motion/accel/x`).
 - **String** payloads (labels, OCR text, NFC payloads, speech) must be read with an **OSC In DAT**, not a CHOP.
 - A sensor only streams when it is **enabled in the app**. Several sensors share one address bucket (Body/Hands/Pinch/Gesture all live under `/tdlidar/body/…`); enabling more than one just adds channels.
 - Rates below are typical on an iPhone 15 Pro; thermal throttling lowers them.
@@ -67,7 +67,7 @@ Bones: (0,1)(1,2)(2,3)(3,4)(2,5)(5,6)(6,7)(2,11)(11,12)(12,13)(0,8)(8,9)(9,10)(0
 | `/tdlidar/body/hands/frame` | int | per-frame heartbeat (increments every frame so TD knows data is live) |
 | `/tdlidar/body/hands/<side>/<landmark>` | x,y,z + rx,ry,rz | 21 landmarks × (x,y normalized image, z metres) + unit bone direction |
 
-21 landmark order: wrist, thumb_cmc, thumb_mcp, thumb_ip, thumb_tip, index_mcp, index_pip, index_dip, index_tip, middle_mcp, middle_pip, middle_dip, middle_tip, ring_mcp, ring_pip, ring_dip, ring_tip, pinky_mcp, pinky_pip, pinky_dip, pinky_tip. Side is `left`/`right`, classified by wrist screen-position (stable across palm/back/side — do not rely on chirality).
+21 landmark order: wrist, thumb_cmc, thumb_mcp, thumb_ip, thumb_tip, index_mcp, index_pip, index_dip, index_tip, middle_mcp, middle_pip, middle_dip, middle_tip, ring_mcp, ring_pip, ring_dip, ring_tip, pinky_mcp, pinky_pip, pinky_dip, pinky_tip.
 
 ### Pinch / Gesture (hand-derived, first hand, no side)
 | Address | Args | Meaning |
@@ -112,7 +112,7 @@ Bones: (0,1)(1,2)(2,3)(3,4)(2,5)(5,6)(6,7)(2,11)(11,12)(12,13)(0,8)(8,9)(9,10)(0
 | Animal | `/tdlidar/animal/{nose,neck,frontpaw/left,frontpaw/right,backpaw/left,backpaw/right,tail/…}` | x,y | 2D keypoints (no Z) |
 | Animal | `/tdlidar/animal/distance` | float | distance when a depth camera is active |
 
-> Scene Classification (`/tdlidar/scene/label` + `/confidence`) exists in the app but its tox is **deferred** (the prototype TOP chain crashed TD on load; rebuild with a Text TOP, no Movie File In).
+> Scene Classification (`/tdlidar/scene/label` + `/confidence`) exists in the app but its tox is **deferred** (the prototype TOP chain crashed TD on load; rebuild with a Text TOP, no Movie File I/O).
 
 ## Audio
 
