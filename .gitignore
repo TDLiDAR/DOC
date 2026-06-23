@@ -1,5 +1,9 @@
-
-.DS_Store
+# Jekyll build output / local toolchain — never commit
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+.bundle/
 vendor/
-Gemfile
 Gemfile.lock
+.DS_Store
