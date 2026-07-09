@@ -19,6 +19,7 @@ This op does **not** listen on an OSC port. It listens for **NDI** video sources
 | `LOCALHOST (TDLidar)` | the depth visual stream (raw / plasma / organic / colour-mapped depth) |
 | `LOCALHOST (TDLidar PC)` | the point-cloud viewport render |
 | `LOCALHOST (TDLOSC-1 Cam)` | the plain RGB camera feed |
+| `TDLMN` | Monocular Depth mode's colour-mapped depth (camera-only, no LiDAR needed) — always this fixed name, distinct from the LiDAR depth source above |
 
 Source names change with the app's NDI name index (e.g. `TDLidar`, `TDLidar 2`, …) so several phones can co-exist on one network. The dropdown auto-populates from whatever is actually broadcasting — if it's empty, nothing is being sent yet.
 

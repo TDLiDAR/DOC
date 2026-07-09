@@ -99,11 +99,11 @@ Every operator has its own page in the [Operators section]({{ '/operators.html' 
 
 **Audio** — [Mic Level]({{ '/tdlidar_mic_level.html' | relative_url }}) · [Audio]({{ '/tdlidar_audio.html' | relative_url }}) · [Speech]({{ '/tdlidar_speech.html' | relative_url }}) · [Sound ID]({{ '/tdlidar_sound.html' | relative_url }})
 
-**Touch & Input** — [Touch]({{ '/tdlidar_touch.html' | relative_url }}) · [Apple Pencil]({{ '/tdlidar_pencil.html' | relative_url }}) · [Proximity]({{ '/tdlidar_proximity.html' | relative_url }}) · [NFC]({{ '/tdlidar_nfc.html' | relative_url }}) · [Volume / Remote]({{ '/tdlidar_remote.html' | relative_url }})
+**Touch & Input** — [Touch]({{ '/tdlidar_touch.html' | relative_url }}) · [Apple Pencil]({{ '/tdlidar_pencil.html' | relative_url }}) · [Proximity]({{ '/tdlidar_proximity.html' | relative_url }}) · [NFC]({{ '/tdlidar_nfc.html' | relative_url }}) · [Volume / Remote]({{ '/tdlidar_remote.html' | relative_url }}) · [Cue]({{ '/tdlidar_cue.html' | relative_url }})
 
 **External** — [AirPods]({{ '/tdlidar_airpods.html' | relative_url }}) · [Apple Watch]({{ '/tdlidar_watch.html' | relative_url }})
 
-**Output / Utility** — [NDI]({{ '/tdlidar_ndi_in.html' | relative_url }}) · [Point Cloud]({{ '/tdlidar_pointcloud_tcp.html' | relative_url }}) · [Scene Build]({{ '/tdlidar_scene_room.html' | relative_url }}) · [Depth]({{ '/tdlidar_depth.html' | relative_url }}) · [Rectangle]({{ '/tdlidar_rectangle.html' | relative_url }})
+**Output / Utility** — [NDI]({{ '/tdlidar_ndi_in.html' | relative_url }}) · [Point Cloud]({{ '/tdlidar_pointcloud_tcp.html' | relative_url }}) · [Scene Build]({{ '/tdlidar_scene_room.html' | relative_url }}) · [Depth]({{ '/tdlidar_depth.html' | relative_url }}) · [Rectangle]({{ '/tdlidar_rectangle.html' | relative_url }}) · [Align]({{ '/tdlidar_align.html' | relative_url }})
 
 ---
 
