@@ -12,6 +12,7 @@ parent: Operators
 Uses the rear LiDAR scanner to report the true distance, in metres, to the spot under a movable cross-hair you aim by tapping the live preview in the app. Unlike the front fader, this is **metric** — point it at a wall, a performer or a prop and read how far away it is, out to roughly 20 metres. Tap a new spot any time to re-aim. You also get a normalized 0–1 version for quick mapping.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/backdist/meters` | float | distance in metres (up to ~20 m) | LiDAR rate |
@@ -21,6 +22,7 @@ Uses the rear LiDAR scanner to report the true distance, in metres, to the spot 
 `out1` (CHOP) — two channels: `tdlidar/backdist/meters` and `tdlidar/backdist/norm`. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

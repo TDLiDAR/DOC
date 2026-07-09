@@ -12,6 +12,7 @@ parent: Operators
 Recognizes four static hand shapes — **open** hand, **fist**, **peace** sign and **point** — and reports each as an on/off flag. Show the shape to the rear camera and its channel reads 1; drop the shape and it reads 0. These are discrete switches: perfect for jumping between presets, arming a mode, or flipping a layer without touching anything.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/gesture/open` | float | 0/1 | per frame |
@@ -25,6 +26,7 @@ The four are one-hot-ish — normally only one reads 1 at a time, briefly none d
 `out1` (CHOP) — four channels: `tdlidar/gesture/open`, `…/fist`, `…/peace`, `…/point`. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

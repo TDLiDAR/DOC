@@ -12,6 +12,7 @@ parent: Operators
 This op gives you two friendly numbers about the room's lighting: how bright it is (in lumens) and what colour the light is (in Kelvin — low is warm/orange, high is cool/blue). It is the polished, ready-to-use version of the raw Camera Exposure feed: instead of ISO and shutter you get a brightness estimate and a colour-temperature you can map straight onto visuals.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/light/ambient_lumens` | float | room brightness, lumens | ~camera rate |
@@ -21,6 +22,7 @@ This op gives you two friendly numbers about the room's lighting: how bright it 
 `out1` (CHOP) with channels `tdlidar/light/ambient_lumens` and `tdlidar/light/kelvin`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

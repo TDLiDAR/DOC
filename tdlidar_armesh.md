@@ -12,6 +12,7 @@ parent: Operators
 On a LiDAR phone, ARKit reconstructs the room as a triangle mesh while you scan. This op streams two running totals: how many mesh chunks (anchors) exist and how many triangle faces they hold. As the performer sweeps the space, both numbers climb — giving you a numeric "how much of the room is captured" signal without sending any actual geometry.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/scene/mesh_anchors` | float | number of mesh chunks | on change / low Hz |
@@ -21,6 +22,7 @@ On a LiDAR phone, ARKit reconstructs the room as a triangle mesh while you scan.
 `out1` (CHOP) with channels `tdlidar/scene/mesh_anchors` and `tdlidar/scene/mesh_faces`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

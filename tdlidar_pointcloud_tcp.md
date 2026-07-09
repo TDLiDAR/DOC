@@ -36,6 +36,7 @@ The op is a small chain, not a single node:
 - `out1` (CHOP) — the reshaped per-point channels (`tx ty tz r g b`) if you'd rather drive something CHOP-side.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | TCP Port | 9002 | port the DAT serves on (match the app's point-cloud port) |

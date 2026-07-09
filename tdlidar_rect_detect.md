@@ -14,6 +14,7 @@ Runs Apple's Vision rectangle *detection* on the live camera feed and reports ho
 > This is the **detector**, not the display "Rectangle" op (that one just sizes a TOP to a channel). Different tool, similar name.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/detect/rect/count` | float | quad count (0, 1, 2 …) | camera rate |
@@ -24,6 +25,7 @@ Runs Apple's Vision rectangle *detection* on the live camera feed and reports ho
 `out1` (CHOP) — three channels: `tdlidar/detect/rect/count`, `tdlidar/detect/rect/cx`, `tdlidar/detect/rect/cy`. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

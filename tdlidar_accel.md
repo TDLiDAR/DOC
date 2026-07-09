@@ -12,6 +12,7 @@ parent: Operators
 Streams how hard and which way the phone is being moved, *after* gravity has been subtracted — so a phone sitting still reads ~0 on all three axes. The three channels are the X (left/right), Y (up/down) and Z (toward/away) push in G-force. A sharp shake or impact spikes the values; the magnitude of the spike is your trigger.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/motion/accel/x` | float | G, gravity removed (userAcceleration) | ≤50 Hz |
@@ -22,6 +23,7 @@ Streams how hard and which way the phone is being moved, *after* gravity has bee
 `out1` (CHOP) — three channels `accx`, `accy`, `accz`. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app's OSC port) |

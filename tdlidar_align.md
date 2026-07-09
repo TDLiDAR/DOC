@@ -12,6 +12,7 @@ parent: Operators
 The app's **Align** mode watches the room with ARKit plane detection and lets the performer tap a detected wall or floor to lock it. Once locked, the phone streams that surface's real-world width, height and 4 corner positions over OSC — measured in metres, not screen pixels. Drop this op, wire the corners to a **camSchnappr**, **Stoner** or your own corner-pin/warp setup, and you have a live starting point for keystoning a projector or screen onto the actual physical surface instead of eyeballing it. Align supplies the geometry; the fine keystone/blend solve still happens in your TD network.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/align/detected` | float | 0 or 1 — is a surface currently locked | ~10 Hz |
@@ -24,6 +25,7 @@ The app's **Align** mode watches the room with ARKit plane detection and lets th
 `out1` (CHOP) with channels `tdlidar/align/detected`, `tdlidar/align/size1`, `tdlidar/align/size2`, and `tdlidar/align/corner0` … `corner3` (each expanding to 3 channels, `1..3`).
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9102 | UDP port to listen on — Align uses its **own port**, separate from the 9000 sensor bus, so it can run alongside Sensors/Cue Deck without collision |

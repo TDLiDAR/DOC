@@ -1,6 +1,13 @@
 title: TDLiDAR
 description: Turn an iPhone into ~40 live sensors inside TouchDesigner — one drag-and-drop.
 
+# GFM input so `| pipe | tables |` parse as tables — without this, kramdown's
+# default input silently renders pipe rows as plain text (broke every
+# operator page's OSC/Parameters tables).
+markdown: kramdown
+kramdown:
+  input: GFM
+
 # Built as a GitHub Pages remote theme (no local build / CI needed).
 remote_theme: just-the-docs/just-the-docs
 

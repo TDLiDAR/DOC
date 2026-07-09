@@ -12,6 +12,7 @@ parent: Operators
 Streams a single number: the loudness (RMS) of whatever the phone's microphone is hearing. It is the lightweight cousin of the full **Audio** op — no FFT, no beat detection, just one channel that rises when the room gets louder. Reach for it when you only need a volume envelope to scale or pulse something and don't want the overhead of the whole audio bundle.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/audio/rms` | float | ~0–1 (mic RMS volume) | audio rate |
@@ -20,6 +21,7 @@ Streams a single number: the loudness (RMS) of whatever the phone's microphone i
 - `out1` (CHOP) — one channel: `tdlidar/audio/rms`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

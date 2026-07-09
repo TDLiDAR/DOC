@@ -12,6 +12,7 @@ parent: Operators
 Streams the head pose from motion-sensing AirPods — pitch (nod), roll (head tilt), and yaw (look left/right) — plus the raw quaternion and motion vectors. Because the sensors are in your ears, your head becomes a controller you can use while your hands are busy on instruments or props. Look around to aim a spotlight, nod to confirm a cue, shake to reject one — all without a screen.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/airpods/pitch` | float | radians (nod) | head rate |
@@ -29,6 +30,7 @@ Streams the head pose from motion-sensing AirPods — pitch (nod), roll (head ti
 `out1` (CHOP) — channels named after the addresses without the leading slash: `tdlidar/airpods/pitch`, `…/roll`, `…/yaw`, the `…_deg` variants, `tdlidar/airpods/quat1…quat4`, `tdlidar/airpods/accel`, `…/gravity`, `…/tilt`. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

@@ -24,6 +24,7 @@ The source name follows the app's NDI name index (`TDLidar`, `TDLidar 2`, …) s
 - `out_top` (TOP) — the live depth visual, full resolution and frame rate as the phone sends it.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | Source Name | (first found) | which NDI source to receive (the depth stream) |

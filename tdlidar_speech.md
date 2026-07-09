@@ -14,6 +14,7 @@ Streams the phone's on-device speech-to-text into TouchDesigner as **text**. You
 Because this is a **string** payload, it must be read with an **OSC In DAT** — an OSC In CHOP cannot carry text. A callback on the DAT writes the latest words into a Text DAT (`out_label`).
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/speech/partial` | string | live in-progress text | on change |
@@ -26,6 +27,7 @@ Because this is a **string** payload, it must be read with an **OSC In DAT** —
 - `out_label` (Text DAT) — the latest speech string, written by the OSC In DAT's callback. Wire it straight into a **Text TOP** for on-screen captions.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on — match the app's speech port (may differ from the main 9000 feed) |

@@ -29,6 +29,7 @@ Set the **Size Channel** parameter to any address from `OSC-REFERENCE.md` (e.g. 
 - `out1` (CHOP) — the chosen channel's raw value plus the computed size, for chaining.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

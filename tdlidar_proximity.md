@@ -12,6 +12,7 @@ parent: Operators
 Streams the phone's proximity sensor as a single 0/1: it reads 0 when nothing is near the top of the screen and 1 the moment something (your hand, a card, your face) comes close. It's the same sensor that blanks the screen during a phone call, so it costs nothing and works on every iPhone. Because it's a clean physical on/off, it makes a perfect panic/blackout trigger you can hit without looking — pass a hand over the phone and cut the visuals.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/proximity` | float | 0 far / 1 near | on change |
@@ -20,6 +21,7 @@ Streams the phone's proximity sensor as a single 0/1: it reads 0 when nothing is
 `out1` (CHOP) — one channel: `tdlidar/proximity` (0 or 1). The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

@@ -12,6 +12,7 @@ parent: Operators
 Tracks a single person standing in the rear camera's view and reconstructs a 17-joint skeleton — head, shoulders, elbows, wrists, hips, knees, ankles and the spine. The op plots those joints as points and draws the bones between them, ready to render or to drive instanced geometry. The pose shape (where each joint sits on screen) is rock-solid; the depth of each joint is an estimate, so the op leans on the accurate screen coordinates and gently fakes depth.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/body/detected` | float | 1 when a body is in frame, else 0 (skeleton goes stale at 0) | per frame |
@@ -28,6 +29,7 @@ Joint order (index → name): 0 root, 1 spine, 2 neck, 3 head, 4 head_top, 5 l_s
 - `out1` (CHOP) — the raw incoming channels (`tdlidar/body/detected`, `…/distance`, and every per-joint channel) for triggering and mapping.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app's OSC port) |

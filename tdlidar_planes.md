@@ -12,6 +12,7 @@ parent: Operators
 As the phone looks around, ARKit finds flat surfaces — floors, walls, tables — and grows them into planes. This op streams two running totals: how many planes have been found, and their combined area in square metres. Together they make a simple progress signal: the more the performer scans, the higher the numbers climb. Use it to know when the room is "mapped enough" to start.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/scene/plane_count` | float | number of detected planes | on change / low Hz |
@@ -21,6 +22,7 @@ As the phone looks around, ARKit finds flat surfaces — floors, walls, tables �
 `out1` (CHOP) with channels `tdlidar/scene/plane_count` and `tdlidar/scene/plane_area_m2`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

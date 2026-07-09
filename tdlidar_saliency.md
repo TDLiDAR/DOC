@@ -12,6 +12,7 @@ parent: Operators
 Runs Apple's attention-based saliency on the live camera feed and reports a single box around the most eye-catching region of the image. You get the box's centre, its width and height, and a confidence value — all normalized 0–1. Whatever the algorithm thinks a viewer would look at first, this op tracks. Great for unattended installs where you want a light or mask to "follow interest" instead of a fixed point.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/saliency/x` | float | box centre X, normalized 0–1 | camera rate |
@@ -24,6 +25,7 @@ Runs Apple's attention-based saliency on the live camera feed and reports a sing
 `out1` (CHOP) — five channels: `tdlidar/saliency/x`, `…/y`, `…/w`, `…/h`, `…/conf`. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

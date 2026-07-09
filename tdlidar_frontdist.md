@@ -12,6 +12,7 @@ parent: Operators
 Uses the front TrueDepth camera to measure how close the nearest thing is to the screen and gives you one clean number from 0 to 1. Move your hand (or yourself) toward the phone and the value rises; pull away and it falls. The near/far range is adjustable in the app, so you can tune how big a gesture spans the full 0–1 sweep. This is the headline "air-fader": one hand, no touch, one continuous control.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/frontdist/norm` | float | 0–1 normalized nearest distance (front TrueDepth) | depth rate |
@@ -20,6 +21,7 @@ Uses the front TrueDepth camera to measure how close the nearest thing is to the
 `out1` (CHOP) — one channel: `tdlidar/frontdist/norm` (0–1). The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

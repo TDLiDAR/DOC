@@ -12,6 +12,7 @@ parent: Operators
 Uses ARKit's dedicated body-tracking to reconstruct a person as a full **91-joint** skeleton in real **world-space metres**, updated at 60 Hz — wrists, fingers-of-the-hand root, spine chain, feet and toes, all properly parented into a rig with a joint **hierarchy** and per-joint **orientation**. Compared to the Vision-based **Body** op this is far cleaner and genuinely 3D (depth you can trust), but it takes over the camera's AR session, so you can't run it alongside the rear depth modes. Choose this when you want a believable 3D performer; choose **Body** when you need the rear depth pipeline running too.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/arbody/skeleton…` | float | true 91-joint, **world-space metric** skeleton | 60 Hz |
@@ -23,6 +24,7 @@ Uses ARKit's dedicated body-tracking to reconstruct a person as a full **91-join
 - `out1` (CHOP) — the raw skeleton, orientation quaternion and hierarchy channels for mapping and constraint work.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

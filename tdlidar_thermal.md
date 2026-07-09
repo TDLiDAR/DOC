@@ -12,6 +12,7 @@ parent: Operators
 Streams the phone's thermal state as a single number from 0 (cool) to 3 (critical). iOS quietly slows the camera and CPU as the device heats up, which sandbags your sensor rates without warning. By watching this channel you can pre-emptively degrade quality in TD — fewer instances, lower-res TOPs — so the show stays smooth instead of stuttering when the phone finally throttles.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/device/thermal` | float | 0 nominal, 1 fair, 2 serious, 3 critical | on change + 2 Hz |
@@ -20,6 +21,7 @@ Streams the phone's thermal state as a single number from 0 (cool) to 3 (critica
 - `out1` (CHOP) — one channel: `tdlidar/device/thermal` (0–3).
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

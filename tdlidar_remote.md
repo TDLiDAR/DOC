@@ -12,6 +12,7 @@ parent: Operators
 Turns the iPhone's hardware volume buttons and the play/pause/next/previous controls on a headset or media remote into OSC events. The five button channels are **momentary** — they flash 1 then snap back to 0 on each press — while `volume` is the current system level 0–1. The clever bit: the app keeps re-centring the volume after each press, so the up/down buttons never hit the end-stop and keep firing forever. It's a free wireless clicker for running a TD show without touching the screen.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/remote/playpause` | float | momentary 1→0 | on press |
@@ -25,6 +26,7 @@ Turns the iPhone's hardware volume buttons and the play/pause/next/previous cont
 `out1` (CHOP) — six channels named after the addresses without the leading slash: `tdlidar/remote/playpause`, `…/next`, `…/previous`, `…/volup`, `…/voldown`, and `tdlidar/remote/volume`. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

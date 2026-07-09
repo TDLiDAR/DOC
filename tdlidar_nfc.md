@@ -12,6 +12,7 @@ parent: Operators
 Reads NFC tags (the same chips in transit cards and "tap to pay" stickers) and turns each tap into two things: a pulse on `trigger`, and the tag's stored text on `payload`. Pre-write a word like `verse` or `chorus` onto a cheap sticker, tap it to the phone, and TD both fires an event *and* receives the word — so you can recall a specific scene from a specific physical token. Great for letting a performer or audience trigger named looks with objects instead of a laptop.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/nfc/trigger` | float | momentary pulse (1 on tap) | on tap |
@@ -24,6 +25,7 @@ Reads NFC tags (the same chips in transit cards and "tap to pay" stickers) and t
 - `out_label` (Text DAT) — the latest tag `payload` string, fed from an internal **OSC In DAT**.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app, both CHOP and DAT) |

@@ -12,6 +12,7 @@ parent: Operators
 Uses the front TrueDepth camera and ARKit to read your face in real time and break it into 52 expression sliders (blendshapes) — each eye blink, brow raise, jaw drop, smile, cheek puff and more, every one a smooth 0–1 value. Alongside the blendshapes it reports where your head is pointed (a full transform) and where your eyes are looking (gaze). Wire it straight into a rigged face mesh to puppet a digital character, or pick out single channels to drive any parameter with an eyebrow or a jaw.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/face/*` | float | 52 ARKit blendshapes (0–1), head transform, gaze / look-at | per frame |
@@ -23,6 +24,7 @@ The `*` expands to one channel per blendshape (e.g. `…/jawOpen`, `…/browInne
 - `out_top` (TOP) — optional readout overlay of the strongest blendshapes for quick sanity-checking on stage.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

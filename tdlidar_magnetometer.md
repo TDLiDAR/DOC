@@ -12,6 +12,7 @@ parent: Operators
 Streams the raw magnetic field measured at the phone, as three components (X, Y, Z) in microtesla. It picks up the Earth's field plus anything magnetic nearby — speakers, motors, a handheld magnet, large steel structures. It is **not** a finished compass heading; it's the unprocessed field, which makes it great for reacting to magnetic *changes* in a space rather than for "point me north".
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/motion/magnetic/x` | float | µT (raw field, not heading) | ≤50 Hz |
@@ -22,6 +23,7 @@ Streams the raw magnetic field measured at the phone, as three components (X, Y,
 `out1` (CHOP) — three channels `magx`, `magy`, `magz` (µT). The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

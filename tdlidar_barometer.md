@@ -12,6 +12,7 @@ parent: Operators
 Streams two slow channels from the phone's air-pressure sensor: a **relative altitude** in metres (how far up or down the phone has moved since the app started) and the **raw pressure** in kilopascals. It's sensitive enough to register a single floor of a building, an elevator ride, or the pressure pop of a closing door. Updates arrive about once a second, so treat it as a gentle, ambient input.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/motion/altitude/relative` | float | metres (relative) | ~1 Hz |
@@ -21,6 +22,7 @@ Streams two slow channels from the phone's air-pressure sensor: a **relative alt
 `out1` (CHOP) — **2 channels**: `relative` (m) and `pressure` (kPa). The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

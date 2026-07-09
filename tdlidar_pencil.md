@@ -12,6 +12,7 @@ parent: Operators
 Streams the Apple Pencil's position on the iPad screen plus its pressure, tilt and the direction it's pointing, and fires a flag when you double-tap the barrel. Pressure makes a natural fader (press harder = more), tilt gives you a second analogue axis from the same hand, and azimuth is the compass direction the pen leans. It's the most expressive single input in the family because one stroke carries position, weight and angle at once.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/pencil/x` | float | 0–1 normalized screen X | pen rate |
@@ -25,6 +26,7 @@ Streams the Apple Pencil's position on the iPad screen plus its pressure, tilt a
 `out1` (CHOP) — channels named after the addresses without the leading slash: `tdlidar/pencil/x`, `…/y`, `…/pressure`, `…/tilt`, `…/azimuth`, `…/barreltap`. The op grabs `/tdlidar/pencil/*` generically, so whichever of these the app emits will appear.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

@@ -12,6 +12,7 @@ parent: Operators
 The app's **Cue Deck** mode is a grid of large, MIDI-pad-style buttons on the phone screen. It starts with 4 pads filling the display edge-to-edge; each has its own name, colour and OSC address, editable on the phone. Pressing a pad sends **1** to its address and releasing sends **0** — a clean gate any OSC In CHOP reads as a momentary trigger — with a firm haptic tick on press so it feels physical, like tapping the Apple keyboard. Use it as a stagehand's cue button, a scene-advance trigger, a blackout switch, or anything else that just needs a reliable manual fire from across the room.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/cue/<n>` (default per-pad address; user-editable per pad) | float | 1 on press, 0 on release | on press/release only |
@@ -22,6 +23,7 @@ Each pad's address is set on the phone (Settings → tap a pad), so the exact ad
 `out1` (CHOP) — one channel per configured pad's address, each a momentary 0/1 gate.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on — Cue Deck reuses the app's normal sensor OSC bus rather than a dedicated port, so it can share a connection with Sensors mode |

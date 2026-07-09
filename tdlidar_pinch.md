@@ -12,6 +12,7 @@ parent: Operators
 Reports a single number: how far apart your thumb tip and index tip are, measured on the first detected hand. The distance is normalized against the size of your palm, so it reads roughly the same whether your hand is near or far from the camera — fingers touching is near 0, fingers spread is the high end. It's the air-fader: one clean value you map to volume, blur, speed, anything.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/pinch` | float | thumbTip↔indexTip distance, **palm-normalized** (~0 closed, larger = open) | per frame |
@@ -20,6 +21,7 @@ Reports a single number: how far apart your thumb tip and index tip are, measure
 `out1` (CHOP) — one channel, `pinch`. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

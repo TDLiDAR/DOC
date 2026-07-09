@@ -12,6 +12,7 @@ parent: Operators
 Uses the phone's on-device activity classifier to tell you, in plain terms, what the person carrying it is doing right now: walking, running, cycling, in a vehicle (automotive), or stationary. Each is a 0/1 flag, and a separate confidence channel (0=low, 1=medium, 2=high) says how sure the phone is. It updates roughly once a second, making it ideal for high-level context switching rather than fast control.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/activity/walking` | float | 0/1 | ~1 Hz |
@@ -25,6 +26,7 @@ Uses the phone's on-device activity classifier to tell you, in plain terms, what
 `out1` (CHOP) — six channels: `walking`, `running`, `cycling`, `automotive`, `stationary`, `confidence`. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

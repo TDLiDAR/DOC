@@ -31,6 +31,7 @@ The full per-element geometry (each wall's transform + size, its door/window hol
 - `out1` (CHOP) — the scan-status channels (`plane_count`, `plane_area_m2`, `mesh_anchors`, `mesh_faces`) for gating and readouts.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | Scene Port | (app's Scene Build port) | port the scan stream arrives on (match the app) |

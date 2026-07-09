@@ -14,6 +14,7 @@ Classifies what the phone's microphone is hearing into one of 300+ everyday soun
 The label is a **string**, so it rides an **OSC In DAT**; the confidence is a number on a small CHOP.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/sound/label` | string | one of 300+ class names | on change |
@@ -24,6 +25,7 @@ The label is a **string**, so it rides an **OSC In DAT**; the confidence is a nu
 - `out1` (CHOP) — one channel: `tdlidar/sound/confidence` (0–1), how sure the classifier is.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

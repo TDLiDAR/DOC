@@ -12,6 +12,7 @@ parent: Operators
 This op streams the phone's full position and orientation in real space — where it is (in metres) and which way it's pointing. ARKit builds a world coordinate frame the moment tracking starts, then reports the camera's pose against it every frame. Wire that pose onto a Camera COMP and your virtual camera matches the real device, frame-for-frame. It is the camera-driver of the whole TDLiDAR family.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/arpose/tx` | float | metres (world X) | ~60 Hz |
@@ -28,6 +29,7 @@ This op streams the phone's full position and orientation in real space — wher
 `tdlidar/arpose/tx`, `…/ty`, `…/tz` (translation), `tdlidar/arpose/quat1…quat4` (quaternion), `tdlidar/arpose/euler/pitch`, `…/roll`, `…/yaw`, and `tdlidar/arpose/tracking`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

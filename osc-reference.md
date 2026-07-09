@@ -46,6 +46,7 @@ The canonical list of every OSC address the **TDLiDAR** iOS app emits, grouped b
 ## Camera & Vision — pose
 
 ### Body (Vision 3D, back camera)
+
 | Address | Args | Meaning |
 |---|---|---|
 | `/tdlidar/body/detected` | float | 1 when a body is in frame, else 0 (skeleton channels go stale at 0) |
@@ -60,6 +61,7 @@ Bones: (0,1)(1,2)(2,3)(3,4)(2,5)(5,6)(6,7)(2,11)(11,12)(12,13)(0,8)(8,9)(9,10)(0
 > X/Y are accurate; Z (depth) is noisy on monocular Vision — the Body tox drives shape from `…/skeleton/img` and clamps Z per-bone.
 
 ### Hands (Vision, back camera — shares the Body pass)
+
 | Address | Args | Meaning |
 |---|---|---|
 | `/tdlidar/body/hands/count` | int | number of hands (0–2) |
@@ -70,17 +72,20 @@ Bones: (0,1)(1,2)(2,3)(3,4)(2,5)(5,6)(6,7)(2,11)(11,12)(12,13)(0,8)(8,9)(9,10)(0
 21 landmark order: wrist, thumb_cmc, thumb_mcp, thumb_ip, thumb_tip, index_mcp, index_pip, index_dip, index_tip, middle_mcp, middle_pip, middle_dip, middle_tip, ring_mcp, ring_pip, ring_dip, ring_tip, pinky_mcp, pinky_pip, pinky_dip, pinky_tip.
 
 ### Pinch / Gesture (hand-derived, first hand, no side)
+
 | Address | Args | Meaning |
 |---|---|---|
 | `/tdlidar/pinch` | float | thumbTip↔indexTip distance, palm-normalized (~0 closed) |
 | `/tdlidar/gesture/{open,fist,peace,point}` | float | 0/1 each, one-hot-ish static gesture |
 
 ### Face (ARKit, front TrueDepth)
+
 | Address | Args | Meaning |
 |---|---|---|
 | `/tdlidar/face/*` | float | 52 ARKit blendshapes (0–1), head transform, gaze/look-at |
 
 ### 6DoF Device Pose (ARKit world)
+
 | Address | Args | Meaning |
 |---|---|---|
 | `/tdlidar/arpose/{tx,ty,tz}` | float | world position, metres |
@@ -89,6 +94,7 @@ Bones: (0,1)(1,2)(2,3)(3,4)(2,5)(5,6)(6,7)(2,11)(11,12)(12,13)(0,8)(8,9)(9,10)(0
 | `/tdlidar/arpose/tracking` | int | ARKit tracking state (0 not available,1 limited,2 normal) |
 
 ### ARKit Body (back, exclusive)
+
 | Address | Args | Meaning |
 |---|---|---|
 | `/tdlidar/arbody/skeleton…` | float | true 91-joint, world-space, metric skeleton, 60 Hz |

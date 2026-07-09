@@ -12,6 +12,7 @@ parent: Operators
 Streams a unit vector that always points toward the ground, expressed in the phone's own coordinate frame. As you tilt and rotate the device, the three numbers redistribute so their combined length stays 1 — they tell you exactly how the phone is held relative to gravity. Flat on a table reads roughly (0, 0, −1); stood upright on its edge shifts the weight onto Y.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/motion/gravity/x` | float | unit vector, points to ground | ≤50 Hz |
@@ -22,6 +23,7 @@ Streams a unit vector that always points toward the ground, expressed in the pho
 `out1` (CHOP) — three channels `gravx`, `gravy`, `gravz` (combined length ≈ 1). The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

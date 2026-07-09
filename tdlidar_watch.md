@@ -12,6 +12,7 @@ parent: Operators
 Bridges sensor data from a paired Apple Watch into TouchDesigner: heart rate, the watch's own accelerometer and rotation, and the Digital Crown position. The headline is heart rate — a real, live BPM you can map straight onto colour, scale or tempo so the visuals breathe with the performer (or an audience member). The accel/rotation channels give wrist movement, and the Crown is a precise physical knob on the wearer's arm. Everything routes through the phone, so it lands on the same `/tdlidar/…` OSC stream as every other sensor.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/motion/watch/*` | float | heart rate, accel, rotation, Digital Crown | watch rate |
@@ -22,6 +23,7 @@ Bridges sensor data from a paired Apple Watch into TouchDesigner: heart rate, th
 `out1` (CHOP) — every `/tdlidar/motion/watch/*` channel, named after its address without the leading slash (e.g. `tdlidar/motion/watch/…`). The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

@@ -12,6 +12,7 @@ parent: Operators
 Streams the phone's rotational velocity — how quickly it's turning around each of its three axes, in radians per second. Hold the phone still and all three read ~0; flick your wrist and the matching axis spikes, then settles back to 0 the instant you stop. It measures *rate of turn*, so it's perfect for detecting flicks, twists and spins rather than absolute orientation.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/motion/rotation/x` | float | rad/s (rotationRate) | ≤50 Hz |
@@ -22,6 +23,7 @@ Streams the phone's rotational velocity — how quickly it's turning around each
 `out1` (CHOP) — three channels `rotx`, `roty`, `rotz` (rad/s). The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

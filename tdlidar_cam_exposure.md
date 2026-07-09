@@ -12,6 +12,7 @@ parent: Operators
 iOS has no public lux meter, so this op streams the camera's auto-exposure settings as a stand-in light sensor. ISO, shutter time and EV offset together tell you how bright the scene is (the camera works harder — higher ISO, longer shutter — in the dark). White-balance Kelvin and tint tell you the colour of the light. Use these as a cheap ambient-light and colour proxy to make TD content react to the actual room.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/cam/iso` | float | ISO sensitivity (e.g. 30–3000+) | ~camera rate |
@@ -25,6 +26,7 @@ iOS has no public lux meter, so this op streams the camera's auto-exposure setti
 `out1` (CHOP) with channels `tdlidar/cam/iso`, `tdlidar/cam/shutter_sec`, `tdlidar/cam/ev_offset`, `tdlidar/cam/focus`, `tdlidar/cam/wb_kelvin`, `tdlidar/cam/wb_tint`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

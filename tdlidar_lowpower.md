@@ -12,6 +12,7 @@ parent: Operators
 Tells you whether iOS Low Power Mode is on or off as a simple 0/1 switch. When Low Power Mode is active the phone caps performance, so this is a clean remote flag for "the device is in a constrained state — back off." It also doubles as a deliberate hardware switch: flip Low Power on the phone to signal TouchDesigner to enter an energy-saving look from across the room, no UI needed.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/device/lowpower` | float | 0/1 | on change + 2 Hz |
@@ -20,6 +21,7 @@ Tells you whether iOS Low Power Mode is on or off as a simple 0/1 switch. When L
 - `out1` (CHOP) — one channel: `tdlidar/device/lowpower` (0 = off, 1 = on).
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

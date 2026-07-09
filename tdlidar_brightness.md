@@ -12,6 +12,7 @@ parent: Operators
 Streams the phone's screen brightness as a single 0–1 value. On its face it tells you how bright the display is, but its real use is as a free hardware fader: the brightness slider in iOS Control Center is smooth, always available, and tactile, so you can repurpose it to drive any parameter in TouchDesigner without building a custom control surface.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/device/brightness` | float | 0–1 | 2 Hz |
@@ -20,6 +21,7 @@ Streams the phone's screen brightness as a single 0–1 value. On its face it te
 - `out1` (CHOP) — one channel: `tdlidar/device/brightness` (0–1).
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

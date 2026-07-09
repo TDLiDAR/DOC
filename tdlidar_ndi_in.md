@@ -27,6 +27,7 @@ Source names change with the app's NDI name index (e.g. `TDLidar`, `TDLidar 2`, 
 - `out_top` (TOP) — the decoded NDI video, full resolution and frame rate as the phone sends it. This is the texture you composite.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | Source Name | (first found) | which NDI source to receive — the dropdown of advertised names |

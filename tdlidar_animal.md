@@ -32,6 +32,7 @@ Each keypoint carries an `x` and a `y` (normalized image coords, **no Z**):
 - `out_pop` / a **Script SOP** — the keypoints assembled as 2D points so you can draw the pose directly.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

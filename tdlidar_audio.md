@@ -12,6 +12,7 @@ parent: Operators
 Turns the phone's microphone into a full music-analysis feed for TouchDesigner. You get coarse low/mid/high band levels, a 20-band FFT spectrum, transient triggers (`beat`, `onset`), and a set of pitch/timbre descriptors (pitch, note, MIDI, spectral centroid, flux, rolloff, loudness). It is everything you need to build a stage-grade audio-reactive show driven by one phone, no audio interface required.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/audio/rms` | float | mic RMS volume | audio rate |
@@ -26,6 +27,7 @@ Turns the phone's microphone into a full music-analysis feed for TouchDesigner. 
 - `out1` (CHOP) — every audio channel above, named by address: `tdlidar/audio/low`, `…/mid`, `…/high`, the 20 `…/fft…` channels, `…/beat`, `…/onset`, `…/pitch`, `…/note`, `…/midi`, `…/centroid`, `…/flux`, `…/rolloff`, `…/loudness`, `…/rms`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

@@ -12,6 +12,7 @@ parent: Operators
 Streams where your finger is on the screen and how hard it's pressing. The X and Y channels are the touch position (normalized 0–1), `radius` is the contact size, and `force` is the press pressure on devices that report it. Each channel can be toggled on its own in the app, so you can stream just X/Y as a trackpad, or add force for a pressure dimension. While a finger is down the values track it live; lift off and they hold their last value.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/touch/x` | float | 0–1 normalized screen X | touch rate |
@@ -25,6 +26,7 @@ Streams where your finger is on the screen and how hard it's pressing. The X and
 `out1` (CHOP) — up to four channels named after the addresses without the leading slash: `tdlidar/touch/x`, `…/y`, `…/radius`, `…/force`. Only the channels you enabled in the app appear. The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

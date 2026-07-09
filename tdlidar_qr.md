@@ -12,6 +12,7 @@ parent: Operators
 This op watches the camera for QR codes and barcodes. When one is found it streams the decoded text (the **payload** — a URL, an ID, any string) plus the four screen corners of the code so you can frame or track it. The payload is text, so it arrives as a string. The shipped tox can route that payload straight into a **Web Render TOP**, so scanning a QR that holds a link opens that page live inside TD.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/detect/qr/payload` | string | decoded text (URL / id / any string) | on detect |
@@ -24,6 +25,7 @@ This op watches the camera for QR codes and barcodes. When one is found it strea
 - `out1` (CHOP) — the `tdlidar/detect/qr/*` corner coordinates.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

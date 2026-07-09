@@ -12,6 +12,7 @@ parent: Operators
 Tracks up to two hands and rebuilds each as a 21-landmark skeleton — wrist, plus four joints per finger out to each fingertip. The op plots those landmarks as points and draws the finger bones, locking each bone to a fixed length so a finger never stretches or warps as the hand moves toward or away from the camera. Use it to puppet geometry, scrub parameters with a fingertip, or spawn particles from the tips.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/body/hands/count` | int | number of hands (0–2) | per frame |
@@ -26,6 +27,7 @@ Tracks up to two hands and rebuilds each as a 21-landmark skeleton — wrist, pl
 - `out1` (CHOP) — `tdlidar/body/hands/count`, `…/distance`, `…/frame`, and the per-landmark channels for mapping and triggers.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

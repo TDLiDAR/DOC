@@ -12,6 +12,7 @@ parent: Operators
 Streams the phone's absolute orientation as three Euler angles — pitch (nose up/down), roll (tilt side to side) and yaw (turn left/right) — in radians. Unlike Gyro (which gives *speed* of turn), these are the actual *angles*, so they hold steady when the phone is still. Feed them into a Geo COMP and your 3D model tracks the phone like a handle.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/motion/pitch` | float | radians | ≤50 Hz |
@@ -22,6 +23,7 @@ Streams the phone's absolute orientation as three Euler angles — pitch (nose u
 `out1` (CHOP) — three channels `pitch`, `roll`, `yaw` (radians). The node tile previews `out1`.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

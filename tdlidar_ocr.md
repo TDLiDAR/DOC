@@ -12,6 +12,7 @@ parent: Operators
 Runs on-device text recognition on the camera feed and sends every word it reads into TD as a string. The op keeps a running table of recognized words, renders them onto a "paper" Text TOP you can show on screen, and reports how many strings are currently in view. Point the phone at a poster, a price tag, a name badge or a page and the words appear in TouchDesigner — ready to match against keywords and fire scenes.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/detect/text/count` | float | number of recognized strings | camera rate |
@@ -24,6 +25,7 @@ Runs on-device text recognition on the camera feed and sends every word it reads
 - a **Clear Text** pulse parameter — empties `out_words` and the paper TOP.
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |

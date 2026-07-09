@@ -12,6 +12,7 @@ parent: Operators
 Reports the phone's own battery so your TouchDesigner project can react when the device starts to drain. You get a level from empty to full plus a charging state (unknown / unplugged / charging / full). It is the simplest way to keep an unattended installation honest: dim the show, post a warning, or log when the phone has fallen off the charger.
 
 ## OSC in
+
 | address | type | range | rate |
 |---|---|---|---|
 | `/tdlidar/motion/battery/level` | float | 0–1 | on change + ~2 Hz |
@@ -21,6 +22,7 @@ Reports the phone's own battery so your TouchDesigner project can react when the
 - `out1` (CHOP) — two channels: `tdlidar/motion/battery/level` (0–1) and `tdlidar/motion/battery/state` (0–3).
 
 ## Parameters
+
 | par | default | what it does |
 |---|---|---|
 | OSC Port | 9000 | UDP port to listen on (match the app) |
