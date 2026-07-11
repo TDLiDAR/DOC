@@ -23,6 +23,13 @@
     edgeLabelBackground: "#000000",
     titleColor: "#ffffff"
   },
-  flowchart: { curve: "basis", htmlLabels: true, padding: 12 },
+  flowchart: {
+    curve: "basis",
+    htmlLabels: true,
+    padding: 12,
+    // Subgraph titles were sitting right on the box border — give them
+    // real breathing room top and bottom instead of a CSS-only nudge.
+    subGraphTitleMargin: { top: 10, bottom: 10 }
+  },
   sequence: { useMaxWidth: true }
 }

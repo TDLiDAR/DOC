@@ -181,8 +181,7 @@ blockquote.warning, blockquote.caution { border-radius: 0 8px 8px 0; }
   width: 132px;
   height: 132px;
   border-radius: 30px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6),
-              0 22px 70px rgba(10, 132, 255, 0.28);
+  box-shadow: 0 22px 70px rgba(10, 132, 255, 0.28);
 }
 .td-hero h1.td-hero-title {
   border: 0;
@@ -234,6 +233,29 @@ blockquote.warning, blockquote.caution { border-radius: 0 8px 8px 0; }
   overflow-x: auto;
 }
 .mermaid svg { max-width: 100%; height: auto; }
+// Mobile browsers (mainly mobile Safari) don't reliably apply
+// mermaid_config.js's themeVariables to every generated element — the
+// outer canvas rect and htmlLabels foreignObject text can fall back to
+// mermaid's own light-theme defaults (white bg, black text) even though
+// desktop renders fine off the same config. Force it in CSS with
+// !important so it wins over mermaid's inline styles regardless of
+// which theme path the renderer actually took.
+.mermaid svg rect.background { fill: #050507 !important; }
+.mermaid .node rect,
+.mermaid .node polygon,
+.mermaid .node circle { fill: #0c0f14 !important; stroke: #ffffff !important; }
+.mermaid .cluster rect { fill: #050507 !important; stroke: rgba(255, 255, 255, 0.4) !important; }
+.mermaid .nodeLabel,
+.mermaid .edgeLabel,
+.mermaid .cluster-label,
+.mermaid text,
+.mermaid tspan { color: #e6e7ea !important; fill: #e6e7ea !important; }
+.mermaid .edgeLabel { background-color: #000000 !important; }
+.mermaid .edgePath .path,
+.mermaid .flowchart-link { stroke: #0a84ff !important; }
+// Subgraph/cluster titles sit right on the top border by default —
+// give them breathing room so they don't collide with the box edge.
+.mermaid .cluster-label { transform: translateY(-4px); }
 
 // =====================================================================
 //  Sidebar footer (App Store + Patreon + GitHub)
