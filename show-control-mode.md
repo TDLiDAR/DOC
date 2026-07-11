@@ -26,8 +26,11 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | address | args | does |
 |---|---|---|
 | `/tdlidar/show/recall` | int | Recalls a saved [Look Preset](#look-presets) by its index in the list. |
-| `/tdlidar/show/mode` | string or int | Switches the app's mode. String matches a mode's internal name (`ndi`, `osc`, `pointCloud`, `sceneBuild`, `monocularDepth`, `meshCloud`, `cueDeck`, `align`); int indexes the same list in that order. |
+| `/tdlidar/show/mode` | string or int | Switches the app's mode. **Restricted to the three live-output modes** — string matches `ndi` (LiDAR), `monocularDepth`, or `pointCloud`; int indexes that list in that order (`0` LiDAR, `1` Monocular Depth, `2` Point Cloud). The utility modes (Sensors, Scene Build, Mesh Cloud, Cue Deck, Align) are deliberately **not** remote-switchable and are ignored. |
 | `/tdlidar/show/record` | int/float/bool (0 or 1) | Starts or stops recording in LiDAR or Monocular Depth mode — whichever is currently active. No-op in other modes. |
+| `/tdlidar/show/ndi` | int/float/bool (0 or 1) | Toggles the **persistent-NDI master switch** (same one as "Keep NDI running across modes" in the Network sheet). `1` starts the shared NDI stream and arms whichever of LiDAR / Monocular Depth / Point Cloud is active, so the feed comes up on command; `0` stops it. |
+| `/tdlidar/show/resolution` | int, 0–3 | Sets the NDI output resolution for **all three modes at once**: `0` Low, `1` Med, `2` High, `3` Max. LiDAR + Monocular Depth share one upscale ladder (≈800 → 1920 wide); Point Cloud has its own (540 → 1440 wide). |
+| `/tdlidar/show/alpha` | int/float/bool (0 or 1) | Toggles the alpha mask in **all three modes at once** — LiDAR depth-mask alpha, Monocular Depth alpha mask, and Point Cloud background removal. `1` on, `0` off. |
 | `/tdlidar/show/capture/finish` | — | Mesh Cloud: ends the current scan (same as tapping Finish). |
 | `/tdlidar/show/capture/rescan` | — | Mesh Cloud: discards the finished scan and starts over. |
 | `/tdlidar/show/capture/start` | — | Point Cloud: starts TCP streaming. |
@@ -49,9 +52,12 @@ You don't have to hand-build an OSC Out CHOP for every address above — **`tdli
 |---|---|---|
 | Network | Address, Port | (where everything below is sent) |
 | Cues | Recall Index + **Recall** pulse | `/tdlidar/show/recall` |
-| Cues | Mode + **Switch Mode** pulse | `/tdlidar/show/mode` |
+| Cues | Mode + **Switch Mode** pulse | `/tdlidar/show/mode` — menu limited to LiDAR / Monocular Depth / Point Cloud |
 | Cues | Record toggle | `/tdlidar/show/record`, on change |
 | Cues | Capture Verb + **Send Capture** pulse | `/tdlidar/show/capture/<verb>` |
+| Output | **NDI Enable** toggle | `/tdlidar/show/ndi`, on change |
+| Output | **NDI Resolution** menu (Low / Med / High / Max) | `/tdlidar/show/resolution`, on change |
+| Output | **Alpha Mask** toggle | `/tdlidar/show/alpha`, on change |
 | Live | Gamma, Contrast, Brightness, Depth Threshold, Colormap Index | the matching `/tdlidar/show/param/*`, live on change |
 
 `out1` mirrors the current parameter values as a CHOP, in case you want to chain or display what was last sent. It's a thin wrapper — internally just an OSC Out DAT and a Parameter Execute DAT — so the DMX/Art-Net/QLab/Companion patterns below can drive `tdlidar_show`'s own parameters (export a CHOP into **Recall Index**, pulse **Recall**) instead of building a raw OSC Out CHOP by hand, if you'd rather stay in parameter-land.

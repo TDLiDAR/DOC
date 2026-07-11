@@ -9,14 +9,17 @@ parent: Operators
 **Category:** Output & Utility · **Tier:** Free · **Needs:** the phone's [Show Control]({{ '/show-control-mode.html' | relative_url }}) listener enabled, same LAN
 
 ## What it does
-Every other operator in this family reads data the phone is sending. `tdlidar_show` is the mirror image: point it at the phone's IP and Show Control port, and its parameters become a control panel — recall a saved look, switch the app's mode, start/stop recording, trigger a Mesh Cloud or Point Cloud capture step, or ride a live gamma/contrast/brightness/threshold/colormap fader — each one just an OSC Out DAT send under the hood, wrapped in named parameters so you don't have to remember the `/tdlidar/show/*` addresses.
+Every other operator in this family reads data the phone is sending. `tdlidar_show` is the mirror image: point it at the phone's IP and Show Control port, and its parameters become a control panel — recall a saved look, switch the app's mode, start/stop recording, toggle the NDI stream, set its output resolution, flip the alpha mask, trigger a Mesh Cloud or Point Cloud capture step, or ride a live gamma/contrast/brightness/threshold/colormap fader — each one just an OSC Out DAT send under the hood, wrapped in named parameters so you don't have to remember the `/tdlidar/show/*` addresses.
 
 ## OSC out
 | address | args | sent when |
 |---|---|---|
 | `/tdlidar/show/recall` | int | **Recall** pulsed — sends **Recall Index** |
-| `/tdlidar/show/mode` | string | **Switch Mode** pulsed — sends **Mode** |
+| `/tdlidar/show/mode` | string | **Switch Mode** pulsed — sends **Mode** (LiDAR / Monocular Depth / Point Cloud only) |
 | `/tdlidar/show/record` | int (0/1) | **Record** toggled |
+| `/tdlidar/show/ndi` | int (0/1) | **NDI Enable** toggled |
+| `/tdlidar/show/resolution` | int (0–3) | **NDI Resolution** changed — Low / Med / High / Max |
+| `/tdlidar/show/alpha` | int (0/1) | **Alpha Mask** toggled |
 | `/tdlidar/show/capture/<verb>` | — | **Send Capture** pulsed — verb from **Capture Verb** |
 | `/tdlidar/show/param/gamma` | float | **Gamma** changed |
 | `/tdlidar/show/param/contrast` | float | **Contrast** changed |
@@ -36,11 +39,14 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | Port | 9200 | Show Control's listen port (match the phone's Remote Control settings) |
 | Recall Index | 0 | which Look Preset to recall |
 | Recall | — | pulse to send the recall |
-| Mode | LiDAR | which mode to switch to |
+| Mode | LiDAR | which mode to switch to — LiDAR / Monocular Depth / Point Cloud only (the utility modes aren't remote-switchable) |
 | Switch Mode | — | pulse to send the mode switch |
 | Record | off | on/off sends 1/0 immediately |
 | Capture Verb | Mesh Finish | finish / rescan / start / stop |
 | Send Capture | — | pulse to send the capture verb |
+| NDI Enable | off | persistent-NDI master on/off — sends immediately on change |
+| NDI Resolution | Med | Low / Med / High / Max — drives all three NDI outputs at once, on change |
+| Alpha Mask | off | alpha mask on/off across all three modes, on change |
 | Gamma / Contrast / Brightness / Depth Threshold / Colormap Index | app defaults | live faders — send immediately on change |
 
 ## Quick start (beginner)
