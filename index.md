@@ -150,6 +150,7 @@ The #1 issue with anything OSC. Walk this list:
 - [LiDAR — Every Setting]({{ '/lidar-settings.html' | relative_url }}) — the depth/tone/colour/NDI controls and how each changes the look.
 - [Point Cloud — Effects & Settings]({{ '/point-cloud-settings.html' | relative_url }}) — viewer, cleanup, streaming and PLY capture.
 - [Operators]({{ '/operators.html' | relative_url }}) — one page per operator.
+- [Show Control]({{ '/show-control-mode.html' | relative_url }}) — remote-trigger the app from OSC, MIDI, a lighting desk, QLab or Companion.
 - [OSC Reference]({{ '/osc-reference.html' | relative_url }}) — the complete OSC wire spec (every address, type, range, rate).
 - [OSC Sensor Guide]({{ '/osc-sensor-guide.html' | relative_url }}) — plain-language tour of the wire format.
 - [FAQ]({{ '/faq.html' | relative_url }}) — quick answers, especially for "no data".

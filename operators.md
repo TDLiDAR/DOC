@@ -56,6 +56,10 @@ AirPods stream head pose for nods, shakes and head-look aiming. Apple Watch stre
 
 NDI receives the phone's depth, camera or Monocular Depth video. Point Cloud receives the lossless TCP point cloud as a POP — the same operator also receives Mesh Cloud mode's captured/cleaned-up scan, on its own port. Scene Build reviews a RoomPlan scan. Depth brings in the colour-mapped depth modes as visuals. Rectangle is a demo geometry-following meter.
 
+## The other direction — Show Control
+
+Every operator above is the phone *sending* data into TouchDesigner. [Show Control]({{ '/show-control-mode.html' | relative_url }}) is the reverse: the phone *listens* for OSC and MIDI so a lighting desk, QLab, MIDI Show Control or Bitfocus Companion can drive its mode, recall a saved look, or trigger a capture step — no dedicated operator needed, an **OSC Out CHOP** pointed at the phone covers it.
+
 ## How they connect
 
 Each operator's connect-type is restricted to what it actually outputs, so the wire-drag menu offers only sensible targets — a single-output sensor connects to one family, a multi-output operator connects to all.

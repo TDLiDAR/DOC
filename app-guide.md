@@ -72,4 +72,5 @@ Connection is the same idea in every mode — same network, point the app at you
 - [Sensors Mode]({{ '/sensors-mode.html' | relative_url }}) — enabling sensors and per-sensor tuning.
 - [Cue Deck Mode]({{ '/cue-deck-mode.html' | relative_url }}) — editable on-screen OSC trigger pads.
 - [Align Mode]({{ '/align-mode.html' | relative_url }}) — surface-corner capture for projection mapping.
+- [Show Control]({{ '/show-control-mode.html' | relative_url }}) — not a mode, runs independent of one: lets a lighting desk, QLab, MIDI or Companion drive the app remotely over OSC/MIDI.
 - [Performance & Pro]({{ '/performance-pro.html' | relative_url }}) — Supercharge, background, Pro features, recording.
