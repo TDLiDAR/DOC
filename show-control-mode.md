@@ -41,6 +41,21 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 > Mesh Cloud's Send (stream to TD) and Export (save PLY) aren't remote-triggerable yet — they live as private state inside the mode's own 3D viewer, not reachable from outside it. Finish and Rescan are.
 {: .note }
 
+## From TouchDesigner — the `tdlidar_show` operator
+
+You don't have to hand-build an OSC Out CHOP for every address above — **`tdlidar_show`** in the operator family is a ready-made control panel for exactly this. Drop it, set **Address** to the phone's IP and **Port** to its Show Control port, and every address in the table above is a parameter:
+
+| parameter page | pars | sends |
+|---|---|---|
+| Network | Address, Port | (where everything below is sent) |
+| Cues | Recall Index + **Recall** pulse | `/tdlidar/show/recall` |
+| Cues | Mode + **Switch Mode** pulse | `/tdlidar/show/mode` |
+| Cues | Record toggle | `/tdlidar/show/record`, on change |
+| Cues | Capture Verb + **Send Capture** pulse | `/tdlidar/show/capture/<verb>` |
+| Live | Gamma, Contrast, Brightness, Depth Threshold, Colormap Index | the matching `/tdlidar/show/param/*`, live on change |
+
+`out1` mirrors the current parameter values as a CHOP, in case you want to chain or display what was last sent. It's a thin wrapper — internally just an OSC Out DAT and a Parameter Execute DAT — so the DMX/Art-Net/QLab/Companion patterns below can drive `tdlidar_show`'s own parameters (export a CHOP into **Recall Index**, pulse **Recall**) instead of building a raw OSC Out CHOP by hand, if you'd rather stay in parameter-land.
+
 ## Look Presets
 
 A Look Preset is a saved snapshot of LiDAR or Monocular Depth's colormap, tone curve (gamma/contrast/brightness/invert) and mode-specific extras (LiDAR: depth mode + near/far clip; Monocular Depth: model + camera). Build the list in the same Show Control section: **Save LiDAR look** / **Save Monocular look** snapshots whatever that mode is currently set to; tap a saved preset to rename it or re-save it from the mode's current live settings.

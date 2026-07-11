@@ -7,7 +7,7 @@ has_children: true
 
 # Operators
 
-The TDLiDAR family is forty-seven operators, one per sensor, tool or output. Drop any of them and it listens on OSC port 9000 (or its own transport/port for the video, point-cloud, Align and Cue Deck ops), previews its live output on the node tile, and connects only to sensible targets.
+The TDLiDAR family is forty-eight operators, one per sensor, tool or output. Drop any of them and it listens on OSC port 9000 (or its own transport/port for the video, point-cloud, Align and Cue Deck ops), previews its live output on the node tile, and connects only to sensible targets — except `tdlidar_show`, which is the one operator that *sends* rather than receives.
 
 Each operator has its own detailed page under the Operators section with its OSC input, parameters, outputs, a beginner quick-start and advanced patterns. This page is the overview.
 
@@ -21,7 +21,7 @@ flowchart TB
   ROOT --> A["Audio<br/>mic · audio · speech · sound-ID"]
   ROOT --> T["Touch &amp; Input<br/>touch · pencil · proximity · NFC · remote · cue"]
   ROOT --> X["External<br/>AirPods · Apple Watch"]
-  ROOT --> O["Output / Utility<br/>NDI · point cloud · scene build · depth"]
+  ROOT --> O["Output / Utility<br/>NDI · point cloud · scene build · depth · show"]
 ```
 
 ## Motion
@@ -54,11 +54,11 @@ AirPods stream head pose for nods, shakes and head-look aiming. Apple Watch stre
 
 ## Output and utility
 
-NDI receives the phone's depth, camera or Monocular Depth video. Point Cloud receives the lossless TCP point cloud as a POP — the same operator also receives Mesh Cloud mode's captured/cleaned-up scan, on its own port. Scene Build reviews a RoomPlan scan. Depth brings in the colour-mapped depth modes as visuals. Rectangle is a demo geometry-following meter.
+NDI receives the phone's depth, camera or Monocular Depth video. Point Cloud receives the lossless TCP point cloud as a POP — the same operator also receives Mesh Cloud mode's captured/cleaned-up scan, on its own port. Scene Build reviews a RoomPlan scan. Depth brings in the colour-mapped depth modes as visuals. Rectangle is a demo geometry-following meter. Show sends *to* the phone instead of receiving — see the next section.
 
 ## The other direction — Show Control
 
-Every operator above is the phone *sending* data into TouchDesigner. [Show Control]({{ '/show-control-mode.html' | relative_url }}) is the reverse: the phone *listens* for OSC and MIDI so a lighting desk, QLab, MIDI Show Control or Bitfocus Companion can drive its mode, recall a saved look, or trigger a capture step — no dedicated operator needed, an **OSC Out CHOP** pointed at the phone covers it.
+Every operator above is the phone *sending* data into TouchDesigner. [Show Control]({{ '/show-control-mode.html' | relative_url }}) is the reverse: the phone *listens* for OSC and MIDI so a lighting desk, QLab, MIDI Show Control or Bitfocus Companion can drive its mode, recall a saved look, or trigger a capture step. **`tdlidar_show`** is the operator for it — a control panel with a parameter for every address Show Control accepts, so you don't have to hand-build an OSC Out CHOP.
 
 ## How they connect
 
