@@ -6,6 +6,9 @@ parent: Operators
 
 > Capture the room the phone is looking at as 50,000 real 3D points — exact XYZ and colour — straight into a TouchDesigner POP.
 
+{: .warning }
+**For Arkestra users:** change the Port to **9005** in the device and app *Receiver* section, then disable and re-enable TCP and the stream will start.
+
 **Category:** Camera & Vision · **Tier:** Pro · **Needs:** LiDAR device (back depth) · the phone and TD on the same LAN
 
 ## What it does

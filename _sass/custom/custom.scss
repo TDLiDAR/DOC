@@ -160,8 +160,9 @@ blockquote.warning, blockquote.caution { border-radius: 0 8px 8px 0; }
 // Patreon: icon only, NO border (per request)
 .td-patreon { border: none !important; padding: 0 0.5rem; background: transparent; }
 .td-patreon:hover { color: $td-blue !important; box-shadow: none; background: transparent; }
-// GitHub: icon only
-.td-github { padding: 0 0.5rem; }
+// Arkestra: wordmark logo on the black pill
+.td-arkestra { padding: 0 0.7rem; }
+.td-arkestra img { height: 15px; width: auto; display: block; }
 
 // Collapse App Store label on narrow headers
 @media (max-width: 50rem) {
@@ -301,6 +302,18 @@ blockquote.warning, blockquote.caution { border-radius: 0 8px 8px 0; }
 // Patreon icon: no border (per request)
 .td-sf-patreon { border: none !important; }
 .td-sf-patreon:hover { border: none !important; }
+// Arkestra: wordmark logo pill (wider than the round icons)
+.td-sf-arkestra {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.15s ease;
+}
+.td-sf-arkestra img { height: 16px; width: auto; display: block; }
+.td-sf-arkestra:hover { border-color: $td-blue; }
 
 // =====================================================================
 //  Misc niceties
