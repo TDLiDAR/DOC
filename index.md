@@ -56,6 +56,9 @@ flowchart LR
 
 The phone and the computer just need to be on the **same network**.
 
+> Not on TouchDesigner? TDLiDAR's **Point Cloud mode** also streams into **[Arkestra](https://www.arkestra.app/download)** — the same lossless TCP point cloud, live into your Arkestra scene.
+{: .note }
+
 > New here? Start with **[Install]({{ '/install.html' | relative_url }})**, then skim the **[App Guide]({{ '/app-guide.html' | relative_url }})**. Stuck on "no data"? Jump to the **[FAQ]({{ '/faq.html' | relative_url }})**.
 {: .note }
 
