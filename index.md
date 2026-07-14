@@ -161,7 +161,7 @@ The #1 issue with anything OSC. Walk this list:
 ---
 
 <p class="text-center text-grey-dk-000">
-  Made by <a href="https://www.patreon.com/aristideslab/posts/tdlidar-for-one-161888274/" target="_blank" rel="noopener noreferrer">Aristides Lab</a> ·
+  Made by <a href="https://www.patreon.com/posts/163658679" target="_blank" rel="noopener noreferrer">Aristides Lab</a> ·
   <a href="https://apps.apple.com/us/app/tdlidar/id6760954732" target="_blank" rel="noopener noreferrer">App Store</a> ·
   <a href="https://github.com/TDLiDAR/DOC" target="_blank" rel="noopener noreferrer">GitHub</a>
 </p>

@@ -37,4 +37,4 @@ Besides streaming, you can capture a single frozen cloud to a file. Pick a **PLY
 
 The Point Cloud operator in the family is a complete receiver: it opens the TCP port, parses the incoming frames, and outputs a POP of the points with their positions and colours. Drop it, set its port to match the app, start streaming on the phone, and the points appear. From there it is ordinary POP geometry — render it, instance boxes or sprites onto every point, or run it through the rest of your network.
 
-### To Use the Point Cloud TCP send functionality in TouchDesigner, Please refer to the [TDLiDAR Operator Family](https://www.patreon.com/aristideslab/posts/tdlidar-for-one-161888274/)
+### To Use the Point Cloud TCP send functionality in TouchDesigner, Please refer to the [TDLiDAR Operator Family](https://www.patreon.com/posts/163658679)
