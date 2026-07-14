@@ -316,6 +316,21 @@ blockquote.warning, blockquote.caution { border-radius: 0 8px 8px 0; }
 .td-sf-arkestra:hover { border-color: $td-blue; }
 
 // =====================================================================
+//  In-page integration pills (Blender add-on · Arkestra)
+// =====================================================================
+.integrations { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.9rem 0 1.2rem; }
+.intg {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 0.85rem; border-radius: 999px;
+  font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+  color: #fff !important; text-decoration: none !important;
+  background: #000; border: 1px solid $td-white-line; transition: all 0.15s ease;
+}
+.intg:hover { color: $td-blue !important; border-color: $td-blue; box-shadow: 0 0 0 1px $td-blue; }
+.intg svg { width: 16px; height: 16px; fill: currentColor; }
+.intg img { height: 15px; width: auto; display: block; }
+
+// =====================================================================
 //  Misc niceties
 // =====================================================================
 // Apple-blue labels/badges
