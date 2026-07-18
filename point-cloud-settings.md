@@ -134,6 +134,13 @@ Moves the whole cloud relative to the 0,0,0 axis centre.
 - **Effect:** Re-centres the cloud on the origin gizmo (useful before recording or for lining up with the orbit cube).
 - **When to use:** Nudge the cloud so it sits on the axes centre / orbit pivot you want.
 
+### Cloud Tilt (X / Y / Z)
+
+Rotates the whole cloud about its centre, tilting it on each axis. The world-origin XYZ ruler stays put — only the points tilt (like Cloud Position, but rotating instead of shifting).
+
+- **Range:** −1…+1 per axis (mapped to ±180°). **Default:** `0` on all axes.
+- **When to use:** Level a cloud captured off-axis, or deliberately cant it for a look; combine with Cloud Position and the orbit pivot to compose the framing. Also remote-drivable (`pcRotX/Y/Z`).
+
 ### Orbit Mode
 
 Automatic camera motion for the viewer. **Default: Off.**

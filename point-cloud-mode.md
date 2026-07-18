@@ -28,6 +28,8 @@ The phone captures the LiDAR depth, projects it into 3D points, attaches the col
 
 The screen shows the **on-device viewer**: a rendered preview of the cloud as it is captured, which you can orbit and frame on the phone so you know what you're sending. The **gear** opens the settings, and the main capture toggle starts and stops the stream.
 
+A **lock button** sits in the top-right, next to the help "?". Tap it to **freeze the view** — one-finger orbit, two-finger pan, pinch-zoom, double-tap-reset and any auto-orbit (Spin/Sway) are all held, so a locked framing can't be nudged during a show. The padlock smart-morphs open⇄closed, sits slightly faded when unlocked, and flashes white if you try to move a locked view. (It's a viewer lock, on the device only — distinct from the effects **Freeze**.) The whole cloud can also be **tilted** on X/Y/Z (see the "Cloud Tilt" setting), and every viewer control is remote-drivable — see [Show Control](show-control-mode.html).
+
 ## Streaming settings
 
 **TD IP** and **TD Port** tell the phone where to send the cloud — your computer's address and the TCP port. Use the network discovery dropdown to pick your machine by name, or type the IP. Match the port to the Point Cloud operator in TouchDesigner.

@@ -21,23 +21,9 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | `/tdlidar/show/resolution` | int (0–3) | **NDI Resolution** changed — Low / Med / High / Max |
 | `/tdlidar/show/alpha` | int (0/1) | **Alpha Mask** toggled |
 | `/tdlidar/show/capture/<verb>` | — | **Send Capture** pulsed — verb from **Capture Verb** |
-| `/tdlidar/show/param/gamma` | float | **Gamma** changed |
-| `/tdlidar/show/param/contrast` | float | **Contrast** changed |
-| `/tdlidar/show/param/brightness` | float | **Brightness** changed |
-| `/tdlidar/show/param/threshold` | float | **Depth Threshold** changed |
-| `/tdlidar/show/param/colorMapIndex` | int | **Colormap Index** changed |
-| `/tdlidar/show/param/pcZoom` | float 0–1 | **PC Zoom** changed (Point Cloud page) |
-| `/tdlidar/show/param/pcX` · `pcY` · `pcZ` | float 0–1 | **PC Offset X/Y/Z** changed — moves the whole cloud |
-| `/tdlidar/show/param/pcPivotX` · `pcPivotY` · `pcPivotZ` | float 0–1 | **PC Pivot X/Y/Z** changed — moves the orbit centre |
-| `/tdlidar/show/param/pcPoints` | float 0–1 | **PC Points** changed (density) |
-| `/tdlidar/show/param/pcSize` | float 0–1 | **PC Size** changed |
-| `/tdlidar/show/param/pcFov` | float 0–1 | **PC FOV** changed |
-| `/tdlidar/show/param/pcSpin` | float 0–1 | **PC Spin Speed** changed |
-| `/tdlidar/show/param/pcFlat` | float (≥0.5) | **PC Flat** toggled |
-| `/tdlidar/show/param/pcFreeze` | float (≥0.5) | **PC Freeze** toggled |
-| `/tdlidar/show/param/pcOrbit` | float 0–1 | **PC Orbit Mode** — `<0.33` Off · `<0.66` Spin · else Sway |
+| `/tdlidar/show/param/<key>` | float 0–1 (≥0.5 for toggles) | any of the **141** mode-tab controls changed — see below |
 
-All `pc*` faders are **normalized 0–1** and scaled to each control's real range on the phone (matching a MIDI CC's 0–127). They apply live while Point Cloud mode is on screen.
+**v9.11 — every setting is a parameter.** Three parameter pages (**LiDAR** · 45, **Monocular Depth** · 13, **Point Cloud** · 83) expose every user-facing control of each mode as a `0–1` fader (or a toggle), each sending the matching `/tdlidar/show/param/<key>` live on change. All faders are **normalized 0–1** and scaled to the control's real range on the phone (matching a MIDI CC's 0–127); toggles send `1`/`0`. The full key list lives in [Show Control → Every setting over OSC & MIDI]({{ '/show-control-mode.html#every-setting-over-osc--midi' | relative_url }}).
 
 (Matches [Show Control]({{ '/show-control-mode.html' | relative_url }}) exactly — this op is a thin wrapper, not a second spec.)
 
@@ -59,10 +45,9 @@ All `pc*` faders are **normalized 0–1** and scaled to each control's real rang
 | NDI Enable | off | persistent-NDI master on/off — sends immediately on change |
 | NDI Resolution | Med | Low / Med / High / Max — drives all three NDI outputs at once, on change |
 | Alpha Mask | off | alpha mask on/off across all three modes, on change |
-| Gamma / Contrast / Brightness / Depth Threshold / Colormap Index | app defaults | live faders — send immediately on change |
-| **Point Cloud** page — PC Zoom, PC Offset X/Y/Z, PC Pivot X/Y/Z, PC Points, PC Size, PC FOV, PC Spin Speed | 0–1 | normalized faders — send `/tdlidar/show/param/pc*` live on change |
-| **Point Cloud** page — PC Flat, PC Freeze | off | on/off toggles (send ≥0.5 / 0) |
-| **Point Cloud** page — PC Orbit Mode | Off | Off / Spin / Sway — sends `pcOrbit` (0 / 0.5 / 1) |
+| **LiDAR** page — 45 controls | 0–1 / toggles | every LiDAR setting as a normalized fader or toggle — send `/tdlidar/show/param/<key>` live on change |
+| **Monocular Depth** page — 13 controls | 0–1 / toggles | every Monocular Depth setting, same scheme |
+| **Point Cloud** page — 83 controls | 0–1 / toggles | every Point Cloud setting (view, tilt, cleanup, motion FX, network), same scheme |
 
 ## Quick start (beginner)
 1. On the phone: Main menu → gear → **Show Control** → Enabled on. Note the IP and Listen Port shown there.

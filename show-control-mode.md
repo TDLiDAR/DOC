@@ -35,34 +35,171 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | `/tdlidar/show/capture/rescan` | — | Mesh Cloud: discards the finished scan and starts over. |
 | `/tdlidar/show/capture/start` | — | Point Cloud: starts TCP streaming. |
 | `/tdlidar/show/capture/stop` | — | Point Cloud: stops TCP streaming. |
-| `/tdlidar/show/param/gamma` | float | Live gamma, both LiDAR and Monocular Depth. |
-| `/tdlidar/show/param/contrast` | float | Live contrast, both modes. |
-| `/tdlidar/show/param/brightness` | float | Live brightness, both modes. |
-| `/tdlidar/show/param/threshold` | float, 0–10 | LiDAR far-clip distance in metres — the "lighting-desk fader drives a depth cutoff" pattern. |
-| `/tdlidar/show/param/colorMapIndex` | int | Selects a colormap by its index in the app's colormap list, both modes. |
+| `/tdlidar/show/param/<key>` | float 0–1 (or ≥0.5 for toggles) | **Any** LiDAR / Monocular Depth / Point Cloud setting — see the full per-mode reference in [Every setting over OSC & MIDI](#every-setting-over-osc--midi) below. |
 
-### Point Cloud controls — `/tdlidar/show/param/pc*`
+## Every setting over OSC & MIDI
 
-All of the Point Cloud viewer controls take a **normalized `0–1` fader** (matching how a MIDI CC maps) and are scaled to each control's real range on the phone. They apply live while Point Cloud mode is on screen. Booleans use a `0.5` threshold; `pcOrbit` buckets the fader into the three orbit modes.
+**v9.11 — every user-facing setting in the three live modes is a remote parameter.** Each `/tdlidar/show/param/<key>` takes a **normalized `0–1`** value (matching a MIDI CC's `0–127`) that the phone maps to the control's real range; on/off toggles use a `0.5` threshold; enums/indexes map `0` → first option … `1` → last. The `<key>` is the setting's own name, grouped by mode below, and it's the same vocabulary a MIDI CC can target. They apply live while that mode is on screen (Point Cloud values also persist for the next time you enter it).
 
-| address | args | does |
+> **Changed in v9.11:** the historical shared faders (`gamma`, `contrast`, `brightness`, `threshold`, `colorMapIndex`) are now **LiDAR-only and normalized `0–1`** — they no longer also write the Monocular values, and no longer take raw units. Monocular Depth has its own `mono…` keys (e.g. `monoGamma`). If you drove these from a raw-value OSC source, send `0–1` now (the `tdlidar_show` operator already does). This also corrects MIDI, whose CCs always sent `0–1`.
+{: .note }
+#### LiDAR — 45 controls
+
+| address (`/tdlidar/show/param/…`) | control | type |
 |---|---|---|
-| `/tdlidar/show/param/pcZoom` | float 0–1 | Camera dolly distance (0 = closest, 1 = farthest). |
-| `/tdlidar/show/param/pcX` | float 0–1 | Whole-cloud X offset (0 = −1 m, 1 = +1 m). |
-| `/tdlidar/show/param/pcY` | float 0–1 | Whole-cloud Y offset. |
-| `/tdlidar/show/param/pcZ` | float 0–1 | Whole-cloud Z offset. |
-| `/tdlidar/show/param/pcPivotX` | float 0–1 | Orbit-centre / pan pivot X (0 = −1 m, 1 = +1 m). |
-| `/tdlidar/show/param/pcPivotY` | float 0–1 | Orbit-centre / pan pivot Y. |
-| `/tdlidar/show/param/pcPivotZ` | float 0–1 | Orbit-centre / pan pivot Z. |
-| `/tdlidar/show/param/pcPoints` | float 0–1 | Point count / density (0 = 500 pts, 1 = 50 000 pts). |
-| `/tdlidar/show/param/pcSize` | float 0–1 | Point size (0 = 10 %, 1 = 150 %). |
-| `/tdlidar/show/param/pcFov` | float 0–1 | Field of view (0 = 20°, 1 = 120°). |
-| `/tdlidar/show/param/pcSpin` | float 0–1 | Auto-orbit / sway speed (0 = 0.25×, 1 = 3×). |
-| `/tdlidar/show/param/pcFlat` | float (≥0.5 = on) | Flat projection on/off. |
-| `/tdlidar/show/param/pcFreeze` | float (≥0.5 = on) | Freeze the live cloud on/off. |
-| `/tdlidar/show/param/pcOrbit` | float 0–1 | Orbit mode: `<0.33` Off · `<0.66` Spin · else Sway (±90° pendulum around front-on). |
+| `gamma` | Gamma | 0–1 |
+| `contrast` | Contrast | 0–1 |
+| `brightness` | Brightness | 0–1 |
+| `colorMapIndex` | Colormap | 0–1 |
+| `invertDepth` | Invert Depth | on/off (≥0.5) |
+| `depthColorSource` | Colour Source | 0–1 |
+| `confidenceSmooth` | Confidence Smooth | on/off (≥0.5) |
+| `depthLineSpacing` | Depth Line Spacing | 0–1 |
+| `depthMode` | Depth Look | 0–1 |
+| `threshold` | Far Clip (m) | 0–1 |
+| `nearClipMeters` | Near Clip (m) | 0–1 |
+| `maxDepthMeters` | Max Range (m) | 0–1 |
+| `envNoiseFloor` | Noise Reduction | 0–1 |
+| `extendedRange` | Extended Range | on/off (≥0.5) |
+| `detailLevel` | Edge Outline | 0–1 |
+| `smoothing` | Temporal Smoothing | 0–1 |
+| `holeFill` | Smart Hole Fill | on/off (≥0.5) |
+| `rawDepth` | Disable Depth Filtering | on/off (≥0.5) |
+| `hdSmoothingEnabled` | HD Edge Smoothing | on/off (≥0.5) |
+| `hdSmoothingSigma` | HD Smoothing Strength | 0–1 |
+| `faceDetailRange` | Face Detail Range | 0–1 |
+| `facialDetailGain` | Facial Detail Gain | 0–1 |
+| `faceFocusPoint` | Face Focus Point | 0–1 |
+| `medianTrackingSpeed` | Tracking Speed | 0–1 |
+| `crosshairEnabled` | Measure Crosshair | on/off (≥0.5) |
+| `crosshairInNDI` | Crosshair in NDI | on/off (≥0.5) |
+| `crosshairOpacity` | Crosshair Opacity | 0–1 |
+| `rawColorMapEnabled` | Raw Colour-Map FX | on/off (≥0.5) |
+| `rawColorMap` | Raw Colour Map | 0–1 |
+| `rawBaseColorR` | Raw Base R | 0–1 |
+| `rawBaseColorG` | Raw Base G | 0–1 |
+| `rawBaseColorB` | Raw Base B | 0–1 |
+| `rawTopographicDensity` | Raw Topo Bands | 0–1 |
+| `rawPosterizeBands` | Raw Posterize Bands | 0–1 |
+| `rawScanlineStyle` | Raw Scanline Style | 0–1 |
+| `rawLineThickness` | Raw Line Width | 0–1 |
+| `rawGlitchIntensity` | Raw Glitch Intensity | 0–1 |
+| `rawGlitchSpeed` | Raw Glitch Speed | 0–1 |
+| `rawReflectionSensitivity` | Raw Reflection | 0–1 |
+| `rawBloom` | Raw Bloom | 0–1 |
+| `rawCameraControlTarget` | Raw Cam-Control Target | 0–1 |
+| `bcDefinition` | Back-LiDAR Definition | 0–1 |
+| `bcNearThreshold` | Back-LiDAR Near Threshold | 0–1 |
+| `bcNearCompression` | Back-LiDAR Near Compression | 0–1 |
+| `bcSmoothing` | Back-LiDAR Smoothing | 0–1 |
 
-> The XYZ offset (`pcX/Y/Z`) moves the **whole cloud** in space; the pivot (`pcPivotX/Y/Z`) moves the **orbit centre** the turntable rotates around. Both are exposed so you can compose them.
+#### Monocular Depth — 13 controls
+
+| address (`/tdlidar/show/param/…`) | control | type |
+|---|---|---|
+| `monoModel` | Depth Model | 0–1 |
+| `monoCamera` | Camera | 0–1 |
+| `monoColorMap` | Colormap | 0–1 |
+| `monoInvert` | Invert Depth | on/off (≥0.5) |
+| `monoGamma` | Gamma | 0–1 |
+| `monoContrast` | Contrast | 0–1 |
+| `monoBrightness` | Brightness | 0–1 |
+| `monoSmoothing` | Smoothing | 0–1 |
+| `monoSharpen` | Sharpen | on/off (≥0.5) |
+| `monoAutoAdjust` | Auto-Adjust | on/off (≥0.5) |
+| `monoAutoSensitivity` | Auto Sensitivity | 0–1 |
+| `monoAlpha` | Alpha Mask | on/off (≥0.5) |
+| `monoAlphaThreshold` | Alpha Threshold | 0–1 |
+
+#### Point Cloud — 83 controls
+
+| address (`/tdlidar/show/param/…`) | control | type |
+|---|---|---|
+| `pcZoom` | Zoom | 0–1 |
+| `pcX` | Offset X | 0–1 |
+| `pcY` | Offset Y | 0–1 |
+| `pcZ` | Offset Z | 0–1 |
+| `pcPivotX` | Pivot X | 0–1 |
+| `pcPivotY` | Pivot Y | 0–1 |
+| `pcPivotZ` | Pivot Z | 0–1 |
+| `pcPoints` | Points | 0–1 |
+| `pcSize` | Point Size | 0–1 |
+| `pcFov` | Field of View | 0–1 |
+| `pcSpin` | Orbit Speed | 0–1 |
+| `pcFlat` | Flat Projection | on/off (≥0.5) |
+| `pcFreeze` | Freeze FX | on/off (≥0.5) |
+| `pcOrbit` | Orbit Mode | 0–1 |
+| `pcRotX` | Tilt X | 0–1 |
+| `pcRotY` | Tilt Y | 0–1 |
+| `pcRotZ` | Tilt Z | 0–1 |
+| `pcAppleFilter` | Apple Filter | on/off (≥0.5) |
+| `pcSurfaceSmooth` | Surface Smooth | 0–1 |
+| `pcAccumulate` | Accumulate | 0–1 |
+| `pcGrazingCull` | Grazing Cull | 0–1 |
+| `pcFillHoles` | Fill Holes | 0–1 |
+| `pcDespeckle` | Despeckle | 0–1 |
+| `pcVoxelSize` | Voxel Size | 0–1 |
+| `pcDetailUpsample` | Detail Upsample | 0–1 |
+| `pcStabilization` | EMA Smoothing | 0–1 |
+| `pcEdgeStable` | Edge Stable | 0–1 |
+| `pcDepthCurve` | Depth Curve | 0–1 |
+| `pcEdgeRelax` | Edge Cleanup | 0–1 |
+| `pcParallax` | Parallax | 0–1 |
+| `pcViewerColorEnabled` | Show Colour | on/off (≥0.5) |
+| `pcShowAxes` | Show Axes | on/off (≥0.5) |
+| `pcAxesOpacity` | Axes Opacity | 0–1 |
+| `pcShowOrbitCube` | Show Orbit Cube | on/off (≥0.5) |
+| `pcOrbitCubeOpacity` | Orbit Cube Opacity | 0–1 |
+| `pcMoveSpeed` | Move Speed | 0–1 |
+| `pcViewerFlipX` | Flip X | on/off (≥0.5) |
+| `pcViewerFlipY` | Flip Y | on/off (≥0.5) |
+| `pcViewerFlipZ` | Flip Z | on/off (≥0.5) |
+| `pcCameraControlTarget` | Camera Control Target | 0–1 |
+| `pcKeepScreenOn` | Keep Screen On | on/off (≥0.5) |
+| `pcTrailFrames` | Trails Frames | 0–1 |
+| `pcTrailDecay` | Trails Decay | 0–1 |
+| `pcTrailRecede` | Trails Stream | 0–1 |
+| `pcTrailSpread` | Trails Spread | 0–1 |
+| `pcTrailBiasX` | Trails Bias X | 0–1 |
+| `pcTrailBiasY` | Trails Bias Y | 0–1 |
+| `pcTrailMode` | Trails Curve | 0–1 |
+| `pcEchoCount` | Echo Count | 0–1 |
+| `pcEchoStride` | Echo Spacing | 0–1 |
+| `pcEchoDecay` | Echo Decay | 0–1 |
+| `pcEchoZPush` | Echo Z Push | 0–1 |
+| `pcFeedbackPersist` | Light Paint | 0–1 |
+| `pcLightpaintBand` | LightPaint Band | 0–1 |
+| `pcLightpaintThreshold` | LightPaint Threshold | 0–1 |
+| `pcLightpaintHardness` | LightPaint Hardness | 0–1 |
+| `pcLightpaintMotionGate` | LightPaint Motion Gate | 0–1 |
+| `pcVelStretch` | Velocity | 0–1 |
+| `pcVelSpectrum` | Velocity Spectrum | on/off (≥0.5) |
+| `pcVelColorR` | Velocity Tint R | 0–1 |
+| `pcVelColorG` | Velocity Tint G | 0–1 |
+| `pcVelColorB` | Velocity Tint B | 0–1 |
+| `pcAgeFade` | Age Fade | 0–1 |
+| `pcAgeFloor` | Age Edge Dim | 0–1 |
+| `pcSculptFrames` | Sculpt Frames | 0–1 |
+| `pcSculptLock` | Sculpt Lock | on/off (≥0.5) |
+| `pcShearAmount` | Riptide | 0–1 |
+| `pcShearPush` | Riptide Push | 0–1 |
+| `pcShearResponse` | Riptide Response | 0–1 |
+| `pcShearReach` | Riptide Reach | 0–1 |
+| `pcEraseAmount` | Vanish | 0–1 |
+| `pcEraseThresh` | Vanish Threshold | 0–1 |
+| `pcEraseHold` | Vanish Linger | 0–1 |
+| `pcEraseInvert` | Vanish Reveal | on/off (≥0.5) |
+| `pcGravityRate` | Gravity | 0–1 |
+| `pcGravityForce` | Gravity Force | 0–1 |
+| `pcGravityLifetime` | Gravity Lifetime | 0–1 |
+| `pcGravitySpread` | Gravity Spread | 0–1 |
+| `pcGravityZ` | Gravity Z | 0–1 |
+| `pcNDIEnabled` | NDI Stream | on/off (≥0.5) |
+| `pcNDIResolution` | NDI Resolution | 0–1 |
+| `pcNDIRemoveAlpha` | NDI Transparent BG | on/off (≥0.5) |
+| `pcTCPEnabled` | TD POP (TCP) | on/off (≥0.5) |
+
+> `pcX/Y/Z` moves the **whole cloud**; `pcPivotX/Y/Z` moves the **orbit centre** the turntable rotates around; `pcRotX/Y/Z` **tilts** the whole cloud (±180°). All are independent so you can compose them. `pcNDIEnabled` / `pcTCPEnabled` start/stop the Point Cloud viewport's own NDI / TCP streams.
 {: .note }
 
 > Mesh Cloud's Send (stream to TD) and Export (save PLY) aren't remote-triggerable yet — they live as private state inside the mode's own 3D viewer, not reachable from outside it. Finish and Rescan are.
@@ -82,7 +219,11 @@ You don't have to hand-build an OSC Out CHOP for every address above — **`tdli
 | Output | **NDI Enable** toggle | `/tdlidar/show/ndi`, on change |
 | Output | **NDI Resolution** menu (Low / Med / High / Max) | `/tdlidar/show/resolution`, on change |
 | Output | **Alpha Mask** toggle | `/tdlidar/show/alpha`, on change |
-| Live | Gamma, Contrast, Brightness, Depth Threshold, Colormap Index | the matching `/tdlidar/show/param/*`, live on change |
+| **LiDAR** | 45 controls (tone, clip, detail, face, raw look, back-LiDAR) | the matching `/tdlidar/show/param/*`, normalized on change |
+| **Monocular Depth** | 13 controls (model, camera, tone, smoothing, auto-adjust, alpha) | the matching `/tdlidar/show/param/*`, normalized on change |
+| **Point Cloud** | 83 controls (view, tilt, cleanup, motion FX, network) | the matching `/tdlidar/show/param/*`, normalized on change |
+
+Each mode tab exposes every setting from that mode as a `0–1` fader (or a toggle), sending the matching `/tdlidar/show/param/<key>` live on change — the same keys listed in [Every setting over OSC & MIDI](#every-setting-over-osc--midi).
 
 `out1` mirrors the current parameter values as a CHOP, in case you want to chain or display what was last sent. It's a thin wrapper — internally just an OSC Out DAT and a Parameter Execute DAT — so the DMX/Art-Net/QLab/Companion patterns below can drive `tdlidar_show`'s own parameters (export a CHOP into **Recall Index**, pulse **Recall**) instead of building a raw OSC Out CHOP by hand, if you'd rather stay in parameter-land.
 
@@ -110,7 +251,7 @@ Either transport decodes the same two message types:
 | 3 | brightness |
 | 4 | threshold |
 
-The CC target list draws from the same parameter vocabulary as OSC, so the Point Cloud controls (`pcZoom`, `pcPoints`, `pcSize`, `pcFov`, `pcSpin`, `pcOrbit`, the offset/pivot XYZ, `pcFlat`, `pcFreeze`) are equally MIDI-mappable — a CC's `0–127` maps straight onto the same normalized `0–1` range.
+The CC target is any key from the same parameter vocabulary as OSC — so **every** setting listed in [Every setting over OSC & MIDI](#every-setting-over-osc--midi) (all 141 LiDAR / Monocular / Point Cloud controls) is equally MIDI-mappable: a CC's `0–127` maps straight onto the same normalized `0–1` range.
 
 **MIDI Time Code** (MTC) quarter-frames are assembled into a running `HH:MM:SS:FF` timecode, shown live in the Show Control section — useful for confirming the phone is receiving a show's clock. Show Control does not yet fire commands at specific timecodes (that's a real, separate cue-scheduler feature — a timecode-indexed cue list with its own editor — not built yet); today, MTC reception is for monitoring, and cueing is done via `/tdlidar/show/recall` or MIDI Note On.
 
