@@ -134,12 +134,21 @@ Moves the whole cloud relative to the 0,0,0 axis centre.
 - **Effect:** Re-centres the cloud on the origin gizmo (useful before recording or for lining up with the orbit cube).
 - **When to use:** Nudge the cloud so it sits on the axes centre / orbit pivot you want.
 
+### Orbit Mode
+
+Automatic camera motion for the viewer. **Default: Off.**
+
+- **Off** — manual only: drag to orbit, pinch to zoom, two-finger pan.
+- **Spin** — the camera rotates continuously around the pivot at **Orbit Speed**.
+- **Sway** — the camera swings back and forth like a pendulum, ±90° to each side of front-on (a 180° arc), reversing at each end, at **Orbit Speed**.
+- Touching the screen pauses the motion so a manual drag always wins; it resumes on release. Also settable remotely (`/tdlidar/show/param/pcOrbit`).
+
 ### Orbit Speed & Movement Speed
 
-Gesture sensitivities for the viewer. The minimum is 0.25× (never 0) so movement is always possible, just slower; 1× is the original feel.
+Gesture sensitivities for the viewer, and the rate of the automatic **Spin / Sway** motion above. The minimum is 0.25× (never 0) so movement is always possible, just slower; 1× is the original feel.
 
 - **Range:** 0.25×–3.0× each. **Defaults:** both `0.5×`.
-- **When to use:** Slow them down for precise framing on a tripod; speed up for fast hand-held orbiting.
+- **When to use:** Slow them down for precise framing on a tripod; speed up for fast hand-held orbiting or a quicker spin/sway.
 
 ### Camera Control Scrolls (iPhone 16+ only)
 

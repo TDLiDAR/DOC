@@ -41,6 +41,30 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | `/tdlidar/show/param/threshold` | float, 0–10 | LiDAR far-clip distance in metres — the "lighting-desk fader drives a depth cutoff" pattern. |
 | `/tdlidar/show/param/colorMapIndex` | int | Selects a colormap by its index in the app's colormap list, both modes. |
 
+### Point Cloud controls — `/tdlidar/show/param/pc*`
+
+All of the Point Cloud viewer controls take a **normalized `0–1` fader** (matching how a MIDI CC maps) and are scaled to each control's real range on the phone. They apply live while Point Cloud mode is on screen. Booleans use a `0.5` threshold; `pcOrbit` buckets the fader into the three orbit modes.
+
+| address | args | does |
+|---|---|---|
+| `/tdlidar/show/param/pcZoom` | float 0–1 | Camera dolly distance (0 = closest, 1 = farthest). |
+| `/tdlidar/show/param/pcX` | float 0–1 | Whole-cloud X offset (0 = −1 m, 1 = +1 m). |
+| `/tdlidar/show/param/pcY` | float 0–1 | Whole-cloud Y offset. |
+| `/tdlidar/show/param/pcZ` | float 0–1 | Whole-cloud Z offset. |
+| `/tdlidar/show/param/pcPivotX` | float 0–1 | Orbit-centre / pan pivot X (0 = −1 m, 1 = +1 m). |
+| `/tdlidar/show/param/pcPivotY` | float 0–1 | Orbit-centre / pan pivot Y. |
+| `/tdlidar/show/param/pcPivotZ` | float 0–1 | Orbit-centre / pan pivot Z. |
+| `/tdlidar/show/param/pcPoints` | float 0–1 | Point count / density (0 = 500 pts, 1 = 50 000 pts). |
+| `/tdlidar/show/param/pcSize` | float 0–1 | Point size (0 = 10 %, 1 = 150 %). |
+| `/tdlidar/show/param/pcFov` | float 0–1 | Field of view (0 = 20°, 1 = 120°). |
+| `/tdlidar/show/param/pcSpin` | float 0–1 | Auto-orbit / sway speed (0 = 0.25×, 1 = 3×). |
+| `/tdlidar/show/param/pcFlat` | float (≥0.5 = on) | Flat projection on/off. |
+| `/tdlidar/show/param/pcFreeze` | float (≥0.5 = on) | Freeze the live cloud on/off. |
+| `/tdlidar/show/param/pcOrbit` | float 0–1 | Orbit mode: `<0.33` Off · `<0.66` Spin · else Sway (±90° pendulum around front-on). |
+
+> The XYZ offset (`pcX/Y/Z`) moves the **whole cloud** in space; the pivot (`pcPivotX/Y/Z`) moves the **orbit centre** the turntable rotates around. Both are exposed so you can compose them.
+{: .note }
+
 > Mesh Cloud's Send (stream to TD) and Export (save PLY) aren't remote-triggerable yet — they live as private state inside the mode's own 3D viewer, not reachable from outside it. Finish and Rescan are.
 {: .note }
 
@@ -85,6 +109,8 @@ Either transport decodes the same two message types:
 | 2 | contrast |
 | 3 | brightness |
 | 4 | threshold |
+
+The CC target list draws from the same parameter vocabulary as OSC, so the Point Cloud controls (`pcZoom`, `pcPoints`, `pcSize`, `pcFov`, `pcSpin`, `pcOrbit`, the offset/pivot XYZ, `pcFlat`, `pcFreeze`) are equally MIDI-mappable — a CC's `0–127` maps straight onto the same normalized `0–1` range.
 
 **MIDI Time Code** (MTC) quarter-frames are assembled into a running `HH:MM:SS:FF` timecode, shown live in the Show Control section — useful for confirming the phone is receiving a show's clock. Show Control does not yet fire commands at specific timecodes (that's a real, separate cue-scheduler feature — a timecode-indexed cue list with its own editor — not built yet); today, MTC reception is for monitoring, and cueing is done via `/tdlidar/show/recall` or MIDI Note On.
 

@@ -26,6 +26,18 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | `/tdlidar/show/param/brightness` | float | **Brightness** changed |
 | `/tdlidar/show/param/threshold` | float | **Depth Threshold** changed |
 | `/tdlidar/show/param/colorMapIndex` | int | **Colormap Index** changed |
+| `/tdlidar/show/param/pcZoom` | float 0–1 | **PC Zoom** changed (Point Cloud page) |
+| `/tdlidar/show/param/pcX` · `pcY` · `pcZ` | float 0–1 | **PC Offset X/Y/Z** changed — moves the whole cloud |
+| `/tdlidar/show/param/pcPivotX` · `pcPivotY` · `pcPivotZ` | float 0–1 | **PC Pivot X/Y/Z** changed — moves the orbit centre |
+| `/tdlidar/show/param/pcPoints` | float 0–1 | **PC Points** changed (density) |
+| `/tdlidar/show/param/pcSize` | float 0–1 | **PC Size** changed |
+| `/tdlidar/show/param/pcFov` | float 0–1 | **PC FOV** changed |
+| `/tdlidar/show/param/pcSpin` | float 0–1 | **PC Spin Speed** changed |
+| `/tdlidar/show/param/pcFlat` | float (≥0.5) | **PC Flat** toggled |
+| `/tdlidar/show/param/pcFreeze` | float (≥0.5) | **PC Freeze** toggled |
+| `/tdlidar/show/param/pcOrbit` | float 0–1 | **PC Orbit Mode** — `<0.33` Off · `<0.66` Spin · else Sway |
+
+All `pc*` faders are **normalized 0–1** and scaled to each control's real range on the phone (matching a MIDI CC's 0–127). They apply live while Point Cloud mode is on screen.
 
 (Matches [Show Control]({{ '/show-control-mode.html' | relative_url }}) exactly — this op is a thin wrapper, not a second spec.)
 
@@ -48,6 +60,9 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | NDI Resolution | Med | Low / Med / High / Max — drives all three NDI outputs at once, on change |
 | Alpha Mask | off | alpha mask on/off across all three modes, on change |
 | Gamma / Contrast / Brightness / Depth Threshold / Colormap Index | app defaults | live faders — send immediately on change |
+| **Point Cloud** page — PC Zoom, PC Offset X/Y/Z, PC Pivot X/Y/Z, PC Points, PC Size, PC FOV, PC Spin Speed | 0–1 | normalized faders — send `/tdlidar/show/param/pc*` live on change |
+| **Point Cloud** page — PC Flat, PC Freeze | off | on/off toggles (send ≥0.5 / 0) |
+| **Point Cloud** page — PC Orbit Mode | Off | Off / Spin / Sway — sends `pcOrbit` (0 / 0.5 / 1) |
 
 ## Quick start (beginner)
 1. On the phone: Main menu → gear → **Show Control** → Enabled on. Note the IP and Listen Port shown there.

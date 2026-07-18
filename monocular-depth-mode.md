@@ -37,7 +37,9 @@ Whether or not auto-adjust is on, the same sliders are available by hand: **Brig
 
 ## Output
 
-Monocular Depth streams over **NDI** under its own fixed source name, separate from the LiDAR depth and RGB camera NDI sources, so it's easy to pick out on the network even when other modes are also broadcasting. A **Resolution** picker (shared with LiDAR mode) sets the size the depth is upscaled to for the NDI stream and recordings. It also has its own on-device recorder — start/stop a recording the same way as LiDAR mode, and finished clips save to the Photos library the same way.
+Monocular Depth streams over **NDI** under its own fixed source name, separate from the LiDAR depth and RGB camera NDI sources, so it's easy to pick out on the network even when other modes are also broadcasting. A **Resolution** picker (shared with LiDAR mode) sets the size the depth is upscaled to for the NDI stream and recordings. It also has its own on-device recorder — the same **shutter** as LiDAR mode: a quick tap saves a photo (on-screen frame plus a plain RGB still) to Photos, and a tap-and-hold (~⅔ s) starts a recording, with a tap to stop. Finished clips save to the Photos library the same way.
+
+A **camera / depth** button (Pro, right of NDI) flips the whole output live between the colour-mapped depth and the plain RGB camera — preview, NDI and recording all switch together, instantly, even mid-stream. It starts on depth each time you enter the mode.
 
 ## What you can do with it
 
