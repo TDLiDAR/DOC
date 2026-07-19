@@ -2,7 +2,7 @@
 title: Point Cloud — Effects & Settings
 layout: default
 parent: App Guide
-nav_order: 8
+nav_order: 6
 ---
 
 # Point Cloud — Effects & Settings
@@ -268,7 +268,7 @@ Streams the **full point cloud** — up to 50,000 points, bit-exact — to Touch
 - **Stream over TCP** — the on switch (`pc.tcpEnabled`, default off). The IP/port fields appear only while it's on. **Enabling it raises the point budget to a safe 20,000** if it was lower (raise it to 50k in [Points](#points-density)).
 - **TD IP** (`pc.tcpHost`) — your computer's address. Use the network-discovery dropdown to pick the machine by name, or type the IP. If left blank, the app reuses the Point Cloud OSC target IP.
 - **Port** (`pc.tcpPort`, default **9002**) — match it to the TCP/IP DAT (server mode) in TouchDesigner.
-- **Wire format:** length-prefixed binary frames — a `"TDP1"` magic, a frame id, the point count, then 16 bytes per point (float32 `x,y,z` + uint8 `r,g,b,a`), little-endian. The app is the TCP **client**; TD's TCP/IP DAT listens. TD parses it with `numpy.frombuffer`. Full details in the [TCP streaming wire format]({{ '/osc-reference.html' | relative_url }}).
+- **Wire format:** length-prefixed binary frames — a `"TDP1"` magic, a frame id, the point count, then 16 bytes per point (float32 `x,y,z` + uint8 `r,g,b,a`), little-endian. The app is the TCP **client**; TD's TCP/IP DAT listens. TD parses it with `numpy.frombuffer`. Full details in the [TCP streaming wire format]({{ '/tdlidar_pointcloud_tcp.html' | relative_url }}).
 - **Pro-only:** Yes. · **Network cost:** ~16 bytes per point per frame, so **bandwidth scales directly with the point count**. At 50,000 points that's ~800 KB/frame before TCP overhead — high counts need a solid LAN. The app drops frames while a send is outstanding (TCP backpressure), so a slow link lowers the effective frame rate rather than building lag.
 - **When to use:** Whenever you want real, renderable, lossless geometry in TouchDesigner — to instance geometry onto every point, run a POP chain, or render the points directly.
 
@@ -317,6 +317,6 @@ A few rules that keep orientation straightforward:
 
 ## Related pages
 
-- [TCP streaming wire format]({{ '/osc-reference.html' | relative_url }}) — the exact byte layout the TCP point stream sends, and how to receive it in TouchDesigner.
+- [TCP streaming wire format]({{ '/tdlidar_pointcloud_tcp.html' | relative_url }}) — the exact byte layout the TCP point stream sends, and how to receive it in TouchDesigner.
 - [LiDAR settings]({{ '/lidar-settings.html' | relative_url }}) — the depth, tone, colour and NDI controls for the depth-video mode.
 - [Point Cloud Mode]({{ '/point-cloud-mode.html' | relative_url }}) — the short overview of the mode and its live screen.

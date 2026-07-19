@@ -2,7 +2,7 @@
 title: Cue Deck Mode
 layout: default
 parent: App Guide
-nav_order: 9
+nav_order: 10
 ---
 
 # Cue Deck Mode

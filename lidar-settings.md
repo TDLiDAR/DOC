@@ -2,7 +2,7 @@
 title: LiDAR — Every Setting
 layout: default
 parent: App Guide
-nav_order: 7
+nav_order: 3
 ---
 
 # LiDAR — Every Setting
@@ -254,7 +254,7 @@ These pick the palette that turns distance into an image, and the optional styli
 
 **How it changes the look.** Entirely — it's the palette. The cheat-sheet below describes each. Several are industry-standard names matched to TouchDesigner / LOTA so composites line up with existing projects.
 
-**Default & range.** Default **Black & White**. Six maps are **(Pro)**; they preview correctly but can only be *selected* with Pro (otherwise the picker reverts and opens the paywall).
+**Default & range.** Default **Black & White**. **25 maps** ship — **9 free, 16 (Pro)**; Pro maps preview correctly but can only be *selected* with Pro (otherwise the picker reverts and opens the paywall). You can also build your own — see [Custom colormaps](#custom-colormaps).
 
 | Colormap | Look (near → far) | Tier |
 |---|---|---|
@@ -273,8 +273,41 @@ These pick the palette that turns distance into an image, and the optional styli
 | **Topographic** | 8 stepped contour bands, survey-map elevation tints | **Pro** |
 | **Depth Slice** | only the middle ~20% of the range is visible (high-contrast grey), the rest black | **Pro** |
 | **Dual-tone** | teal → orange (cool → warm) | **Pro** |
+| **Viridis** | perceptually-uniform purple → teal → green → yellow | **Pro** |
+| **Magma** | black → purple → magenta → orange → cream | **Pro** |
+| **Inferno** | black → purple → red → orange → yellow | **Pro** |
+| **Plasma** | blue → purple → magenta → orange → yellow | **Pro** |
+| **Turbo** | improved-rainbow blue → green → yellow → red | **Pro** |
+| **Ice Fire** | cyan/blue (near) → black → orange/red (far), diverging | **Pro** |
+| **Neon Noir** | dark → neon magenta/cyan accents | **Pro** |
+| **Emerald** | black → deep green → emerald → mint | **Pro** |
+| **Copper** | black → brown → copper → tan | **Pro** |
+| **Grayscale Inv** | black → white (inverted linear greyscale) | **Pro** |
 
 **Interaction/caveat.** The colourmap runs *after* clipping and toning, so clipped pixels stay black and the tone curve decides which colours a given distance lands on. **Depth Slice** is effectively a soft far/near clip baked into the palette — pair it with brightness/contrast/gamma to move the visible slice.
+
+### Colour Source
+
+**What it controls.** What the colourmap is fed. **Depth** (default) colours by distance. **Confidence** (rear LiDAR) colours by Apple's per-pixel depth-confidence (low/medium/high) — useful for judging where the sensor is unsure. **Depth Lines** draws evenly-spaced iso-distance contour rings instead of a filled gradient.
+
+- **Confidence Smooth** — when Colour Source is Confidence, switches the confidence read between Hard (stepped) and Smooth (interpolated).
+- **Depth Line Spacing** — when Colour Source is Depth Lines, sets the distance between rings (≈0.005–20 m).
+
+### Noise Reduction
+
+A rear-LiDAR cleanup that suppresses low-amplitude depth jitter before the colourmap (0 = off, up to ~0.3 m). Lives with the Cleanup controls. Distinct from Temporal Smoothing (which averages over time) — this one gates by magnitude.
+
+### Measure Crosshair
+
+A live distance readout at the frame centre. **Measure Crosshair** turns it on; **Crosshair in NDI** burns it into the NDI/recorded output (off = on-screen only); **Crosshair Opacity** sets its strength (0.1–1).
+
+### Face-detail controls *(front / Face mode)*
+
+In Face mode the depth window tightens onto the nearest subject. **Facial Detail Gain** (0.5–10×) exaggerates fine relief; **Face Focus Point** picks what the window locks onto; **Tracking Speed** sets how quickly the window follows a moving subject.
+
+### Custom colormaps
+
+Beyond the 25 built-ins you can **build your own** colourmap from a list of colour stops (1 colour = a flat fill, 2+ = an evenly-spaced gradient). Custom maps appear in the picker alongside the built-ins and are streamed exactly like any other LUT.
 
 ### Colour-Map Effect *(Raw mode, Pro)*
 

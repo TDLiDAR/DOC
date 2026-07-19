@@ -2,12 +2,14 @@
 title: Point Cloud Mode
 layout: default
 parent: App Guide
-nav_order: 3
+nav_order: 5
 ---
 
 # Point Cloud Mode
 
 Point Cloud mode streams a live, three-dimensional point cloud from the phone's LiDAR straight into TouchDesigner. Unlike the depth video in LiDAR mode, this is real geometry: each point carries an exact 32-bit position and colour. It travels over a TCP connection rather than being squeezed through a video codec, so the points arrive bit-accurate — what the phone measures is what TouchDesigner receives, with no compression artefacts.
+
+The same cloud can **also** stream as an **NDI viewport** — the on-device 3D view rendered to 30 fps video (with an optional transparent background) — so you can pull it into TouchDesigner, OBS or any NDI tool as a `TOP` alongside (or instead of) the bit-exact TCP geometry. See [Point Cloud settings → Streaming]({{ '/point-cloud-settings.html#streaming' | relative_url }}).
 
 **Not just TouchDesigner.** The same live point cloud drives **Blender** (via the TDLiDAR Blender add-on) and **Arkestra** too:
 

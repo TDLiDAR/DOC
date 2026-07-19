@@ -49,11 +49,11 @@ flowchart LR
 
 A few controls appear no matter which mode you're in.
 
-The **mode switcher** sits at the top. It collapses to a single blue arrow to stay out of the way; tap it to expand the list of modes — LiDAR, Sensors, Point Cloud, Scene Build — and tap a mode to switch.
+The **mode switcher** sits at the top. It collapses to a single blue arrow to stay out of the way; tap it to expand the list of modes — LiDAR, Monocular Depth, Point Cloud, Mesh Cloud, Scene Build, Sensors, Cue Deck and Align — and tap a mode to switch.
 
 The **Settings gear** opens the settings sheet for the current mode. The settings are mode-aware: in LiDAR you get depth and NDI controls, in Sensors you get the sensor list and per-sensor tuning, etc.
 
-In LiDAR mode a small **frame-rate pill** shows the actual frames per second the phone is achieving. It is more than a readout — tapping it opens Settings, and its number is a quick health check (if it drops below 30 fps, you may have too many sensors or a busy Wi-Fi).
+In LiDAR and Monocular Depth modes a small **frame-rate pill** shows the actual frames per second the phone is achieving. It is more than a readout — tapping it opens Settings, and its number is a quick health check (if it drops below 30 fps, you may have too many sensors or a busy Wi-Fi).
 
 Most modes also have a **slide-up dock** at the bottom (a compact chevron) that reveals the mode's primary controls without leaving the live view.
 
@@ -65,7 +65,7 @@ Connection is the same idea in every mode — same network, point the app at you
 
 - [Connecting]({{ '/connecting.html' | relative_url }}) — network setup, ports, discovery, wired mode, troubleshooting.
 - [LiDAR Mode]({{ '/lidar-mode.html' | relative_url }}) — every depth, tone, colour and NDI control.
-- [Monocular Depth Mode]({{ '/monocular-depth-mode.html' | relative_url }}) — camera-only depth, the Relative/Metric models, auto-adjust.
+- [Monocular Depth Mode]({{ '/monocular-depth-mode.html' | relative_url }}) — camera-only depth, the Small/Medium/High depth models, auto-adjust.
 - [Point Cloud Mode]({{ '/point-cloud-mode.html' | relative_url }}) — TCP streaming, the viewer, PLY export.
 - [Mesh Cloud Mode]({{ '/mesh-cloud-mode.html' | relative_url }}) — scan, free-fly review, edit, send/export.
 - [Scene Build Mode]({{ '/scene-build-mode.html' | relative_url }}) — scanning a room with RoomPlan.

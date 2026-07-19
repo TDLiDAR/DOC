@@ -96,22 +96,26 @@ Body, Hand, and Animal pose channels **only update while a subject is actually i
 
 ## Modes
 
-### What's the difference between LiDAR, Point Cloud, Scene Build, and Sensors?
+### What are the modes and how do they differ?
 
-The app does four different jobs and each travels over a different transport:
+The app does several different jobs and each travels over its own transport:
 
 | Mode | What it produces | Transport | Receives in TD as |
 |---|---|---|---|
 | **LiDAR** | Colour-mapped depth (+ optional RGB) | NDI | TOP (via NDI op) |
-| **Point Cloud** | Live lossless 3D point cloud | TCP | POP (via Point Cloud op) |
+| **Monocular Depth** | Camera-only neural depth on any iPhone | NDI | TOP (via NDI op) |
+| **Point Cloud** | Live lossless 3D point cloud (+ NDI viewport) | TCP (+ NDI) | POP (via Point Cloud op) / TOP |
+| **Mesh Cloud** | ARKit scene-reconstruction mesh | TCP | POP / mesh |
 | **Scene Build** | RoomPlan room scan | — | review on device |
 | **Sensors** | Dozens of individual sensors | OSC/UDP 9000 | CHOP/DAT (the operator family) |
+| **Cue Deck** | A grid of user OSC trigger pads | OSC | DAT/CHOP |
+| **Align** | Multi-device calibration helper | OSC | on device |
 
-Pick a mode with the mode switcher at the top of the app. The **Sensors** mode is the one that feeds the operator family.
+Pick a mode with the mode switcher at the top of the app. The **Sensors** mode is the one that feeds the operator family. Show Control can also remote-switch between the three live-output modes (LiDAR / Monocular Depth / Point Cloud).
 
 ### Can I run several modes at once?
 
-The four **modes** are mutually exclusive on the phone — switching from, say, LiDAR to Sensors tears down the previous capture cleanly before starting the next (so the switch is safe and won't leave a stream half-running). Within **Sensors mode**, however, you can enable **as many individual sensors as you like** — they all multiplex onto the same UDP port 9000.
+The **modes** are mutually exclusive on the phone — switching from, say, LiDAR to Sensors tears down the previous capture cleanly before starting the next (so the switch is safe and won't leave a stream half-running). Within **Sensors mode**, however, you can enable **as many individual sensors as you like** — they all multiplex onto the same UDP port 9000.
 
 ### Which sensors can't run together?
 
@@ -178,7 +182,7 @@ No. The family is built on the dotsimulate **TDFam** runtime bundled inside `TDL
 
 ### What does Pro unlock?
 
-Pro unlocks the advanced/heavier capabilities — **Extended LiDAR range**, **HD** streaming, **depth-mask alpha** (transparent-background keying), and the **advanced sensors**. The core sensor suite and basic streaming work without Pro; Pro removes the limits and adds the higher-fidelity outputs. See [Performance & Pro]({{ '/app-guide.html' | relative_url }}) in the App Guide.
+Pro unlocks the advanced/heavier capabilities — **Extended LiDAR range**, **HD** streaming, **depth-mask alpha** (transparent-background keying), and the **advanced sensors**. The core sensor suite and basic streaming work without Pro; Pro removes the limits and adds the higher-fidelity outputs. See [Performance & Pro]({{ '/performance-pro.html' | relative_url }}).
 
 ### Does Pro work offline?
 

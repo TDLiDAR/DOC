@@ -31,6 +31,7 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | `/tdlidar/show/ndi` | int/float/bool (0 or 1) | Toggles the **persistent-NDI master switch** (same one as "Keep NDI running across modes" in the Network sheet). `1` starts the shared NDI stream and arms whichever of LiDAR / Monocular Depth / Point Cloud is active, so the feed comes up on command; `0` stops it. |
 | `/tdlidar/show/resolution` | int, 0–3 | Sets the NDI output resolution for **all three modes at once**: `0` Low, `1` Med, `2` High, `3` Max. LiDAR + Monocular Depth share one upscale ladder (≈800 → 1920 wide); Point Cloud has its own (540 → 1440 wide). |
 | `/tdlidar/show/alpha` | int/float/bool (0 or 1) | Toggles the alpha mask in **all three modes at once** — LiDAR depth-mask alpha, Monocular Depth alpha mask, and Point Cloud background removal. `1` on, `0` off. |
+| `/tdlidar/show/reset` | — (pulse) | **Factory-reset every setting** to its default — the same as the in-app "Reset All Settings". Restores every editable parameter across all modes; your Pro unlock and saved captures are untouched. Any argument (or none) triggers it. |
 | `/tdlidar/show/capture/finish` | — | Mesh Cloud: ends the current scan (same as tapping Finish). |
 | `/tdlidar/show/capture/rescan` | — | Mesh Cloud: discards the finished scan and starts over. |
 | `/tdlidar/show/capture/start` | — | Point Cloud: starts TCP streaming. |
@@ -202,6 +203,9 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 > `pcX/Y/Z` moves the **whole cloud**; `pcPivotX/Y/Z` moves the **orbit centre** the turntable rotates around; `pcRotX/Y/Z` **tilts** the whole cloud (±180°). All are independent so you can compose them. `pcNDIEnabled` / `pcTCPEnabled` start/stop the Point Cloud viewport's own NDI / TCP streams.
 {: .note }
 
+> **On the `tdlidar_show` operator**, the handful of discrete controls are **dropdown menus** rather than 0–1 faders — `pcNDIResolution` (Low / Med / High / Max, like the global NDI Resolution), plus `pcOrbit` (Off / Spin / Sway), `pcDetailUpsample` (Off / 2× / 4×), `monoModel` (Small / Medium / High), `monoCamera` (Front / 1× / 0.5×) and `depthMode` (Environment / Face / Raw). They still send the same normalized `0–1` on the wire (menu position ÷ last index), so raw OSC senders can drive them too.
+{: .note }
+
 > Mesh Cloud's Send (stream to TD) and Export (save PLY) aren't remote-triggerable yet — they live as private state inside the mode's own 3D viewer, not reachable from outside it. Finish and Rescan are.
 {: .note }
 
@@ -216,6 +220,7 @@ You don't have to hand-build an OSC Out CHOP for every address above — **`tdli
 | Cues | Mode + **Switch Mode** pulse | `/tdlidar/show/mode` — menu limited to LiDAR / Monocular Depth / Point Cloud |
 | Cues | Record toggle | `/tdlidar/show/record`, on change |
 | Cues | Capture Verb + **Send Capture** pulse | `/tdlidar/show/capture/<verb>` |
+| Cues | **Reset Settings** pulse | `/tdlidar/show/reset` — factory-reset every setting |
 | Output | **NDI Enable** toggle | `/tdlidar/show/ndi`, on change |
 | Output | **NDI Resolution** menu (Low / Med / High / Max) | `/tdlidar/show/resolution`, on change |
 | Output | **Alpha Mask** toggle | `/tdlidar/show/alpha`, on change |
@@ -257,7 +262,7 @@ The CC target is any key from the same parameter vocabulary as OSC — so **ever
 
 ## Status heartbeat out
 
-With **Status Heartbeat** on, the phone sends its own state back out once a second, over the app's normal OSC destination (the same IP set under "OSC destination" in the Network sheet), on port 9000:
+With **Status Heartbeat** on, the phone sends its own state back out once a second to the **Point Cloud TCP host** (the TouchDesigner IP you set in Point Cloud mode), on **port 9000**:
 
 | address | args | meaning |
 |---|---|---|

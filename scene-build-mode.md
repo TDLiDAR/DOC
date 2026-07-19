@@ -2,7 +2,7 @@
 title: Scene Build Mode
 layout: default
 parent: App Guide
-nav_order: 4
+nav_order: 8
 ---
 
 # Scene Build Mode

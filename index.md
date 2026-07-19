@@ -157,6 +157,7 @@ The #1 issue with anything OSC. Walk this list:
 - [OSC Reference]({{ '/osc-reference.html' | relative_url }}) — the complete OSC wire spec (every address, type, range, rate).
 - [OSC Sensor Guide]({{ '/osc-sensor-guide.html' | relative_url }}) — plain-language tour of the wire format.
 - [FAQ]({{ '/faq.html' | relative_url }}) — quick answers, especially for "no data".
+- [What's New]({{ '/changelog.html' | relative_url }}) — per-version log of user-facing changes.
 
 ---
 

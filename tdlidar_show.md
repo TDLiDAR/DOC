@@ -21,6 +21,7 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | `/tdlidar/show/resolution` | int (0–3) | **NDI Resolution** changed — Low / Med / High / Max |
 | `/tdlidar/show/alpha` | int (0/1) | **Alpha Mask** toggled |
 | `/tdlidar/show/capture/<verb>` | — | **Send Capture** pulsed — verb from **Capture Verb** |
+| `/tdlidar/show/reset` | — | **Reset Settings** pulsed — factory-reset every setting |
 | `/tdlidar/show/param/<key>` | float 0–1 (≥0.5 for toggles) | any of the **141** mode-tab controls changed — see below |
 
 **v9.11 — every setting is a parameter.** Three parameter pages (**LiDAR** · 45, **Monocular Depth** · 13, **Point Cloud** · 83) expose every user-facing control of each mode as a `0–1` fader (or a toggle), each sending the matching `/tdlidar/show/param/<key>` live on change. All faders are **normalized 0–1** and scaled to the control's real range on the phone (matching a MIDI CC's 0–127); toggles send `1`/`0`. The full key list lives in [Show Control → Every setting over OSC & MIDI]({{ '/show-control-mode.html#every-setting-over-osc--midi' | relative_url }}).
@@ -42,6 +43,7 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | Record | off | on/off sends 1/0 immediately |
 | Capture Verb | Mesh Finish | finish / rescan / start / stop |
 | Send Capture | — | pulse to send the capture verb |
+| Reset Settings | — | pulse to factory-reset every setting (same as the in-app Reset All) |
 | NDI Enable | off | persistent-NDI master on/off — sends immediately on change |
 | NDI Resolution | Med | Low / Med / High / Max — drives all three NDI outputs at once, on change |
 | Alpha Mask | off | alpha mask on/off across all three modes, on change |
