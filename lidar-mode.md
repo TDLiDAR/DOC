@@ -21,6 +21,8 @@ The **NDI** indicator shows that the depth stream is being broadcast and, with t
 
 The **RGB / Depth** button (Pro, right of NDI) flips the whole output live between the colour-mapped depth and the plain RGB camera — what you see, the NDI stream, and any recording all switch together, instantly, even mid-stream or mid-recording. Its label and icon show what you'll switch **to**: "RGB" with a person icon while you're on depth, "Depth" with a dotted-background person while you're on RGB. It always starts on depth when you enter the mode.
 
+**Hardware buttons.** The volume buttons and (on iPhone 16) the Camera Control click can each run an action in this mode — Photo (default), Record, RGB / Depth switch, Camera Flip, or Adjust (volume nudges the Camera-Control slider value). Configure them under Settings → **Hardware Buttons**; while an action is set the volume buttons don't change system volume here. A small **"photo/video saved to gallery"** note appears briefly under the fps pill whenever a capture finishes saving.
+
 The **frame-rate pill** shows the real frames per second. Tap it to jump straight into Settings. Watch it as a health meter — a number well below your target means the phone is throttling.
 
 The **gear** opens the full settings sheet, and a compact **slide-up dock** at the bottom edge reveals the main controls without covering the preview. A **double-tap** on the preview toggles the aspect framing between the tall and wide layouts.

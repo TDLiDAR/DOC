@@ -23,6 +23,8 @@ The mode switch lets you pick between three models, shown in the app as size/qua
 
 Higher tiers cost more per frame, so keep an eye on the **fps** readout at the top of the screen and pick the tier that holds a frame rate your composite is happy with.
 
+Switching models **unloads the old model first** — the view fades to black with a "Loading depth model…" spinner until the new model's first frame arrives (the first-ever load of a model can take several seconds while iOS compiles it; later loads are fast).
+
 ## The camera cycle
 
 A camera button cycles through up to three cameras: **Front** (the TrueDepth/selfie camera, run at its full field of view with Center Stage switched off so you get the maximum wideness), **1x** (the main back wide camera), and **0.5x** (the back ultra-wide camera, on phones that have one — it's skipped on the cycle if the device doesn't). Switching cameras resets the temporal filter's history, since the old smoothing state described a different view.
@@ -42,6 +44,10 @@ Monocular Depth streams over **NDI** under its own fixed source name, separate f
 **What you see is what records.** The on-device preview, the recording and the NDI stream are all fed from the **same processed frame** — the Sharpen effect and the chosen Resolution apply to all three identically, so a recording looks exactly like the screen. The camera also targets a locked **60 fps** on all three cameras (the model then runs as fast as the phone can sustain).
 
 An **RGB / Depth** button (Pro, right of NDI) flips the whole output live between the colour-mapped depth and the plain RGB camera — preview, NDI and recording all switch together, instantly, even mid-stream. Its label and icon show what you'll switch **to** ("RGB" + a person icon while on depth; "Depth" + a dotted-background person while on RGB). It starts on depth each time you enter the mode.
+
+**Hardware buttons.** The volume buttons and (on iPhone 16) the Camera Control click can each run an action here — Photo (default), Record, RGB / Depth switch, Camera Flip, or Adjust (volume nudges the Camera-Control slider value). Set them under Settings → **Hardware Buttons**; while an action is set the volume buttons don't change system volume in this mode. On iPhone 16 the **Camera Control slide** also scrolls a setting of your choice — Colormap (default), Brightness, Contrast, Gamma, Smoothing or Camera — picked with **Camera Control Scrolls** in this mode's settings sheet.
+
+A small **"photo/video saved to gallery"** note appears briefly under the fps pill whenever a capture finishes saving.
 
 ## What you can do with it
 

@@ -8,6 +8,15 @@ nav_order: 9
 
 A per-version log of user-facing changes. For the full control reference see the [App Guide]({{ '/app-guide.html' | relative_url }}) and [Show Control]({{ '/show-control-mode.html' | relative_url }}).
 
+## Latest (July 2026)
+
+- **Hardware buttons.** The volume buttons and the iPhone-16 Camera Control click can each run an action in LiDAR and Monocular Depth — Photo (default), Record, RGB / Depth switch, Camera Flip, or Adjust. Configure under Settings → **Hardware Buttons**.
+- **Camera Control in Monocular Depth.** The iPhone-16 slide now scrolls a Mono setting of your choice (Colormap default, Brightness, Contrast, Gamma, Smoothing, Camera) via **Camera Control Scrolls** — LiDAR parity.
+- **Saved-to-gallery note.** A brief "photo/video saved to gallery" caption under the fps pill confirms every capture in LiDAR and Monocular Depth.
+- **Monocular performance.** Inference and post-processing now overlap, and the color pipeline was vectorized — higher sustained fps on all three models (Small can reach the full 60).
+- **Model switching fixed.** Switching depth models now fades to black with a loading spinner (the old model is unloaded first) instead of freezing on a stale frame.
+- **Fixes.** Mono's RGB view no longer renders upside down in a stretched box; LiDAR's rear-camera RGB view is upright again; leaving Monocular Depth to the menu no longer leaves the camera light on.
+
 ## v9.14
 
 - **Show blackout — screen off, streams on.** Turn the screen off (brightness to zero, touch blocked, preview rendering suspended) while NDI, OSC and recording keep running — a real battery saver for rigged phones and long installs. Trigger it remotely with `/tdlidar/show/screen` (a **Screen Off** toggle on the `tdlidar_show` operator's Output page) in LiDAR / Monocular Depth / Point Cloud, or with the new **screen-off button** in Sensors mode. **Triple-tap** the dark screen to wake.

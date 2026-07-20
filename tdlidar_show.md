@@ -23,9 +23,9 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | `/tdlidar/show/capture/<verb>` | — | **Send Capture** pulsed — verb from **Capture Verb** |
 | `/tdlidar/show/reset` | — | **Reset Settings** pulsed — factory-reset every setting |
 | `/tdlidar/show/screen` | int (0/1) | **Screen Off** toggled — 1 blacks out the phone's screen (streams keep running), 0 wakes it |
-| `/tdlidar/show/param/<key>` | float 0–1 (≥0.5 for toggles) | any of the **141** mode-tab controls changed — see below |
+| `/tdlidar/show/param/<key>` | float 0–1 (≥0.5 for toggles) | any of the **142** mode-tab controls changed — see below |
 
-**v9.11 — every setting is a parameter.** Three parameter pages (**LiDAR** · 45, **Monocular Depth** · 13, **Point Cloud** · 83) expose every user-facing control of each mode as a `0–1` fader (or a toggle), each sending the matching `/tdlidar/show/param/<key>` live on change. All faders are **normalized 0–1** and scaled to the control's real range on the phone (matching a MIDI CC's 0–127); toggles send `1`/`0`. The full key list lives in [Show Control → Every setting over OSC & MIDI]({{ '/show-control-mode.html#every-setting-over-osc--midi' | relative_url }}).
+**v9.11 — every setting is a parameter.** Three parameter pages (**LiDAR** · 45, **Monocular Depth** · 14, **Point Cloud** · 83) expose every user-facing control of each mode as a `0–1` fader (or a toggle), each sending the matching `/tdlidar/show/param/<key>` live on change. All faders are **normalized 0–1** and scaled to the control's real range on the phone (matching a MIDI CC's 0–127); toggles send `1`/`0`. The full key list lives in [Show Control → Every setting over OSC & MIDI]({{ '/show-control-mode.html#every-setting-over-osc--midi' | relative_url }}).
 
 (Matches [Show Control]({{ '/show-control-mode.html' | relative_url }}) exactly — this op is a thin wrapper, not a second spec.)
 
@@ -50,7 +50,7 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | NDI Resolution | Med | Low / Med / High / Max — drives all three NDI outputs at once, on change |
 | Alpha Mask | off | alpha mask on/off across all three modes, on change |
 | **LiDAR** page — 45 controls | 0–1 / toggles | every LiDAR setting as a normalized fader or toggle — send `/tdlidar/show/param/<key>` live on change |
-| **Monocular Depth** page — 13 controls | 0–1 / toggles | every Monocular Depth setting, same scheme |
+| **Monocular Depth** page — 14 controls | 0–1 / toggles | every Monocular Depth setting, same scheme |
 | **Point Cloud** page — 83 controls | 0–1 / toggles | every Point Cloud setting (view, tilt, cleanup, motion FX, network), same scheme |
 
 ## Quick start (beginner)
