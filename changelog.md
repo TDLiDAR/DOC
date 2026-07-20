@@ -8,6 +8,10 @@ nav_order: 9
 
 A per-version log of user-facing changes. For the full control reference see the [App Guide]({{ '/app-guide.html' | relative_url }}) and [Show Control]({{ '/show-control-mode.html' | relative_url }}).
 
+## v9.14
+
+- **Show blackout — screen off, streams on.** Turn the screen off (brightness to zero, touch blocked, preview rendering suspended) while NDI, OSC and recording keep running — a real battery saver for rigged phones and long installs. Trigger it remotely with `/tdlidar/show/screen` (a **Screen Off** toggle on the `tdlidar_show` operator's Output page) in LiDAR / Monocular Depth / Point Cloud, or with the new **screen-off button** in Sensors mode. **Triple-tap** the dark screen to wake.
+
 ## v9.13
 
 - **Monocular Depth targets 60 fps.** All three cameras (Front / 1× / 0.5×) now pick 60 fps-capable formats and lock the frame rate so auto-exposure can't sag the sensor to 24 fps.

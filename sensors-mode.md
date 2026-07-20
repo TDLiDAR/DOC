@@ -19,6 +19,8 @@ Some camera-based sensors cannot run at the same time, because two different cam
 
 At the top of the panel are small **OSC** and **NDI** tabs. OSC is where the sensor stream is configured; NDI appears because a couple of camera sensors can also send their preview as NDI.
 
+A **screen-off button** (a struck-through iPhone, next to the help "?") blacks out the screen while every enabled sensor **keeps streaming** — OSC (and camera NDI, if broadcasting) run untouched. Brightness drops to zero, all touch is blocked, and the phone won't auto-lock, so a rigged phone can run a long install without wasting battery on the display. **Triple-tap the dark screen to wake it.** The same blackout is remote-triggerable in the other modes via [Show Control]({{ '/show-control-mode.html' | relative_url }}) (`/tdlidar/show/screen`).
+
 Several camera sensors that draw an on-screen overlay have small action buttons in their card. **Reset** and **Reset Plane** re-zero a tracker's reference. **Scan** drives the mesh capture. **Recenter AirPods** zeroes the AirPods head pose to your current head position. The back-distance sensor shows a movable cross on the live view that you drag to aim the measurement, with a **Reset square to centre** action to put it back.
 
 ## Setting the OSC target

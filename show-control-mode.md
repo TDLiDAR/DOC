@@ -32,6 +32,7 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | `/tdlidar/show/resolution` | int, 0–3 | Sets the NDI output resolution for **all three modes at once**: `0` Low, `1` Med, `2` High, `3` Max. LiDAR + Monocular Depth share one upscale ladder (≈800 → 1920 wide); Point Cloud has its own (540 → 1440 wide). |
 | `/tdlidar/show/alpha` | int/float/bool (0 or 1) | Toggles the alpha mask in **all three modes at once** — LiDAR depth-mask alpha, Monocular Depth alpha mask, and Point Cloud background removal. `1` on, `0` off. |
 | `/tdlidar/show/reset` | — (pulse) | **Factory-reset every setting** to its default — the same as the in-app "Reset All Settings". Restores every editable parameter across all modes; your Pro unlock and saved captures are untouched. Any argument (or none) triggers it. |
+| `/tdlidar/show/screen` | int/float/bool (1 = off, 0 = wake) | **Show blackout** — turns the screen off (brightness to zero, all touch blocked, preview rendering suspended) while **NDI, OSC and recording keep running**. A real battery saver for long installs. Wake remotely with `0`, or **triple-tap** the dark screen on the device. Works in LiDAR, Monocular Depth and Point Cloud modes (and anywhere else — it's app-wide). |
 | `/tdlidar/show/capture/finish` | — | Mesh Cloud: ends the current scan (same as tapping Finish). |
 | `/tdlidar/show/capture/rescan` | — | Mesh Cloud: discards the finished scan and starts over. |
 | `/tdlidar/show/capture/start` | — | Point Cloud: starts TCP streaming. |
@@ -224,6 +225,7 @@ You don't have to hand-build an OSC Out CHOP for every address above — **`tdli
 | Output | **NDI Enable** toggle | `/tdlidar/show/ndi`, on change |
 | Output | **NDI Resolution** menu (Low / Med / High / Max) | `/tdlidar/show/resolution`, on change |
 | Output | **Alpha Mask** toggle | `/tdlidar/show/alpha`, on change |
+| Output | **Screen Off** toggle | `/tdlidar/show/screen`, on change — blackout on/off while streams keep running |
 | **LiDAR** | 45 controls (tone, clip, detail, face, raw look, back-LiDAR) | the matching `/tdlidar/show/param/*`, normalized on change |
 | **Monocular Depth** | 13 controls (model, camera, tone, smoothing, auto-adjust, alpha) | the matching `/tdlidar/show/param/*`, normalized on change |
 | **Point Cloud** | 83 controls (view, tilt, cleanup, motion FX, network) | the matching `/tdlidar/show/param/*`, normalized on change |
