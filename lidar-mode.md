@@ -15,11 +15,11 @@ When you enter LiDAR mode you see the live depth preview filling the screen, wit
 
 The **flip** button swaps between the rear LiDAR camera and the front TrueDepth camera. Flipping mid-stream is handled cleanly, and the app remembers a separate depth profile for the front camera so your face-tuned settings don't disturb your room-tuned settings.
 
-The **shutter** button is a two-in-one control: a **quick tap takes a photo** — it saves both the on-screen frame and a plain RGB camera still to your Photos library — and a **tap-and-hold (about ⅔ of a second) starts a video recording**, shown by a progress ring filling around the button and a haptic tick the moment it begins. While recording, a single tap stops it. The recorded clip is the same processed depth (or camera) that is going out over NDI, saved to Photos when you stop. If you flip the camera while recording, the app either asks first or, if you have turned that warning off, silently saves the current clip and switches.
+The **shutter** button is a two-in-one control: a **quick tap takes a photo** — it saves both the on-screen frame and a plain RGB camera still to your Photos library — and a **tap-and-hold (0.37 s) starts a video recording**, shown by a progress ring filling around the button and a haptic tick the moment it begins; let go and it keeps recording. While recording, a single tap stops it. The recorded clip is the same processed depth (or camera) that is going out over NDI, saved to Photos when you stop. If you flip the camera while recording, the app either asks first or, if you have turned that warning off, silently saves the current clip and switches.
 
 The **NDI** indicator shows that the depth stream is being broadcast and, with the source dropdown, which name it is broadcasting under.
 
-The **camera / depth** button (Pro, right of NDI) flips the whole output live between the colour-mapped depth and the plain RGB camera — what you see, the NDI stream, and any recording all switch together, instantly, even mid-stream or mid-recording. It always starts on depth when you enter the mode.
+The **RGB / Depth** button (Pro, right of NDI) flips the whole output live between the colour-mapped depth and the plain RGB camera — what you see, the NDI stream, and any recording all switch together, instantly, even mid-stream or mid-recording. Its label and icon show what you'll switch **to**: "RGB" with a person icon while you're on depth, "Depth" with a dotted-background person while you're on RGB. It always starts on depth when you enter the mode.
 
 The **frame-rate pill** shows the real frames per second. Tap it to jump straight into Settings. Watch it as a health meter — a number well below your target means the phone is throttling.
 

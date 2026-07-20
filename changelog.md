@@ -8,6 +8,13 @@ nav_order: 9
 
 A per-version log of user-facing changes. For the full control reference see the [App Guide]({{ '/app-guide.html' | relative_url }}) and [Show Control]({{ '/show-control-mode.html' | relative_url }}).
 
+## v9.13
+
+- **Monocular Depth targets 60 fps.** All three cameras (Front / 1× / 0.5×) now pick 60 fps-capable formats and lock the frame rate so auto-exposure can't sag the sensor to 24 fps.
+- **What you see is what records (Monocular Depth).** The preview, the recording and the NDI stream are now fed from one processed frame — the **Sharpen** effect and the chosen **Resolution** finally show up in recordings, exactly as on screen.
+- **Faster shutter.** Hold-to-record now arms in **0.37 s** (was ⅔ s) in LiDAR and Monocular Depth; release keeps recording, tap stops.
+- **RGB / Depth switch.** The live camera⇄depth button is now labeled by what you'll switch **to** ("RGB" / "Depth") with a morphing person icon, and no longer renders the camera view upside down.
+
 ## v9.12
 
 - **Remote factory reset.** Show Control adds `/tdlidar/show/reset` (a **Reset Settings** pulse on the `tdlidar_show` operator) — restores every setting to its default, exactly like the in-app *Reset All*. See [Show Control]({{ '/show-control-mode.html#every-setting-over-osc--midi' | relative_url }}).
