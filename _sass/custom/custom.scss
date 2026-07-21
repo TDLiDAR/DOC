@@ -353,3 +353,44 @@ blockquote.warning, blockquote.caution { border-radius: 0 8px 8px 0; }
 // Copy-code button (Apple-blue on hover)
 .btn-copy { border: 1px solid rgba(255, 255, 255, 0.25); }
 .btn-copy:hover { border-color: $td-blue; color: $td-blue; }
+
+// =====================================================================
+//  Feedback & Support form (home page, #report)
+// =====================================================================
+.td-feedback-form { max-width: 34rem; margin: 1rem 0 1.4rem; }
+.td-feedback-form .field-group { margin-bottom: 1rem; }
+.td-feedback-form label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.td-feedback-form select,
+.td-feedback-form input[type="email"],
+.td-feedback-form textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: #0a0a0b;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+.td-feedback-form select:focus,
+.td-feedback-form input[type="email"]:focus,
+.td-feedback-form textarea:focus {
+  outline: none;
+  border-color: $td-blue;
+  box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.4);
+}
+.td-feedback-form textarea { resize: vertical; }
+#feedback-success {
+  max-width: 34rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: #0a0a0b;
+}

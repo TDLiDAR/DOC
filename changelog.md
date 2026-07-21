@@ -10,6 +10,8 @@ A per-version log of user-facing changes. For the full control reference see the
 
 ## Latest (July 2026)
 
+- **ARKit Point Cloud mode (beta).** A new Pro, capture-only mode: ARKit person segmentation crossed with LiDAR depth captures every human figure in view as a transient, world-locked point-cloud silhouette, replaced fresh on every scan. Pause freezes the frame so you can walk around it while the camera stays live; capture works like the other modes (tap = photo, hold = video). See [ARKit Point Cloud Mode]({{ '/arkit-point-cloud-mode.html' | relative_url }}).
+- **Feedback & Support form.** The docs home page now has a direct feedback form — bug reports, feature requests, questions — see [Feedback & Support]({{ '/#report' | relative_url }}).
 - **Hardware buttons.** The volume buttons and the iPhone-16 Camera Control click can each run an action in LiDAR and Monocular Depth — Photo (default), Record, RGB / Depth switch, Camera Flip, or Adjust. Configure under Settings → **Hardware Buttons**.
 - **Camera Control in Monocular Depth.** The iPhone-16 slide now scrolls a Mono setting of your choice (Colormap default, Brightness, Contrast, Gamma, Smoothing, Camera) via **Camera Control Scrolls** — LiDAR parity.
 - **Saved-to-gallery note.** A brief "photo/video saved to gallery" caption under the fps pill confirms every capture in LiDAR and Monocular Depth.

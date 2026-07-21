@@ -161,6 +161,56 @@ The #1 issue with anything OSC. Walk this list:
 
 ---
 
+## Feedback & Support {#report}
+
+Found a bug, want a feature, or just stuck on something? Send it straight through — it goes to the developer's inbox, not a ticket queue.
+
+<div markdown="0">
+<form action="https://formsubmit.co/aristideslintzeris@gmail.com" method="POST" class="td-feedback-form" id="feedback-form">
+    <input type="hidden" name="_subject" value="TDLiDAR Docs — feedback form">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://tdlidar.github.io/DOC/?submitted=true#report">
+
+    <div class="field-group">
+        <label for="fb-topic">Topic *</label>
+        <select name="topic" id="fb-topic" required>
+            <option value="" disabled selected>Choose one</option>
+            <option value="Bug report">Bug report</option>
+            <option value="Feature request">Feature request</option>
+            <option value="Help">Help</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+    <div class="field-group">
+        <label for="fb-email">Your email *</label>
+        <input type="email" name="email" id="fb-email" required placeholder="you@example.com">
+    </div>
+
+    <div class="field-group">
+        <label for="fb-message">Message *</label>
+        <textarea name="message" id="fb-message" rows="5" required placeholder="What's going on?"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
+<p id="feedback-success" style="display:none;">Thanks — your message is on its way.</p>
+<script>
+  if (new URLSearchParams(window.location.search).has('submitted')) {
+    var fbForm = document.getElementById('feedback-form');
+    var fbSuccess = document.getElementById('feedback-success');
+    if (fbForm && fbSuccess) {
+      fbForm.style.display = 'none';
+      fbSuccess.style.display = 'block';
+    }
+    history.replaceState(null, '', window.location.pathname + window.location.hash);
+  }
+</script>
+</div>
+
+---
+
 <p class="text-center text-grey-dk-000">
   Made by <a href="https://www.patreon.com/posts/163658679" target="_blank" rel="noopener noreferrer">Aristides Lab</a> ·
   <a href="https://apps.apple.com/us/app/tdlidar/id6760954732" target="_blank" rel="noopener noreferrer">App Store</a> ·
