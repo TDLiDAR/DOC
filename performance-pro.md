@@ -2,7 +2,7 @@
 title: Performance, Pro & Recording
 layout: default
 parent: App Guide
-nav_order: 12
+nav_order: 13
 ---
 
 # Performance, Pro and Recording

@@ -31,7 +31,18 @@ A camera button cycles through up to three cameras: **Front** (the TrueDepth/sel
 
 ## Auto-adjust
 
-Auto-adjust automatically rides the Brightness/Contrast/Gamma sliders so a scene stays readable as lighting or subject distance changes. It is driven primarily by the depth output itself — how close the framed subject is, sampled from the centre of the frame — with the camera's own light reading (ISO/shutter) folded in as a much smaller secondary input. As a subject gets closer or the scene gets brighter, the sliders come **down** (toward less contrast/gamma) rather than up, so a face filling the frame keeps its features instead of blowing out to solid white. A **Sensitivity** control sets how big a change in distance/light it takes before auto-adjust reacts.
+Auto-adjust automatically rides the Brightness/Contrast/Gamma sliders so a scene stays readable as lighting or subject distance changes. It is driven primarily by the depth output itself — how close the framed subject is — with the camera's own light reading (ISO/shutter) folded in as a much smaller secondary input. As a subject gets closer or the scene gets brighter, the sliders come **down** (toward less contrast/gamma) rather than up, so a face filling the frame keeps its features instead of blowing out to solid white. A **Sensitivity** control sets how big a change in distance/light it takes before auto-adjust reacts.
+
+Rather than a blind centre crop, the driver reads a fixed lattice of sample points across the frame — **17** on the rear cameras, **33** on the front camera (denser toward the middle, where a face sits in a selfie framing). Each point is weighted by local agreement — how tightly its neighbourhood's readings agree with each other — so a point sitting on a depth edge or in cluttered detail devalues itself automatically rather than dragging the average toward noise.
+
+**Tune From** picks which part of the lattice actually drives the tuning:
+
+- **Centre** — just the single centre dot, closest to the old behaviour.
+- **Corners** — the four corner dots, useful when the subject fills the middle of the frame and you want the tuning to track the background instead.
+- **Middle** — the eight dots in the middle area around the centre.
+- **All** — the whole lattice, confidence-weighted — the default, and the most representative of the whole scene.
+
+**Show Points** draws the lattice live over the preview, each dot showing its current 0–1 nearness reading, coloured by agreement — the same overlay LiDAR + Monocular Depth mode has. It's a SwiftUI layer drawn above the picture, so it's structurally incapable of showing up in NDI, recordings or photos — visible on screen only, never in the output.
 
 ## Manual controls
 
@@ -39,7 +50,9 @@ Whether or not auto-adjust is on, the same sliders are available by hand: **Brig
 
 ## Output
 
-Monocular Depth streams over **NDI** under its own fixed source name, separate from the LiDAR depth and RGB camera NDI sources, so it's easy to pick out on the network even when other modes are also broadcasting. A **Resolution** picker (shared with LiDAR mode) sets the size the depth is upscaled to for the NDI stream and recordings. It also has its own on-device recorder — the same **shutter** as LiDAR mode: a quick tap saves a photo (on-screen frame plus a plain RGB still) to Photos, and a tap-and-hold (0.37 s) starts a recording; let go and it keeps going, tap to stop. Finished clips save to the Photos library the same way.
+Monocular Depth streams over **NDI** under its own fixed source name, separate from the LiDAR depth and RGB camera NDI sources, so it's easy to pick out on the network even when other modes are also broadcasting. A **Resolution** picker (shared with LiDAR mode) sets the size the depth is upscaled to for the NDI stream and recordings. It also has its own on-device recorder — the same **shutter** as LiDAR mode: a quick tap saves a photo, and a tap-and-hold (0.37 s) starts a recording; let go and it keeps going, tap to stop. Finished clips save to the Photos library the same way.
+
+A photo saves whichever view is on screen — the colour-mapped depth render, or the plain camera view if you've flipped to RGB — as a single image. The depth photo is true 3:4, matching what you see live (earlier versions saved it vertically squashed).
 
 **What you see is what records.** The on-device preview, the recording and the NDI stream are all fed from the **same processed frame** — the Sharpen effect and the chosen Resolution apply to all three identically, so a recording looks exactly like the screen. The camera also targets a locked **60 fps** on all three cameras (the model then runs as fast as the phone can sustain).
 

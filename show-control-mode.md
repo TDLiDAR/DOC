@@ -95,7 +95,7 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | `bcNearCompression` | Back-LiDAR Near Compression | 0–1 |
 | `bcSmoothing` | Back-LiDAR Smoothing | 0–1 |
 
-#### Monocular Depth — 14 controls
+#### Monocular Depth — 16 controls
 
 | address (`/tdlidar/show/param/…`) | control | type |
 |---|---|---|
@@ -110,6 +110,8 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | `monoSharpen` | Sharpen | on/off (≥0.5) |
 | `monoAutoAdjust` | Auto-Adjust | on/off (≥0.5) |
 | `monoAutoSensitivity` | Auto Sensitivity | 0–1 |
+| `monoShowPoints` | Show Points | on/off (≥0.5) |
+| `monoAutoRegion` | Auto Region (Tune From) | 0–1 |
 | `monoAlpha` | Alpha Mask | on/off (≥0.5) |
 | `monoAlphaThreshold` | Alpha Threshold | 0–1 |
 | `monoCameraControlTarget` | Camera Control Target | 0–1 |
@@ -228,7 +230,7 @@ You don't have to hand-build an OSC Out CHOP for every address above — **`tdli
 | Output | **Alpha Mask** toggle | `/tdlidar/show/alpha`, on change |
 | Output | **Screen Off** toggle | `/tdlidar/show/screen`, on change — blackout on/off while streams keep running |
 | **LiDAR** | 45 controls (tone, clip, detail, face, raw look, back-LiDAR) | the matching `/tdlidar/show/param/*`, normalized on change |
-| **Monocular Depth** | 14 controls (model, camera, tone, smoothing, auto-adjust, alpha, CC target) | the matching `/tdlidar/show/param/*`, normalized on change |
+| **Monocular Depth** | 16 controls (model, camera, tone, smoothing, auto-adjust, show points, alpha, CC target) | the matching `/tdlidar/show/param/*`, normalized on change |
 | **Point Cloud** | 83 controls (view, tilt, cleanup, motion FX, network) | the matching `/tdlidar/show/param/*`, normalized on change |
 
 Each mode tab exposes every setting from that mode as a `0–1` fader (or a toggle), sending the matching `/tdlidar/show/param/<key>` live on change — the same keys listed in [Every setting over OSC & MIDI](#every-setting-over-osc--midi).
@@ -259,7 +261,7 @@ Either transport decodes the same two message types:
 | 3 | brightness |
 | 4 | threshold |
 
-The CC target is any key from the same parameter vocabulary as OSC — so **every** setting listed in [Every setting over OSC & MIDI](#every-setting-over-osc--midi) (all 142 LiDAR / Monocular / Point Cloud controls) is equally MIDI-mappable: a CC's `0–127` maps straight onto the same normalized `0–1` range.
+The CC target is any key from the same parameter vocabulary as OSC — so **every** setting listed in [Every setting over OSC & MIDI](#every-setting-over-osc--midi) (all 144 LiDAR / Monocular / Point Cloud controls) is equally MIDI-mappable: a CC's `0–127` maps straight onto the same normalized `0–1` range.
 
 **MIDI Time Code** (MTC) quarter-frames are assembled into a running `HH:MM:SS:FF` timecode, shown live in the Show Control section — useful for confirming the phone is receiving a show's clock. Show Control does not yet fire commands at specific timecodes (that's a real, separate cue-scheduler feature — a timecode-indexed cue list with its own editor — not built yet); today, MTC reception is for monitoring, and cueing is done via `/tdlidar/show/recall` or MIDI Note On.
 

@@ -2,7 +2,7 @@
 title: Point Cloud — Effects & Settings
 layout: default
 parent: App Guide
-nav_order: 6
+nav_order: 7
 ---
 
 # Point Cloud — Effects & Settings

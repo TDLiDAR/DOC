@@ -2,7 +2,7 @@
 title: Point Cloud Mode
 layout: default
 parent: App Guide
-nav_order: 5
+nav_order: 6
 ---
 
 # Point Cloud Mode
