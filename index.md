@@ -20,7 +20,8 @@ permalink: /
 [Install]({{ '/install.html' | relative_url }}){: .btn .btn-primary .mr-2 }
 [App Guide]({{ '/app-guide.html' | relative_url }}){: .btn .mr-2 }
 [Operators]({{ '/operators.html' | relative_url }}){: .btn .mr-2 }
-[FAQ]({{ '/faq.html' | relative_url }}){: .btn }
+[FAQ]({{ '/faq.html' | relative_url }}){: .btn .mr-2 }
+[Get the TDLiDAR Operator Family](https://www.patreon.com/aristideslab/posts/tdlidar-operator-164655143){: .btn target="_blank" }
 {: .text-center }
 
 TDLiDAR is an iOS app **plus** a TouchDesigner **operator family**. The app streams everything a modern iPhone can sense — motion, LiDAR depth, body/hand/face tracking, audio, camera vision, touch, and more — over your local network. The operators plug straight into your patch.

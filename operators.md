@@ -11,6 +11,9 @@ The TDLiDAR family is forty-eight operators, one per sensor, tool or output. Dro
 
 Each operator has its own detailed page under the Operators section with its OSC input, parameters, outputs, a beginner quick-start and advanced patterns. This page is the overview.
 
+[Get the TDLiDAR Operator Family](https://www.patreon.com/aristideslab/posts/tdlidar-operator-164655143){: .btn .btn-primary target="_blank" }
+{: .text-center }
+
 ```mermaid
 flowchart TB
   ROOT(["tdlidar_* operators"])
