@@ -15,7 +15,7 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | address | args | sent when |
 |---|---|---|
 | `/tdlidar/show/recall` | int | **Recall** pulsed — sends **Recall Index** |
-| `/tdlidar/show/mode` | string | **Switch Mode** pulsed — sends **Mode** (LiDAR / Monocular Depth / Point Cloud only) |
+| `/tdlidar/show/mode` | string | **Switch Mode** pulsed — sends **Mode** (LiDAR / Monocular Depth / Point Cloud only — the phone also accepts `lidarMono` for LiDAR + Monocular Depth, but the operator's **Mode** menu hasn't been updated with that option yet) |
 | `/tdlidar/show/record` | int (0/1) | **Record** toggled |
 | `/tdlidar/show/ndi` | int (0/1) | **NDI Enable** toggled |
 | `/tdlidar/show/resolution` | int (0–3) | **NDI Resolution** changed — Low / Med / High / Max |
@@ -23,11 +23,12 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | `/tdlidar/show/capture/<verb>` | — | **Send Capture** pulsed — verb from **Capture Verb** |
 | `/tdlidar/show/reset` | — | **Reset Settings** pulsed — factory-reset every setting |
 | `/tdlidar/show/screen` | int (0/1) | **Screen Off** toggled — 1 blacks out the phone's screen (streams keep running), 0 wakes it |
-| `/tdlidar/show/param/<key>` | float 0–1 (≥0.5 for toggles) | any of the **144** mode-tab controls changed — see below |
+| `/tdlidar/show/param/<key>` | float 0–1 (≥0.5 for toggles) | any of the **144** controls currently on this operator's parameter pages — the phone itself accepts **177**, see below |
 
 **v9.11 — every setting is a parameter.** Three parameter pages (**LiDAR** · 45, **Monocular Depth** · 16, **Point Cloud** · 83) expose every user-facing control of each mode as a `0–1` fader (or a toggle), each sending the matching `/tdlidar/show/param/<key>` live on change. All faders are **normalized 0–1** and scaled to the control's real range on the phone (matching a MIDI CC's 0–127); toggles send `1`/`0`. The full key list lives in [Show Control → Every setting over OSC & MIDI]({{ '/show-control-mode.html#every-setting-over-osc--midi' | relative_url }}).
 
-(Matches [Show Control]({{ '/show-control-mode.html' | relative_url }}) exactly — this op is a thin wrapper, not a second spec.)
+**This operator is currently behind the phone's spec** — the phone itself accepts 177 controls across four modes (48 LiDAR, 16 Monocular Depth, 28 LiDAR + Monocular Depth, 85 Point Cloud), all documented in [Show Control]({{ '/show-control-mode.html' | relative_url }}). This op hasn't been rebuilt against that yet: it's still on 3 parameter pages and is missing the whole **LiDAR + Monocular Depth** page, LiDAR's **Stabilize / Stabilize Strength / Stabilize Mode**, Point Cloud's **Person Only / Person Quality**, and a **LiDAR + Monocular Depth** entry on the **Mode** menu. Until it's updated, reach those specific controls with a raw OSC Out CHOP at the addresses in Show Control instead of through this operator's parameters.
+{: .important }
 
 ## Outputs
 `out1` (CHOP) — mirrors the current parameter values (`Record`, `Gamma`, `Contrast`, `Brightness`, `Threshold`, `Colormapindex`, `Recallindex`) as channels, for chaining or an on-screen readout of what was last sent. Nothing flows *into* this op from the phone — it's send-only.
@@ -39,7 +40,7 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | Port | 9200 | Show Control's listen port (match the phone's Remote Control settings) |
 | Recall Index | 0 | which Look Preset to recall |
 | Recall | — | pulse to send the recall |
-| Mode | LiDAR | which mode to switch to — LiDAR / Monocular Depth / Point Cloud only (the utility modes aren't remote-switchable) |
+| Mode | LiDAR | which mode to switch to — LiDAR / Monocular Depth / Point Cloud only (the utility modes aren't remote-switchable; LiDAR + Monocular Depth is remote-switchable on the phone but not yet on this menu) |
 | Switch Mode | — | pulse to send the mode switch |
 | Record | off | on/off sends 1/0 immediately |
 | Capture Verb | Mesh Finish | finish / rescan / start / stop |
@@ -49,9 +50,10 @@ Every other operator in this family reads data the phone is sending. `tdlidar_sh
 | NDI Enable | off | persistent-NDI master on/off — sends immediately on change |
 | NDI Resolution | Med | Low / Med / High / Max — drives all three NDI outputs at once, on change |
 | Alpha Mask | off | alpha mask on/off across all three modes, on change |
-| **LiDAR** page — 45 controls | 0–1 / toggles | every LiDAR setting as a normalized fader or toggle — send `/tdlidar/show/param/<key>` live on change |
+| **LiDAR** page — 45 of 48 controls | 0–1 / toggles | every LiDAR setting as a normalized fader or toggle — send `/tdlidar/show/param/<key>` live on change; Stabilize / Stabilize Strength / Stabilize Mode aren't on this page yet |
 | **Monocular Depth** page — 16 controls | 0–1 / toggles | every Monocular Depth setting, same scheme |
-| **Point Cloud** page — 83 controls | 0–1 / toggles | every Point Cloud setting (view, tilt, cleanup, motion FX, network), same scheme |
+| *(no page yet)* **LiDAR + Monocular Depth** — 28 controls on the phone | 0–1 / toggles | not yet on this operator — reach these with a raw OSC Out CHOP at the `/tdlidar/show/param/lm*` addresses in [Show Control]({{ '/show-control-mode.html#every-setting-over-osc--midi' | relative_url }}) |
+| **Point Cloud** page — 83 of 85 controls | 0–1 / toggles | every Point Cloud setting (view, tilt, cleanup, motion FX, network), same scheme; Person Only / Person Quality aren't on this page yet |
 
 ## Quick start (beginner)
 1. On the phone: Main menu → gear → **Show Control** → Enabled on. Note the IP and Listen Port shown there.

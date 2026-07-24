@@ -26,26 +26,26 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | address | args | does |
 |---|---|---|
 | `/tdlidar/show/recall` | int | Recalls a saved [Look Preset](#look-presets) by its index in the list. |
-| `/tdlidar/show/mode` | string or int | Switches the app's mode. **Restricted to the three live-output modes** — string matches `ndi` (LiDAR), `monocularDepth`, or `pointCloud`; int indexes that list in that order (`0` LiDAR, `1` Monocular Depth, `2` Point Cloud). The utility modes (Sensors, Scene Build, Mesh Cloud, Cue Deck, Align) are deliberately **not** remote-switchable and are ignored. |
-| `/tdlidar/show/record` | int/float/bool (0 or 1) | Starts or stops recording in LiDAR or Monocular Depth mode — whichever is currently active. No-op in other modes. |
-| `/tdlidar/show/ndi` | int/float/bool (0 or 1) | Toggles the **persistent-NDI master switch** (same one as "Keep NDI running across modes" in the Network sheet). `1` starts the shared NDI stream and arms whichever of LiDAR / Monocular Depth / Point Cloud is active, so the feed comes up on command; `0` stops it. |
-| `/tdlidar/show/resolution` | int, 0–3 | Sets the NDI output resolution for **all three modes at once**: `0` Low, `1` Med, `2` High, `3` Max. LiDAR + Monocular Depth share one upscale ladder (≈800 → 1920 wide); Point Cloud has its own (540 → 1440 wide). |
-| `/tdlidar/show/alpha` | int/float/bool (0 or 1) | Toggles the alpha mask in **all three modes at once** — LiDAR depth-mask alpha, Monocular Depth alpha mask, and Point Cloud background removal. `1` on, `0` off. |
+| `/tdlidar/show/mode` | string or int | Switches the app's mode. **Restricted to the four live-output modes** — string matches `ndi` (LiDAR), `monocularDepth`, `pointCloud`, or `lidarMono` (LiDAR + Monocular Depth); int indexes that list **in that order** (`0` LiDAR, `1` Monocular Depth, `2` Point Cloud, `3` LiDAR + Monocular Depth — `lidarMono` was appended after Point Cloud in v9.16, not inserted, so existing index mappings never renumber). The utility modes (Sensors, Scene Build, Mesh Cloud, Cue Deck, Align) are deliberately **not** remote-switchable and are ignored. |
+| `/tdlidar/show/record` | int/float/bool (0 or 1) | Starts or stops recording in LiDAR, Monocular Depth or LiDAR + Monocular Depth — whichever is currently active. No-op in other modes. |
+| `/tdlidar/show/ndi` | int/float/bool (0 or 1) | Toggles the **persistent-NDI master switch** (same one as "Keep NDI running across modes" in the Network sheet). `1` starts the shared NDI stream and arms whichever of LiDAR / Monocular Depth / Point Cloud / LiDAR + Monocular Depth is active, so the feed comes up on command; `0` stops it. |
+| `/tdlidar/show/resolution` | int, 0–3 | Sets the NDI output resolution for **all four live modes at once**: `0` Low, `1` Med, `2` High, `3` Max. LiDAR, Monocular Depth and LiDAR + Monocular Depth share one upscale ladder (≈800 → 1920 wide); Point Cloud has its own (540 → 1440 wide). |
+| `/tdlidar/show/alpha` | int/float/bool (0 or 1) | Toggles the alpha mask in **LiDAR, Monocular Depth and Point Cloud at once** — LiDAR depth-mask alpha, Monocular Depth alpha mask, and Point Cloud background removal. `1` on, `0` off. LiDAR + Monocular Depth has its own separate alpha mask (`lmAlpha`), reachable only via its own param — it isn't part of this global toggle. |
 | `/tdlidar/show/reset` | — (pulse) | **Factory-reset every setting** to its default — the same as the in-app "Reset All Settings". Restores every editable parameter across all modes; your Pro unlock and saved captures are untouched. Any argument (or none) triggers it. |
-| `/tdlidar/show/screen` | int/float/bool (1 = off, 0 = wake) | **Show blackout** — turns the screen off (brightness to zero, all touch blocked, preview rendering suspended) while **NDI, OSC and recording keep running**. A real battery saver for long installs. Wake remotely with `0`, or **triple-tap** the dark screen on the device. Works in LiDAR, Monocular Depth and Point Cloud modes (and anywhere else — it's app-wide). |
+| `/tdlidar/show/screen` | int/float/bool (1 = off, 0 = wake) | **Show blackout** — turns the screen off (brightness to zero, all touch blocked, preview rendering suspended) while **NDI, OSC and recording keep running**. A real battery saver for long installs. Wake remotely with `0`, or **triple-tap** the dark screen on the device. Works in every mode — it's app-wide. |
 | `/tdlidar/show/capture/finish` | — | Mesh Cloud: ends the current scan (same as tapping Finish). |
 | `/tdlidar/show/capture/rescan` | — | Mesh Cloud: discards the finished scan and starts over. |
 | `/tdlidar/show/capture/start` | — | Point Cloud: starts TCP streaming. |
 | `/tdlidar/show/capture/stop` | — | Point Cloud: stops TCP streaming. |
-| `/tdlidar/show/param/<key>` | float 0–1 (or ≥0.5 for toggles) | **Any** LiDAR / Monocular Depth / Point Cloud setting — see the full per-mode reference in [Every setting over OSC & MIDI](#every-setting-over-osc--midi) below. |
+| `/tdlidar/show/param/<key>` | float 0–1 (or ≥0.5 for toggles) | **Any** LiDAR / Monocular Depth / LiDAR + Monocular Depth / Point Cloud setting — see the full per-mode reference in [Every setting over OSC & MIDI](#every-setting-over-osc--midi) below. |
 
 ## Every setting over OSC & MIDI
 
-**Every user-facing setting in the three live modes is a remote parameter** (v9.11, extended since). Each `/tdlidar/show/param/<key>` takes a **normalized `0–1`** value (matching a MIDI CC's `0–127`) that the phone maps to the control's real range; on/off toggles use a `0.5` threshold; enums/indexes map `0` → first option … `1` → last. The `<key>` is the setting's own name, grouped by mode below, and it's the same vocabulary a MIDI CC can target. They apply live while that mode is on screen (Point Cloud values also persist for the next time you enter it).
+**Every user-facing setting in the four live modes is a remote parameter** (v9.11, extended since). Each `/tdlidar/show/param/<key>` takes a **normalized `0–1`** value (matching a MIDI CC's `0–127`) that the phone maps to the control's real range; on/off toggles use a `0.5` threshold; enums/indexes map `0` → first option … `1` → last. The `<key>` is the setting's own name, grouped by mode below, and it's the same vocabulary a MIDI CC can target. They apply live while that mode is on screen (Point Cloud values also persist for the next time you enter it).
 
 > **Changed in v9.11:** the historical shared faders (`gamma`, `contrast`, `brightness`, `threshold`, `colorMapIndex`) are now **LiDAR-only and normalized `0–1`** — they no longer also write the Monocular values, and no longer take raw units. Monocular Depth has its own `mono…` keys (e.g. `monoGamma`). If you drove these from a raw-value OSC source, send `0–1` now (the `tdlidar_show` operator already does). This also corrects MIDI, whose CCs always sent `0–1`.
 {: .note }
-#### LiDAR — 45 controls
+#### LiDAR — 48 controls
 
 | address (`/tdlidar/show/param/…`) | control | type |
 |---|---|---|
@@ -64,6 +64,9 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | `envNoiseFloor` | Noise Reduction | 0–1 |
 | `extendedRange` | Extended Range | on/off (≥0.5) |
 | `detailLevel` | Edge Outline | 0–1 |
+| `stabilize` | Stabilize | on/off (≥0.5) |
+| `stabStrength` | Stabilize Strength | 0–1 |
+| `stabMode` | Stabilize Mode | 0–1 |
 | `smoothing` | Temporal Smoothing | 0–1 |
 | `holeFill` | Smart Hole Fill | on/off (≥0.5) |
 | `rawDepth` | Disable Depth Filtering | on/off (≥0.5) |
@@ -116,7 +119,43 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | `monoAlphaThreshold` | Alpha Threshold | 0–1 |
 | `monoCameraControlTarget` | Camera Control Target | 0–1 |
 
-#### Point Cloud — 83 controls
+#### LiDAR + Monocular Depth — 28 controls
+
+| address (`/tdlidar/show/param/…`) | control | type |
+|---|---|---|
+| `lmNear` | Metric Near | 0–1 |
+| `lmFar` | Metric Far | 0–1 |
+| `lmWindowEMA` | Window Lock | 0–1 |
+| `lmWindowMargin` | Window Margin | 0–1 |
+| `lmMinValid` | Min Valid LiDAR | 0–1 |
+| `lmHoleFill` | Hole Fill | on/off (≥0.5) |
+| `lmAutoRange` | Auto Range | on/off (≥0.5) |
+| `lmShowPoints` | Show LiDAR Points | on/off (≥0.5) |
+| `lmAutoImage` | Auto Image | on/off (≥0.5) |
+| `lmAutoSensitivity` | Auto Sensitivity | 0–1 |
+| `lmDetail` | Detail | 0–1 |
+| `lmLidarWeight` | LiDAR Weight | 0–1 |
+| `lmDetailGain` | RGB Detail | 0–1 |
+| `lmAutoLink` | Link Autos | on/off (≥0.5) |
+| `lmStabilize` | Stabilize | on/off (≥0.5) |
+| `lmStabStrength` | Stabilize Strength | 0–1 |
+| `lmStabMode` | Stabilize Mode | 0–1 |
+| `lmTopo` | Topo Lines | 0–1 |
+| `lmFrontCamera` | Front Camera | on/off (≥0.5) |
+| `lmColorMap` | Colormap | 0–1 |
+| `lmInvert` | Invert Depth | on/off (≥0.5) |
+| `lmGamma` | Gamma | 0–1 |
+| `lmContrast` | Contrast | 0–1 |
+| `lmBrightness` | Brightness | 0–1 |
+| `lmSmoothing` | Smoothing | 0–1 |
+| `lmSharpen` | Sharpen | 0–1 |
+| `lmAlpha` | Alpha Mask | on/off (≥0.5) |
+| `lmAlphaThreshold` | Alpha Threshold | 0–1 |
+
+> `lmNear` and `lmFar` are the only two params in this entire registry whose normalized `0–1` maps to an **absolute physical distance** (0.3–10 m) rather than a look — moving them re-maps what every output byte means, so a show cue that changes them changes the depth scale TouchDesigner receives. That's sometimes exactly what you want, but it's worth knowing before putting either on a fader. If you'd rather TouchDesigner not manage the range at all, leave `lmAutoRange` on and the phone sets it from the scene instead.
+{: .note }
+
+#### Point Cloud — 85 controls
 
 | address (`/tdlidar/show/param/…`) | control | type |
 |---|---|---|
@@ -138,6 +177,8 @@ All UDP, to whatever port Show Control is listening on (default 9200).
 | `pcRotY` | Tilt Y | 0–1 |
 | `pcRotZ` | Tilt Z | 0–1 |
 | `pcAppleFilter` | Apple Filter | on/off (≥0.5) |
+| `pcPersonOnly` | Person Only | on/off (≥0.5) |
+| `pcPersonQuality` | Person Quality | 0–1 |
 | `pcSurfaceSmooth` | Surface Smooth | 0–1 |
 | `pcAccumulate` | Accumulate | 0–1 |
 | `pcGrazingCull` | Grazing Cull | 0–1 |
@@ -221,7 +262,7 @@ You don't have to hand-build an OSC Out CHOP for every address above — **`tdli
 |---|---|---|
 | Network | Address, Port | (where everything below is sent) |
 | Cues | Recall Index + **Recall** pulse | `/tdlidar/show/recall` |
-| Cues | Mode + **Switch Mode** pulse | `/tdlidar/show/mode` — menu limited to LiDAR / Monocular Depth / Point Cloud |
+| Cues | Mode + **Switch Mode** pulse | `/tdlidar/show/mode` — menu limited to LiDAR / Monocular Depth / Point Cloud *(the operator's Mode menu hasn't been updated for LiDAR + Monocular Depth yet — see note below)* |
 | Cues | Record toggle | `/tdlidar/show/record`, on change |
 | Cues | Capture Verb + **Send Capture** pulse | `/tdlidar/show/capture/<verb>` |
 | Cues | **Reset Settings** pulse | `/tdlidar/show/reset` — factory-reset every setting |
@@ -229,11 +270,14 @@ You don't have to hand-build an OSC Out CHOP for every address above — **`tdli
 | Output | **NDI Resolution** menu (Low / Med / High / Max) | `/tdlidar/show/resolution`, on change |
 | Output | **Alpha Mask** toggle | `/tdlidar/show/alpha`, on change |
 | Output | **Screen Off** toggle | `/tdlidar/show/screen`, on change — blackout on/off while streams keep running |
-| **LiDAR** | 45 controls (tone, clip, detail, face, raw look, back-LiDAR) | the matching `/tdlidar/show/param/*`, normalized on change |
+| **LiDAR** | 45 of 48 controls (tone, clip, detail, face, raw look, back-LiDAR) | the matching `/tdlidar/show/param/*`, normalized on change |
 | **Monocular Depth** | 16 controls (model, camera, tone, smoothing, auto-adjust, show points, alpha, CC target) | the matching `/tdlidar/show/param/*`, normalized on change |
-| **Point Cloud** | 83 controls (view, tilt, cleanup, motion FX, network) | the matching `/tdlidar/show/param/*`, normalized on change |
+| **Point Cloud** | 83 of 85 controls (view, tilt, cleanup, motion FX, network) | the matching `/tdlidar/show/param/*`, normalized on change |
 
 Each mode tab exposes every setting from that mode as a `0–1` fader (or a toggle), sending the matching `/tdlidar/show/param/<key>` live on change — the same keys listed in [Every setting over OSC & MIDI](#every-setting-over-osc--midi).
+
+> **Operator build lagging the phone spec.** The tables above are the full phone-side spec — every one of those addresses works today if you send it yourself (a hand-built OSC Out CHOP, Companion, QLab, etc.). The `tdlidar_show` **operator** hasn't been rebuilt against it yet: it's still on 3 parameter pages and is missing the **LiDAR + Monocular Depth** page entirely (28 controls), the LiDAR **Stabilize / Stabilize Strength / Stabilize Mode** controls, the Point Cloud **Person Only / Person Quality** controls, and a **LiDAR + Monocular Depth** entry on the Mode menu. Until that update ships, reach those specific controls with a raw OSC Out CHOP at the addresses above instead of through the operator's parameters.
+{: .important }
 
 `out1` mirrors the current parameter values as a CHOP, in case you want to chain or display what was last sent. It's a thin wrapper — internally just an OSC Out DAT and a Parameter Execute DAT — so the DMX/Art-Net/QLab/Companion patterns below can drive `tdlidar_show`'s own parameters (export a CHOP into **Recall Index**, pulse **Recall**) instead of building a raw OSC Out CHOP by hand, if you'd rather stay in parameter-land.
 
@@ -261,7 +305,7 @@ Either transport decodes the same two message types:
 | 3 | brightness |
 | 4 | threshold |
 
-The CC target is any key from the same parameter vocabulary as OSC — so **every** setting listed in [Every setting over OSC & MIDI](#every-setting-over-osc--midi) (all 144 LiDAR / Monocular / Point Cloud controls) is equally MIDI-mappable: a CC's `0–127` maps straight onto the same normalized `0–1` range.
+The CC target is any key from the same parameter vocabulary as OSC — so **every** setting listed in [Every setting over OSC & MIDI](#every-setting-over-osc--midi) (all 177 LiDAR / Monocular Depth / LiDAR + Monocular Depth / Point Cloud controls) is equally MIDI-mappable: a CC's `0–127` maps straight onto the same normalized `0–1` range.
 
 **MIDI Time Code** (MTC) quarter-frames are assembled into a running `HH:MM:SS:FF` timecode, shown live in the Show Control section — useful for confirming the phone is receiving a show's clock. Show Control does not yet fire commands at specific timecodes (that's a real, separate cue-scheduler feature — a timecode-indexed cue list with its own editor — not built yet); today, MTC reception is for monitoring, and cueing is done via `/tdlidar/show/recall` or MIDI Note On.
 
